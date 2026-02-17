@@ -19,7 +19,7 @@ header {
     align-items: center;
     justify-content: space-between;
     background-color: black;
-    background-image: url(../img/mur.jpg);
+    background-image: url(../img/mur.webp);
     background-size: cover;
 }
 
@@ -80,7 +80,7 @@ header {
     background-color: rgb(0, 0, 0);
 }
 
-a {
+.a_cover {
     background-color: rgb(255 255 255 / 77%);
     border-radius: 8px;
     width: auto;
@@ -95,20 +95,20 @@ a {
 }
 
 .skill {
-    background-image: url(../img/skill.jpg);
+    background-image: url(../img/skill.webp);
 }
 
 .me {
-    background-image: url(../img/logo.png);
+    background-image: url(../img/logo.webp);
     background-color: brown;
 }
 
 .cv {
-    background-image: url(../img/cv.jpg);
+    background-image: url(../img/cv.webp);
 }
 
 .contact {
-    background-image: url(../img/contact.jpg);
+    background-image: url(../img/contact.webp);
 }
 
 main {
@@ -131,7 +131,7 @@ main {
 .super-table {
     position: relative;
     z-index: auto;
-    background-image: url(../img/bois.jpg);
+    background-image: url(../img/bois.webp);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     height: 100%
@@ -174,9 +174,45 @@ main {
     z-index: 3;
 }
 
-.disqueN0 {
+.p-disque_skill {
+    height: 10%;
+    aspect-ratio: 1/1;
+    position: relative;
+    z-index: 3;
+}
+
+.p-disque_cv {
+    height: 10%;
+    aspect-ratio: 1/1;
+    position: relative;
+    z-index: 3;
+}
+
+.p-disque_me {
+    height: 10%;
+    aspect-ratio: 1/1;
+    position: relative;
+    z-index: 3;
+}
+
+.p-disque_contact {
+    height: 10%;
+    aspect-ratio: 1/1;
+    position: relative;
+    z-index: 3;
+}
+
+.disqueN0,
+.disque_cv,
+.disque_me,
+.disque_contact {
     height: 222%;
     aspect-ratio: 1/1;
+}
+
+.disque_skill {
+    height: 228%;
+    width: 224%;
 }
 
 .cible2 {
@@ -211,11 +247,6 @@ h1 {
 
     .topnav {
         display: none;
-    }
-
-    h1{
-        display: block;
-        color: whitesmoke;
     }
 
     * {

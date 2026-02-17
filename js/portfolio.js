@@ -12,11 +12,11 @@ gsap.registerPlugin(Draggable, InertiaPlugin);
 pochette.addEventListener('click', function () {
     cover.classList.toggle('coverAlt');
 
-    let coverAlt = document.querySelector('.coverAlt')
+    // let coverAlt = document.querySelector('.coverAlt')
 
-    coverAlt.addEventListener('click', function () {
-        coverAlt.remove('coverAlt')
-    });
+    // coverAlt.addEventListener('click', function () {
+    //     coverAlt.remove('coverAlt')
+    // });
 
 });
 
@@ -72,4 +72,3 @@ Draggable.create('#p-bras', {
         }
     }
 });
-
