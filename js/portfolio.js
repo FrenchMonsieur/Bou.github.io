@@ -38,17 +38,13 @@ Draggable.create('#p-bras', {
     onDragEnd: function () {
         if (this.hitTest("#disqueN0", "bras", "100%")) {
             this.disable();
-            // gsap.to("#bras", {
-            //     rotation: 38,
-            //     duration:2.5
-            // });
             gsap.to("#disqueN0", {
                 rotation: 360,
                 repeat: -1,
                 duration: 4.5,
-                ease: "none",
-                // delay:2.5
+                ease: "none"
             });
+            this.disable();
         }
     }
 });
