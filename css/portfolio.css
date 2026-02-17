@@ -222,6 +222,12 @@ main {
     height: 170%
 }
 
+.text{
+    color: whitesmoke;
+    opacity: 0;
+    font-family: "Roboto Slab", serif;
+}
+
 @media (min-width: 1024px) {
     .super-table {
         display: none;

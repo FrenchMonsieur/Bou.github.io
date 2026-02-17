@@ -45,6 +45,10 @@ Draggable.create('#p-bras', {
                 ease: "none"
             });
             this.disable();
+            gsap.to("#text", {
+                opacity: 1,
+                duration: 3
+            });
         }
     }
 });
