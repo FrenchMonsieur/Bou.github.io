@@ -11,13 +11,6 @@ gsap.registerPlugin(Draggable, InertiaPlugin);
 
 pochette.addEventListener('click', function () {
     cover.classList.toggle('coverAlt');
-
-    // let coverAlt = document.querySelector('.coverAlt')
-
-    // coverAlt.addEventListener('click', function () {
-    //     coverAlt.remove('coverAlt')
-    // });
-
 });
 
 Draggable.create('#p-disque_skill', {
@@ -26,17 +19,8 @@ Draggable.create('#p-disque_skill', {
     onClick: function () {
     },
     onDragEnd: function () {
-        if (this.hitTest("#cible", "#cible2", "50%")) {
-            gsap.to(this.cible, {
-                x: gsap.getProperty("#cible", "x"),
-                y: gsap.getProperty("#cible", "y"),
-                duration: 0.3,
-            });
-            gsap.to(this.cible2, {
-                x: gsap.getProperty("#cible2", "x"),
-                y: gsap.getProperty("#cible2", "y"),
-                duration: 0.3,
-            });
+        const ciblesOK = Draggable.hitTest("#cible", "#cible3", "90%");
+        if (ciblesOK) {
             this.disable();
         }
     }
@@ -53,21 +37,17 @@ Draggable.create('#p-bras', {
     },
     onDragEnd: function () {
         if (this.hitTest("#disque_skill", "bras", "100%")) {
-            gsap.to(this.cible, {
-                x: gsap.getProperty("#disque_skill", "x"),
-                y: gsap.getProperty("#disque_skill", "y"),
-                duration: 0.3,
-            });
-            gsap.to(this.cible, {
-                x: gsap.getProperty("#bras", "x"),
-                y: gsap.getProperty("#bras", "y"),
-                duration: 0.3,
-            });
             this.disable();
+            // gsap.to("#bras", {
+            //     rotation: 38,
+            //     duration:2.5
+            // });
             gsap.to("#disque_skill", {
                 rotation: 360,
                 repeat: -1,
-                ease: "none"
+                duration: 4.5,
+                ease: "none",
+                // delay:2.5
             });
         }
     }

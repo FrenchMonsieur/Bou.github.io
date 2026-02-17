@@ -33,12 +33,7 @@ header {
     margin-left: 2%;
 }
 
-.icon {
-    height: 100%;
-    aspect-ratio: 1/1;
-}
-
-.album {
+.icon,.album  {
     height: 100%;
     aspect-ratio: 1/1;
 }
@@ -167,34 +162,26 @@ main {
     left: 38%;
 }
 
-.p-disqueN0 {
-    height: 10%;
-    aspect-ratio: 1/1;
-    position: relative;
-    z-index: 3;
+.cible2 {
+    height: 70px;
+    width: 47px;
+    position: absolute;
+    top: 71%;
+    left: 41%;
 }
 
-.p-disque_skill {
-    height: 10%;
-    aspect-ratio: 1/1;
-    position: relative;
-    z-index: 3;
+.cible3 {
+    height: 70px;
+    width: 47px;
+    position: absolute;
+    top: 75%;
+    left: 88%;
 }
 
-.p-disque_cv {
-    height: 10%;
-    aspect-ratio: 1/1;
-    position: relative;
-    z-index: 3;
-}
-
-.p-disque_me {
-    height: 10%;
-    aspect-ratio: 1/1;
-    position: relative;
-    z-index: 3;
-}
-
+.p-disqueN0,
+.p-disque_skill,
+.p-disque_cv,
+.p-disque_me,
 .p-disque_contact {
     height: 10%;
     aspect-ratio: 1/1;
@@ -233,11 +220,6 @@ main {
 
 .bras {
     height: 170%
-}
-
-p,
-h1 {
-    opacity: 0;
 }
 
 @media (min-width: 1024px) {
