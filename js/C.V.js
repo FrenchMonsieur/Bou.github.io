@@ -36,7 +36,8 @@ Draggable.create('#p-bras', {
         console.log('clicked');
     },
     onDragEnd: function () {
-        if (this.hitTest("#disque_cv", "bras", "100%")) {
+        const ciblesOK = Draggable.hitTest("#cible", "#cible2", "90%");
+        if (this.hitTest("#disque_cv", "bras", "100%") && ciblesOK) {
             this.disable();
             gsap.to("#disque_cv", {
                 rotation: 360,
