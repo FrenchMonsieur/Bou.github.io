@@ -8,64 +8,103 @@
     <link rel="stylesheet" href="css/portfolio.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=BBH+Bartle&family=BBH+Bogle&family=Jost:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=...&display=swap" rel="stylesheet">
     <script src="libs/minified/gsap.min.js" defer></script>
     <script src="libs/minified/InertiaPlugin.min.js" defer></script>
     <script src="libs/minified/Draggable.min.js" defer></script>
     <script src="libs/minified/ScrollTrigger.min.js" defer></script>
+    <script src="libs/minified/SplitText.min.js" defer></script>
     <script src="js/C.V.js" defer></script>
 </head>
 
 <body>
-     <header>
+    <header>
         <div class="topnav">
+
+            <!-- Zone icône (retour index) -->
             <div class="p-icon" id="p-icon">
                 <nav class="icon">
                     <a href="index.html">
                         <img src="img/icon.webp" alt="" class="icon" id="icon">
                     </a>
                 </nav>
-                
             </div>
+
+            <!-- Zone "pochette" cliquable (ton JS toggle coverAlt ici) -->
             <div class="pochette" id="pochette">
                 <img src="img/pochette.webp" alt="" class="album" id="album">
+
+                <!-- Menu cover (c’est CET élément qui prend coverAlt) -->
                 <nav class="cover" id="cover">
-                    <div class="skill" id="skill">
-                        <a class="a_cover" href="skill.html">skill</a>
-                    </div>
-                    <div class="me" id="me">
-                        <a class="a_cover" href="me.html">À propos</a>
-                    </div>
-                    <div class="cv" id="cv">
-                        <a class="a_cover" href="C.V.html">C.V</a>
-                    </div>
-                    <div class="contact" id="contact">
-                        <a class="a_cover" href="contact.html">contact</a>
-                    </div>
-                    </div>
+                    <div class="skill" id="skill"><a class="a_cover" href="skill.html">skill</a></div>
+                    <div class="me" id="me"><a class="a_cover" href="me.html">À propos</a></div>
+                    <div class="cv" id="cv"><a class="a_cover" href="C.V.html">C.V</a></div>
+                    <div class="contact" id="contact"><a class="a_cover" href="contact.html">contact</a></div>
                 </nav>
             </div>
+
         </div>
     </header>
+
     <main>
         <div class="super-table" id="super-table">
+
+            <!-- Table / platine -->
             <div class="table" id="table">
+
+                <!-- Plateau (le disque "fixe" visuel + cible) -->
                 <div class="p-plateau" id="p-plateau">
                     <img src="img/plateau.webp" alt="" class="plateau" id="plateau">
+
+                    <!-- cible #cible : zone de hitTest -->
                     <section class="cible" id="cible"></section>
+                    <section class="cible3" id="cible3"></section>
                 </div>
+
+                <!-- Bras (conteneur) + image #bras -->
                 <div class="p-bras" id="p-bras">
                     <img src="img/bras.webp" alt="" class="bras" id="bras">
                 </div>
+
             </div>
+
+            <!-- Disque draggable -->
             <div class="p-disque_cv" id="p-disque_cv">
-                <img src="img/Disque_cv.webp" alt="" class="disque_cv" id="disque_cv">
+                <img src="img/disque_cv.webp" alt="" class="disque_cv" id="disque_cv">
+
+                <!-- cible #cible2 : autre zone de hitTest -->
                 <section class="cible2" id="cible2"></section>
             </div>
+
+            <!-- Texte à afficher après action -->
+            <div class="text" id="text">
+                <h1>Curriculum Vitae</h1>
+
+                <p>
+                    Étudiant en BTS SIO option SLAM à l’IPSSI (2025-2027), je me spécialise
+                    dans le développement d’applications web et logicielles.
+                </p>
+
+                <p>
+                    Je recherche un stage de 9 semaines du 27 avril au 26 juin 2026
+                    dans le domaine du développement.
+                </p>
+
+                <ul>
+                    <li>Développement d’applications web</li>
+                    <li>Rédaction de documentation technique</li>
+                    <li>Maintenance d’applications</li>
+                </ul>
+
+                <p>
+                    Motivé et rigoureux, je souhaite intégrer une équipe afin de contribuer
+                    à des projets concrets.
+                </p>
+            </div>
+
         </div>
     </main>
+
     <footer></footer>
 </body>
 
