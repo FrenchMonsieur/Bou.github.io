@@ -287,6 +287,10 @@ main {
     height: 170%
 }
 
+.message{
+    display: none;
+}
+
 @media (min-width: 1024px) {
     * {
         background-color: gray;
