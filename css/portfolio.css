@@ -14,6 +14,8 @@ p {
     color: whitesmoke;
     opacity: 0;
     font-family: "Roboto Slab", serif;
+    display: flex;
+    justify-content: center;
 }
 
 .text p {
@@ -266,7 +268,7 @@ main {
     width: 70%;
     opacity: 0;
     pointer-events: none;
-    z-index: 10;
+    z-index: 2;
 }
 
 /* Images des disques agrandies */
