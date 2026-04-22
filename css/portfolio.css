@@ -14,8 +14,6 @@ p {
     color: whitesmoke;
     opacity: 0;
     font-family: "Roboto Slab", serif;
-    display: flex;
-    justify-content: center;
 }
 
 .text p {
