@@ -11,74 +11,87 @@ const cover = document.getElementById('cover');
 let cible = document.getElementById("cible");
 
 // ==========================
+// ELEMENTS SLIDE
+// ==========================
+const slide1 = document.getElementById("slide1"); // glisse le disque
+const slide2 = document.getElementById("slide2"); // vers la platine
+const slide3 = document.getElementById("slide3"); // bouge le bras
+
+// ==========================
+// AFFICHAGE SLIDE AU CHARGEMENT
+// ==========================
+gsap.to(slide1, { opacity: 1, duration: 1 });
+
+// ==========================
 // ANIMATION DISQUE (rotation infinie)
 // ==========================
 const spin = gsap.to("#disqueN0", {
-    rotation: 360,       // tourne sur 360°
-    duration: 3,         // en 3 secondes
-    repeat: -1,          // boucle infinie
-    ease: "none"         // vitesse constante
+    rotation: 360,
+    duration: 3,
+    repeat: -1,
+    ease: "none"
 });
 
-spin.pause(); // démarre en pause
+spin.pause();
 
 // ==========================
 // INTERACTION POCHETTE (ouvrir / fermer)
 // ==========================
 pochette.addEventListener('click', function () {
-    cover.classList.toggle('coverAlt'); // change le style
+    cover.classList.toggle('coverAlt');
 });
 
 // ==========================
 // DRAG DU DISQUE
 // ==========================
 Draggable.create("#p-disqueN0", {
-    bounds: document.getElementById("bois"), // limite dans le bois
+    bounds: document.getElementById("super-table"),
     inertia: false,
 
-    onClick: function () {
-        // rien ici pour l’instant
-    },
+    onClick: function () {},
 
     onDragEnd: function () {
 
-        // vérifie superposition cible/cible2
         const ciblesOK = Draggable.hitTest("#cible", "#cible2", "50%");
-
-        // vérifie si on doit aimanter
         const magnetok = Draggable.hitTest("#cible2", "#cible3", "50%");
 
-        if (ciblesOK) {
-            // rien pour l’instant
-        }
+        gsap.to(slide1, { opacity: 0, duration: 0.5 });
+        gsap.to(slide2, { opacity: 1, duration: 0.5, delay: 0.5 });
+
+        if (ciblesOK) {}
 
         if (magnetok) {
 
-            let disque = document.getElementById("disqueN0");
+            let cible2 = document.getElementById("cible2");
 
-            // positions des éléments
             let rectCible = cible.getBoundingClientRect();
-            let rectDisque = disque.getBoundingClientRect();
+            let rectCible2 = cible2.getBoundingClientRect();
 
-            // centre cible
             const centerCibleX = rectCible.left + rectCible.width / 2;
             const centerCibleY = rectCible.top + rectCible.height / 2;
 
-            // centre disque
-            const centerDisqueX = rectDisque.left + rectDisque.width / 2;
-            const centerDisqueY = rectDisque.top + rectDisque.height / 2;
+            const centerCible2X = rectCible2.left + rectCible2.width / 2;
+            const centerCible2Y = rectCible2.top + rectCible2.height / 2;
 
-            // distance à parcourir
-            const deltaX = centerCibleX - centerDisqueX;
-            const deltaY = centerCibleY - centerDisqueY;
+            const deltaX = centerCibleX - centerCible2X;
+            const deltaY = centerCibleY - centerCible2Y;
 
-            // animation vers la cible (effet aimant)
-            gsap.to("#disqueN0", {
-                x: `+=${deltaX}`,   // déplacement relatif X
-                y: `+=${deltaY}`,   // déplacement relatif Y
+            gsap.to("#p-disqueN0", {
+                x: `+=${deltaX}`,
+                y: `+=${deltaY}`,
                 duration: 1,
-                ease: "power2.out"
+                ease: "power2.out",
+                onComplete: function () {
+                    Draggable.get("#p-disqueN0").update();
+
+                    // slide : vers la platine disparaît, bouge le bras apparaît
+                    gsap.to(slide2, { opacity: 0, duration: 0.5 });
+                    gsap.to(slide3, { opacity: 1, duration: 0.5, delay: 0.5 });
+                }
             });
+
+        } else {
+            spin.pause();
         }
     }
 });
@@ -88,27 +101,24 @@ Draggable.create("#p-disqueN0", {
 // ==========================
 Draggable.create('#p-bras', {
     type: "rotation",
-    bounds: { minRotation: 0, maxRotation: 55 }, // limite angle
+    bounds: { minRotation: 0, maxRotation: 55 },
     inertia: false,
     zIndexBoost: true,
 
-    onClick: function () {
-        // rien ici
-    },
+    onClick: function () {},
 
     onDragEnd: function () {
 
-        // vérifie si disque bien placé
         const ciblesOK = Draggable.hitTest("#cible", "#cible2", "50%");
-
         const sync = Draggable.hitTest("#disqueN0", "#bras", "10%");
 
-        // si bras touche disque + disque bien placé
+        // slide : bouge le bras disparaît dès que le bras est bougé
+        gsap.to(slide3, { opacity: 0, duration: 0.5 });
+
         if (sync && ciblesOK) {
 
-            spin.resume(); // lance la rotation
+            spin.resume();
 
-            // animation du texte mot par mot
             SplitText.create(".text", {
                 type: "words",
                 autoSplit: true,
@@ -122,7 +132,6 @@ Draggable.create('#p-bras', {
                 }
             });
 
-            // fade in du texte
             gsap.to("#text", {
                 opacity: 1,
                 duration: 4
@@ -130,9 +139,8 @@ Draggable.create('#p-bras', {
 
         } else {
 
-            spin.pause(); // stop rotation
+            spin.pause();
 
-            // fade out du texte
             gsap.to("#text", {
                 opacity: 0,
                 duration: 4

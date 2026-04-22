@@ -222,8 +222,8 @@ main {
     height: 67px;
     width: 65px;
     position: absolute;
-    top: 71%;
-    left: 37%;
+    top: 73%;
+    left: 36%;
 }
 
 /* Troisième cible */
@@ -241,7 +241,7 @@ main {
     height: 67px;
     width: 65px;
     position: absolute;
-    top: 71%;
+    top: 72%;
     left: 80%;
 }
 
@@ -255,6 +255,18 @@ main {
     aspect-ratio: 1/1;
     position: relative;
     z-index: 3;
+    margin-top: -15%; /* remonte le disque vers la platine */
+}
+
+.slide {
+    position: absolute;
+    bottom: 18%; /* remonte le message */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
 }
 
 /* Images des disques agrandies */
@@ -287,7 +299,7 @@ main {
     height: 170%
 }
 
-.message{
+.message {
     display: none;
 }
 

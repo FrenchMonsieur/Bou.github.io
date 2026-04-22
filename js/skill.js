@@ -14,71 +14,65 @@ let cible = document.getElementById("cible");
 // ANIMATION DISQUE (rotation infinie)
 // ==========================
 const spin = gsap.to("#disque_skill", {
-    rotation: 360,       // tourne sur 360°
-    duration: 3,         // en 3 secondes
-    repeat: -1,          // boucle infinie
-    ease: "none"         // vitesse constante
+    rotation: 360,
+    duration: 3,
+    repeat: -1,
+    ease: "none"
 });
 
-spin.pause(); // démarre en pause
+spin.pause();
 
 // ==========================
 // INTERACTION POCHETTE (ouvrir / fermer)
 // ==========================
 pochette.addEventListener('click', function () {
-    cover.classList.toggle('coverAlt'); // change le style
+    cover.classList.toggle('coverAlt');
 });
 
 // ==========================
 // DRAG DU DISQUE
 // ==========================
 Draggable.create("#p-disque_skill", {
-    bounds: document.getElementById("bois"), // limite dans le bois
+    bounds: document.getElementById("super-table"),
     inertia: false,
 
-    onClick: function () {
-        // rien ici pour l’instant
-    },
+    onClick: function () {},
 
     onDragEnd: function () {
 
-        // vérifie superposition cible/cible4
+        // skill utilise #cible4 (et non #cible2) avec un seuil à 30%
         const ciblesOK = Draggable.hitTest("#cible", "#cible4", "30%");
-
-        // vérifie si on doit aimanter
         const magnetok = Draggable.hitTest("#cible4", "#cible3", "50%");
 
-        if (ciblesOK) {
-            // rien pour l’instant
-        }
+        if (ciblesOK) {}
 
         if (magnetok) {
 
-            let disque = document.getElementById("disque_skill");
+            let cible4 = document.getElementById("cible4");
 
-            // positions des éléments
             let rectCible = cible.getBoundingClientRect();
-            let rectDisque = disque.getBoundingClientRect();
+            let rectCible4 = cible4.getBoundingClientRect();
 
-            // centre cible
             const centerCibleX = rectCible.left + rectCible.width / 2;
             const centerCibleY = rectCible.top + rectCible.height / 2;
 
-            // centre disque
-            const centerDisqueX = rectDisque.left + rectDisque.width / 2;
-            const centerDisqueY = rectDisque.top + rectDisque.height / 2;
+            const centerCible4X = rectCible4.left + rectCible4.width / 2;
+            const centerCible4Y = rectCible4.top + rectCible4.height / 2;
 
-            // distance à parcourir
-            const deltaX = centerCibleX - centerDisqueX;
-            const deltaY = centerCibleY - centerDisqueY;
+            const deltaX = centerCibleX - centerCible4X;
+            const deltaY = centerCibleY - centerCible4Y;
 
-            // animation vers la cible (effet aimant)
-            gsap.to("#disque_skill", {
-                x: `+=${deltaX}`,   // déplacement relatif X
-                y: `+=${deltaY}`,   // déplacement relatif Y
+            gsap.to("#p-disque_skill", {
+                x: `+=${deltaX}`,
+                y: `+=${deltaY}`,
                 duration: 1,
-                ease: "power2.out"
+                ease: "power2.out",
+                onComplete: function () {
+                    Draggable.get("#p-disque_skill").update();
+                }
             });
+        } else {
+            spin.pause();
         }
     }
 });
@@ -88,27 +82,22 @@ Draggable.create("#p-disque_skill", {
 // ==========================
 Draggable.create('#p-bras', {
     type: "rotation",
-    bounds: { minRotation: 0, maxRotation: 55 }, // limite angle
+    bounds: { minRotation: 0, maxRotation: 55 },
     inertia: false,
     zIndexBoost: true,
 
-    onClick: function () {
-        // rien ici
-    },
+    onClick: function () {},
 
     onDragEnd: function () {
 
-        // vérifie si disque bien placé
+        // skill utilise #cible4 avec un seuil à 30%
         const ciblesOK = Draggable.hitTest("#cible", "#cible4", "30%");
-
         const sync = Draggable.hitTest("#disque_skill", "#bras", "10%");
 
-        // si bras touche disque + disque bien placé
         if (sync && ciblesOK) {
 
-            spin.resume(); // lance la rotation
+            spin.resume();
 
-            // animation du texte mot par mot
             SplitText.create(".text", {
                 type: "words",
                 autoSplit: true,
@@ -122,7 +111,6 @@ Draggable.create('#p-bras', {
                 }
             });
 
-            // fade in du texte
             gsap.to("#text", {
                 opacity: 1,
                 duration: 4
@@ -130,9 +118,8 @@ Draggable.create('#p-bras', {
 
         } else {
 
-            spin.pause(); // stop rotation
+            spin.pause();
 
-            // fade out du texte
             gsap.to("#text", {
                 opacity: 0,
                 duration: 4
