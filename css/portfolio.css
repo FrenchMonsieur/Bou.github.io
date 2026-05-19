@@ -260,7 +260,7 @@ main {
 
 .slide {
     position: absolute;
-    bottom: 18%; /* remonte le message */
+    bottom: 31%;
     left: 50%;
     transform: translateX(-50%);
     width: 70%;
