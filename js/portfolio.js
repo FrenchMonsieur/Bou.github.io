@@ -13,9 +13,10 @@ let cible = document.getElementById("cible");
 // ==========================
 // ELEMENTS SLIDE
 // ==========================
-const slide1 = document.getElementById("slide1"); // glisse le disque
-const slide2 = document.getElementById("slide2"); // vers la platine
-const slide3 = document.getElementById("slide3"); // bouge le bras
+const slide1 = document.getElementById("slide1"); 
+const slide2 = document.getElementById("slide2"); 
+const slide3 = document.getElementById("slide3"); 
+const slide4 = document.getElementById("slide4"); 
 
 // ==========================
 // AFFICHAGE SLIDE AU CHARGEMENT
@@ -39,6 +40,7 @@ spin.pause();
 // ==========================
 pochette.addEventListener('click', function () {
     cover.classList.toggle('coverAlt');
+    gsap.to(slide4, { opacity: 0, duration: 0.5 }); 
 });
 
 // ==========================
@@ -84,7 +86,6 @@ Draggable.create("#p-disqueN0", {
                 onComplete: function () {
                     Draggable.get("#p-disqueN0").update();
 
-                    // slide : vers la platine disparaît, bouge le bras apparaît
                     gsap.to(slide2, { opacity: 0, duration: 0.5 });
                     gsap.to(slide3, { opacity: 1, duration: 0.5, delay: 0.5 });
                 }
@@ -118,6 +119,7 @@ Draggable.create('#p-bras', {
         if (sync && ciblesOK) {
 
             spin.resume();
+            gsap.to(slide4, { opacity: 1, duration: 0.5, delay: 1 });
 
             SplitText.create(".text", {
                 type: "words",
