@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=...&display=swap" rel="stylesheet">
+    <script src="libs/minified/gsap.min.js" defer></script>
+    <script src="libs/minified/InertiaPlugin.min.js" defer></script>
+    <script src="libs/minified/Draggable.min.js" defer></script>
+    <script src="libs/minified/ScrollTrigger.min.js" defer></script>
+    <script src="libs/minified/SplitText.min.js" defer></script>
+    <script src="js/veille.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="topnav">
+
+            <div class="p-icon" id="p-icon">
+                <nav class="icon">
+                    <a href="index.html">
+                        <img src="img/icon.webp" alt="" class="icon" id="icon">
+                    </a>
+                </nav>
+            </div>
+
+            <div class="pochette" id="pochette">
+                <img src="img/pochette.webp" alt="" class="album" id="album">
+
+                <nav class="cover" id="cover">
+                    <div class="skill" id="skill"><a class="a_cover" href="skill.html">skill</a></div>
+                    <div class="me" id="me"><a class="a_cover" href="me.html">À propos</a></div>
+                    <div class="cv" id="cv"><a class="a_cover" href="C.V.html">C.V</a></div>
+                    <div class="contact" id="contact"><a class="a_cover" href="contact.html">contact</a></div>
+                    <div class="projet" id="projet"><a class="a_cover" href="projet.html">projet</a></div>
+                    <div class="veille" id="veille"><a class="a_cover" href="veille.html">veille</a></div>
+                </nav>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+        <div class="message" id="message">
+            <h1>Go touch some grass</h1>
+            <p>(mobile version only)</p>
+        </div>
+        <div class="super-table" id="super-table">
+            <div class="table" id="table">
+
+                <div class="p-plateau" id="p-plateau">
+                    <img src="img/plateau.webp" alt="" class="plateau" id="plateau">
+
+                    <section class="cible" id="cible"></section>
+                    <section class="cible3" id="cible3"></section>
+                </div>
+
+                <div class="p-bras" id="p-bras">
+                    <img src="img/bras.webp" alt="" class="bras" id="bras">
+                </div>
+
+            </div>
+
+            <div class="p-disque_veille" id="p-disque_veille">
+                <img src="img/disque_veille.webp" alt="" class="disque_veille" id="disque_veille">
+
+                <section class="cible2" id="cible2"></section>
+            </div>
+
+            <div class="text" id="text">
+                <div class="text" id="text">
+                    <h1>Veille technologique</h1>
+                    <h2>La sécurité des applications web en PHP/MySQL</h2>
+
+                    <h3>1. Introduction</h3>
+                    <p>La sécurité web est aujourd'hui un sujet essentiel dans le développement d'applications. De
+                        nombreux sites utilisent des formulaires, des espaces de connexion, des bases de données, des
+                        sessions utilisateur ou encore des systèmes d'upload de fichiers. Tous ces éléments peuvent
+                        devenir des points d'entrée pour des attaques si le développeur ne met pas en place les
+                        protections nécessaires.</p>
+                    <p>Une faille de sécurité peut avoir des conséquences importantes : vol de données, suppression ou
+                        modification d'informations, usurpation d'identité, indisponibilité du site, perte de confiance
+                        des utilisateurs ou encore impact financier pour une entreprise. C'est pour cela que la sécurité
+                        ne doit pas être ajoutée seulement à la fin d'un projet, mais pensée dès la conception.</p>
+                    <p>Cette veille technologique est liée à mon parcours de développeur fullstack, notamment à mes
+                        projets en PHP/MySQL. J'ai déjà travaillé sur le traitement de formulaires, la validation des
+                        données côté serveur, la connexion à une base de données MySQL avec PDO et la sécurisation des
+                        données utilisateur. Ces notions sont directement liées aux failles les plus fréquentes dans les
+                        applications web.</p>
+                    <p>L'objectif de cette veille est donc de comprendre les principales vulnérabilités web, de
+                        connaître les bonnes pratiques actuelles et d'identifier les sources fiables à suivre pour
+                        rester informé des nouvelles failles.</p>
+
+                    <h3>2. Les vulnérabilités principales</h3>
+
+                    <h3>a) Injection SQL</h3>
+                    <p>L'injection SQL est une attaque qui consiste à envoyer du code SQL malveillant à travers une
+                        entrée utilisateur, par exemple dans un formulaire de connexion, une barre de recherche ou un
+                        paramètre d'URL.</p>
+                    <p>Si une application construit directement une requête SQL avec les données saisies par
+                        l'utilisateur, un attaquant peut modifier la logique de la requête. Il peut par exemple
+                        contourner une connexion, lire des données confidentielles, modifier une base de données ou
+                        supprimer des informations.</p>
+                    <p>En PHP, l'utilisation de <code>PDO</code> avec des requêtes préparées permet de limiter fortement
+                        ce risque. Le principe est de séparer la structure de la requête SQL et les valeurs envoyées par
+                        l'utilisateur. Les données ne sont donc plus interprétées comme du code SQL, mais comme de
+                        simples valeurs.</p>
+                    <p>Exemple d'application concrète : dans un projet PHP/MySQL avec un formulaire de connexion, il ne
+                        faut pas insérer directement l'email et le mot de passe dans la requête SQL. Il faut utiliser
+                        une requête préparée avec des paramètres.</p>
+
+                    <h3>b) XSS — Cross-Site Scripting</h3>
+                    <p>Le XSS est une vulnérabilité qui permet à un attaquant d'injecter du code JavaScript dans une
+                        page web consultée par d'autres utilisateurs. Cette faille apparaît souvent lorsqu'une
+                        application affiche des données saisies par un utilisateur sans les échapper correctement.</p>
+                    <p>Par exemple, si un utilisateur peut publier un commentaire contenant du JavaScript et que ce
+                        commentaire est ensuite affiché tel quel sur le site, le navigateur des autres utilisateurs peut
+                        exécuter ce script.</p>
+                    <p>Les conséquences peuvent être graves : vol de cookies, récupération de données sensibles,
+                        redirection vers un faux site, modification de l'affichage ou actions réalisées à la place de
+                        l'utilisateur.</p>
+                    <p>Pour se protéger contre le XSS, il faut échapper les données avant de les afficher dans une page
+                        HTML, et éviter d'afficher directement du contenu utilisateur dans du JavaScript, des attributs
+                        HTML ou des URL sans traitement adapté.</p>
+
+                    <h3>c) CSRF — Cross-Site Request Forgery</h3>
+                    <p>Le CSRF est une attaque qui pousse un utilisateur connecté à effectuer une action sans s'en
+                        rendre compte. L'attaquant ne vole pas forcément le mot de passe, mais il profite du fait que
+                        l'utilisateur est déjà connecté sur un site.</p>
+                    <p>Par exemple, si un utilisateur est connecté à son compte et qu'un attaquant lui fait cliquer sur
+                        un lien piégé, cela peut déclencher une action comme modifier une adresse email, supprimer un
+                        élément ou valider une opération.</p>
+                    <p>Pour se protéger, il faut utiliser des jetons CSRF dans les formulaires sensibles. Un jeton CSRF
+                        est une valeur unique générée côté serveur, stockée en session et vérifiée lors de l'envoi du
+                        formulaire.</p>
+
+                    <h3>d) Faille d'upload de fichiers</h3>
+                    <p>L'upload de fichiers est une fonctionnalité très sensible. Une mauvaise gestion de l'upload peut
+                        permettre à un attaquant d'envoyer un fichier dangereux sur le serveur, par exemple un script
+                        PHP déguisé en image.</p>
+                    <p>Pour sécuriser un upload, il faut vérifier plusieurs éléments :</p>
+                    <ul>
+                        <li>l'extension du fichier</li>
+                        <li>le type MIME</li>
+                        <li>la taille maximale autorisée</li>
+                        <li>le nom du fichier</li>
+                        <li>le dossier de stockage</li>
+                        <li>les droits d'exécution dans le dossier d'upload</li>
+                    </ul>
+                    <p>Il est aussi préférable de renommer automatiquement les fichiers avec un nom unique, et le
+                        dossier d'upload ne doit pas permettre l'exécution de scripts.</p>
+
+                    <h3>e) Mauvaise gestion des sessions et des mots de passe</h3>
+                    <p>Les erreurs fréquentes sont :</p>
+                    <ul>
+                        <li>stocker les mots de passe en clair</li>
+                        <li>utiliser un hash faible</li>
+                        <li>ne pas régénérer l'identifiant de session après connexion</li>
+                        <li>ne pas détruire correctement la session à la déconnexion</li>
+                        <li>ne pas sécuriser les cookies de session</li>
+                        <li>autoriser des mots de passe trop faibles</li>
+                    </ul>
+                    <p>En PHP, les mots de passe doivent être stockés avec <code>password_hash()</code>, qui utilise des
+                        algorithmes adaptés comme bcrypt ou Argon2. Pour vérifier un mot de passe, il faut utiliser
+                        <code>password_verify()</code>.</p>
+                    <p>Il est aussi important de sécuriser les cookies avec des options comme <code>HttpOnly</code>,
+                        <code>Secure</code> et <code>SameSite</code>.</p>
+
+                    <h3>3. Bonnes pratiques actuelles</h3>
+
+                    <h3>a) Utiliser les requêtes préparées avec PDO</h3>
+                    <p>Les requêtes préparées permettent de séparer la requête SQL des données utilisateur. Toutes les
+                        requêtes qui utilisent des données venant d'un formulaire, d'une URL ou d'une session doivent
+                        être préparées.</p>
+
+                    <h3>b) Hasher correctement les mots de passe</h3>
+                    <p>Un mot de passe ne doit jamais être stocké en clair. La bonne pratique est d'utiliser
+                        <code>password_hash()</code> avec bcrypt ou Argon2, conçus pour ralentir les attaques par force
+                        brute.</p>
+
+                    <h3>c) Valider et nettoyer les entrées utilisateur</h3>
+                    <p>Toutes les données envoyées par l'utilisateur doivent être validées côté serveur, même si une
+                        validation existe déjà côté navigateur. La sanitation consiste à nettoyer une donnée pour éviter
+                        qu'elle provoque un comportement dangereux, par exemple avant un affichage HTML.</p>
+
+                    <h3>d) Sécuriser la configuration MySQL</h3>
+                    <p>Il faut éviter d'utiliser le compte root de MySQL dans une application web et créer un
+                        utilisateur dédié avec uniquement les droits nécessaires. Il est aussi important de maintenir
+                        MySQL à jour et de faire des sauvegardes régulières.</p>
+
+                    <h3>e) Utiliser HTTPS et des headers de sécurité</h3>
+                    <p>HTTPS permet de chiffrer les échanges entre le navigateur et le serveur. En complément, certains
+                        headers HTTP améliorent la sécurité :</p>
+                    <ul>
+                        <li><code>Content-Security-Policy</code> : réduit les risques liés au XSS</li>
+                        <li><code>Strict-Transport-Security</code> : force l'utilisation de HTTPS</li>
+                        <li><code>X-Frame-Options</code> : limite le risque de clickjacking</li>
+                        <li><code>X-Content-Type-Options</code> : empêche certaines interprétations dangereuses</li>
+                        <li><code>Referrer-Policy</code> : contrôle les informations envoyées dans le referer</li>
+                    </ul>
+
+                    <h3>4. Outils de veille et sources à surveiller</h3>
+                    <p><strong>OWASP</strong> — Le Top 10 OWASP liste les risques les plus importants pour les
+                        applications web.</p>
+                    <p><strong>NVD et CVE Details</strong> — permettent de suivre les vulnérabilités publiées
+                        officiellement (PHP, MySQL, Apache, Nginx, WordPress...).</p>
+                    <p><strong>PHP.net Changelog</strong> — pour suivre les corrections de sécurité apportées aux
+                        nouvelles versions.</p>
+                    <p><strong>Blogs de sécurité</strong> — OffSec, HackTricks, PortSwigger, qui expliquent les
+                        techniques d'attaque de manière pratique.</p>
+                    <p><strong>ANSSI et CERT-FR</strong> — sources françaises fiables publiant alertes et
+                        recommandations.</p>
+                    <p><strong>Réseaux sociaux et flux RSS</strong> — pour centraliser les alertes sans consulter chaque
+                        site manuellement.</p>
+
+                    <h3>5. Étude de cas : vulnérabilité MySQL récente</h3>
+                    <p>Un exemple récent est la vulnérabilité <strong>CVE-2025-21579</strong>, qui concerne Oracle MySQL
+                        Server. Cette faille touche certaines versions de MySQL 8.0, 8.4 et 9.0/9.2, et peut permettre à
+                        un attaquant ayant déjà certains privilèges de provoquer un déni de service.</p>
+                    <p>Cette faille montre l'importance de plusieurs bonnes pratiques :</p>
+                    <ul>
+                        <li>maintenir MySQL à jour</li>
+                        <li>surveiller les bulletins de sécurité Oracle, NVD et CERT-FR</li>
+                        <li>limiter les droits des utilisateurs MySQL</li>
+                        <li>éviter d'exposer inutilement la base de données sur le réseau</li>
+                        <li>mettre en place des sauvegardes</li>
+                        <li>surveiller les logs et les erreurs serveur</li>
+                    </ul>
+
+                    <h3>6. Conclusion</h3>
+                    <p>Cette veille technologique m'a permis de mieux comprendre les risques principaux liés au
+                        développement web en PHP/MySQL. J'ai compris que les bonnes pratiques doivent être appliquées
+                        dès le début d'un projet : requêtes préparées, hashage des mots de passe, validation des
+                        données, sécurisation des uploads, configuration MySQL et HTTPS.</p>
+                    <p>Enfin, la veille ne doit pas être ponctuelle. Les failles évoluent régulièrement et il est
+                        important de continuer à suivre des sources comme OWASP, NVD, PHP.net, ANSSI et CERT-FR afin de
+                        rester à jour.</p>
+                </div>
+            </div>
+            <img src="img/glisser le disque.webp" class="slide" id="slide1">
+            <img src="img/vers la platine.webp" class="slide" id="slide2">
+            <img src="img/bouger le bras.webp" class="slide" id="slide3">
+            <img src="img/toucher la pochette.webp" class="slide" id="slide4">
+
+        </div>
+    </main>
+
+    <footer></footer>
+</body>
+
+</html>

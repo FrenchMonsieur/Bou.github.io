@@ -21,7 +21,6 @@
     <header>
         <div class="topnav">
 
-            <!-- Zone icône (retour index) -->
             <div class="p-icon" id="p-icon">
                 <nav class="icon">
                     <a href="index.html">
@@ -30,16 +29,16 @@
                 </nav>
             </div>
 
-            <!-- Zone "pochette" cliquable (ton JS toggle coverAlt ici) -->
             <div class="pochette" id="pochette">
                 <img src="img/pochette.webp" alt="" class="album" id="album">
 
-                <!-- Menu cover (c’est CET élément qui prend coverAlt) -->
                 <nav class="cover" id="cover">
                     <div class="skill" id="skill"><a class="a_cover" href="skill.html">skill</a></div>
                     <div class="me" id="me"><a class="a_cover" href="me.html">À propos</a></div>
                     <div class="cv" id="cv"><a class="a_cover" href="C.V.html">C.V</a></div>
                     <div class="contact" id="contact"><a class="a_cover" href="contact.html">contact</a></div>
+                    <div class="projet" id="projet"><a class="a_cover" href="projet.html">projet</a></div>
+                    <div class="veille" id="veille"><a class="a_cover" href="veille.html">veille</a></div>
                 </nav>
             </div>
 
@@ -49,34 +48,27 @@
     <main>
         <div class="super-table" id="super-table">
 
-            <!-- Table / platine -->
             <div class="table" id="table">
 
-                <!-- Plateau (le disque "fixe" visuel + cible) -->
                 <div class="p-plateau" id="p-plateau">
                     <img src="img/plateau.webp" alt="" class="plateau" id="plateau">
 
-                    <!-- cible #cible : zone de hitTest -->
                     <section class="cible" id="cible"></section>
                     <section class="cible3" id="cible3"></section>
                 </div>
 
-                <!-- Bras (conteneur) + image #bras -->
                 <div class="p-bras" id="p-bras">
                     <img src="img/bras.webp" alt="" class="bras" id="bras">
                 </div>
 
             </div>
 
-            <!-- Disque draggable -->
             <div class="p-disque_me" id="p-disque_me">
                 <img src="img/disque_me.webp" alt="" class="disque_me" id="disque_me">
 
-                <!-- cible #cible2 : autre zone de hitTest -->
                 <section class="cible2" id="cible2"></section>
             </div>
 
-            <!-- Texte à afficher après action -->
             <div class="text" id="text">
                 <h1>À propos</h1>
 

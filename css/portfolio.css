@@ -1,4 +1,3 @@
-/* Reset global : enlève marges/paddings par défaut + box-sizing propre */
 * {
     padding: 0;
     margin: 0;
@@ -33,61 +32,45 @@ li {
     font-size: 1.5rem;
 }
 
-/* Header principal */
 header {
     height: 150px;
 }
 
-/* Barre de navigation du haut */
 .topnav {
     height: 150px;
     display: flex;
-    /* aligne les enfants en ligne */
     align-items: center;
-    /* centre verticalement */
     justify-content: space-between;
-    /* espace entre gauche et droite */
     background-color: black;
     background-image: url(../img/mur.webp);
-    /* image mur */
     background-size: cover;
-    /* couvre toute la zone */
 }
 
-/* Conteneur de la pochette */
 .pochette {
     height: 90%;
     margin-right: 2%;
 }
 
-/* Conteneur de l'icône */
 .p-icon {
     height: 90%;
     margin-left: 2%;
 }
 
-/* Icône et album : carrés parfaits */
 .icon,
 .album {
     height: 100%;
     aspect-ratio: 1/1;
-    /* ratio carré */
 }
 
-/* Cover cachée par défaut */
 .cover {
     display: none;
 }
 
-/* Cover visible quand classe coverAlt ajoutée en JS */
 .coverAlt {
     display: flex;
-    /* devient visible */
     flex-wrap: wrap;
-    /* passe à la ligne */
     justify-content: space-around;
     position: fixed;
-    /* overlay plein écran */
     width: 100%;
     height: 100%;
     top: 0;
@@ -95,18 +78,16 @@ header {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    /* fond noir transparent */
     z-index: 1500;
-    /* au-dessus de tout */
     overflow-y: auto;
-    /* scroll si nécessaire */
 }
 
-/* Blocs du menu cover */
 .skill,
 .me,
 .cv,
-.contact {
+.contact,
+.projet,
+.veille {
     border: solid;
     display: flex;
     justify-content: center;
@@ -120,7 +101,6 @@ header {
     background-color: rgb(0, 0, 0);
 }
 
-/* Style des liens dans la cover */
 .a_cover {
     background-color: rgb(255 255 255 / 77%);
     border-radius: 8px;
@@ -135,7 +115,6 @@ header {
     font-family: "Roboto Slab", serif;
 }
 
-/* Images de fond spécifiques */
 .skill {
     background-image: url(../img/skill.webp);
 }
@@ -153,12 +132,11 @@ header {
     background-image: url(../img/contact.webp);
 }
 
-/* Zone principale */
+/* APRÈS */
 main {
-    height: 1000px;
+    height: auto;
 }
 
-/* Conteneur bois (fond) */
 .p-bois {
     height: 100%;
     width: 100%;
@@ -172,70 +150,62 @@ main {
     width: 100%;
 }
 
-/* Fond principal de la table (image bois) */
 .super-table {
     position: relative;
     z-index: auto;
     background-image: url(../img/bois.webp);
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    height: 100%
+    height: auto;
 }
 
-/* Conteneur de la platine */
+/* APRÈS */
 .table {
     display: flex;
-    height: 48%;
+    height: 720px; /* anciennement 40% de 1800px — taille identique, mais fixe */
     width: 100%;
     gap: 4%;
-    max-height: max-content;
     justify-content: center;
     align-items: center;
 }
 
-/* Plateau */
 .p-plateau {
     position: relative;
     z-index: 2;
-    height: 24%;
-    margin-bottom: 45%;
-    margin-top: 11%;
+    height: 20%;
+    margin-bottom: 32%;
+    margin-top: 8%;
 }
 
-/* Image plateau agrandie */
 .plateau {
-    height: 228%;
+    height: 160%;
     aspect-ratio: 1/1;
 }
 
-/* Zone cible pour hitTest */
 .cible {
     height: 67px;
     width: 65px;
     position: absolute;
-    top: 80%;
-    left: 38%;
+    top: 53%;
+    left: 36%;
 }
 
-/* Deuxième zone cible */
 .cible2 {
     height: 67px;
     width: 65px;
     position: absolute;
-    top: 73%;
+    top: 32%;
     left: 36%;
 }
 
-/* Troisième cible */
 .cible3 {
-    height: 195%;
-    width: 86%;
+    height: 41%;
+    width: 28%;
     position: absolute;
-    top: 13%;
-    left: 7%;
+    top: 57%;
+    left: 36%;
 }
 
-/* Quatrieme cible */
 
 .cible4 {
     height: 67px;
@@ -245,22 +215,24 @@ main {
     left: 80%;
 }
 
-/* Conteneurs des disques */
+/* APRÈS */
 .p-disqueN0,
 .p-disque_skill,
 .p-disque_cv,
 .p-disque_me,
-.p-disque_contact {
-    height: 10%;
+.p-disque_contact,
+.p-disque_veille,
+.p-disque_projet {
+    height: 180px; /* anciennement 10% de 1800px — taille identique, fixe */
     aspect-ratio: 1/1;
     position: relative;
     z-index: 3;
-    margin-top: -15%; /* remonte le disque vers la platine */
+    margin-top: -10%; /* celui-là reste en %, il dépend de la largeur, pas de la hauteur — pas concerné par le bug */
 }
 
 .slide {
     position: absolute;
-    bottom: 31%;
+    bottom: 75%;
     left: 50%;
     transform: translateX(-50%);
     width: 70%;
@@ -269,38 +241,58 @@ main {
     z-index: 2;
 }
 
-/* Images des disques agrandies */
 .disqueN0,
 .disque_cv,
 .disque_me,
-.disque_contact {
-    height: 222%;
+.disque_contact,
+.disque_veille,
+.disque_skill,
+.disque_projet {
+    height: 110%;
     aspect-ratio: 1/1;
 }
 
-/* Disque skill dimension spéciale */
-.disque_skill {
-    height: 228%;
-    width: 224%;
-}
 
-/* Conteneur bras */
+
 .p-bras {
-    height: 24%;
-    margin-bottom: 45%;
-    margin-top: 11%;
+    height: 20%;
+    margin-bottom: 32%;
+    margin-top: 8%;
     position: relative;
     z-index: 4;
-    /* au-dessus du disque */
 }
 
-/* Image bras agrandie */
 .bras {
-    height: 170%
+    height: 120%;
 }
 
 .message {
     display: none;
+}
+
+.synthese {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.synthese th,
+.synthese td {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+}
+
+.synthese th {
+    background: rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.synthese tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.05);
 }
 
 @media (min-width: 1024px) {

@@ -21,7 +21,6 @@
     <header>
         <div class="topnav">
 
-            <!-- Zone icône (retour index) -->
             <div class="p-icon" id="p-icon">
                 <nav class="icon">
                     <a href="index.html">
@@ -30,16 +29,16 @@
                 </nav>
             </div>
 
-            <!-- Zone "pochette" cliquable (ton JS toggle coverAlt ici) -->
             <div class="pochette" id="pochette">
                 <img src="img/pochette.webp" alt="" class="album" id="album">
 
-                <!-- Menu cover (c’est CET élément qui prend coverAlt) -->
                 <nav class="cover" id="cover">
                     <div class="skill" id="skill"><a class="a_cover" href="skill.html">skill</a></div>
                     <div class="me" id="me"><a class="a_cover" href="me.html">À propos</a></div>
                     <div class="cv" id="cv"><a class="a_cover" href="C.V.html">C.V</a></div>
                     <div class="contact" id="contact"><a class="a_cover" href="contact.html">contact</a></div>
+                    <div class="projet" id="projet"><a class="a_cover" href="projet.html">projet</a></div>
+                    <div class="veille" id="veille"><a class="a_cover" href="veille.html">veille</a></div>
                 </nav>
             </div>
 
@@ -49,34 +48,26 @@
     <main>
         <div class="super-table" id="super-table">
 
-            <!-- Table / platine -->
             <div class="table" id="table">
 
-                <!-- Plateau (le disque "fixe" visuel + cible) -->
                 <div class="p-plateau" id="p-plateau">
                     <img src="img/plateau.webp" alt="" class="plateau" id="plateau">
 
-                    <!-- cible #cible : zone de hitTest -->
                     <section class="cible" id="cible"></section>
                     <section class="cible3" id="cible3"></section>
                 </div>
 
-                <!-- Bras (conteneur) + image #bras -->
                 <div class="p-bras" id="p-bras">
                     <img src="img/bras.webp" alt="" class="bras" id="bras">
                 </div>
 
             </div>
 
-            <!-- Disque draggable -->
             <div class="p-disque_skill" id="p-disque_skill">
-                <img src="img/dique_skills.webp" alt="" class="disque_skill" id="disque_skill">
+                <img src="img/disque_skills.webp" alt="" class="disque_skill" id="disque_skill">
 
-                <!-- cible #cible2 : autre zone de hitTest -->
-                <section class="cible4" id="cible4"></section>
+                <section class="cible2" id="cible2"></section>
             </div>
-
-            <!-- Texte à afficher après action -->
             <div class="text" id="text">
                 <h1>Compétences</h1>
 
@@ -100,6 +91,46 @@
 
                 <h2>Langues</h2>
                 <p>Français (natif), Anglais (B2)</p>
+
+                <h2>Tableau de synthèse</h2>
+                <table class="synthese">
+                    <thead>
+                        <tr>
+                            <th>Compétence</th>
+                            <th>Description</th>
+                            <th>Niveau</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Développement web</td>
+                            <td>Conception et réalisation d'applications web avec PHP/Laravel, Java/Spring Boot,
+                                JavaScript</td>
+                            <td>⭐⭐⭐</td>
+                        </tr>
+                        <tr>
+                            <td>Gestion de bases de données</td>
+                            <td>Modélisation et exploitation de données avec MySQL et PostgreSQL</td>
+                            <td>⭐⭐⭐</td>
+                        </tr>
+                        <tr>
+                            <td>Conception d'interfaces utilisateur</td>
+                            <td>Création d'interfaces ergonomiques et animées (HTML, CSS, GSAP)</td>
+                            <td>⭐⭐⭐</td>
+                        </tr>
+                        <tr>
+                            <td>Versioning & outils de développement</td>
+                            <td>Utilisation de Git, VS Code, IntelliJ pour travailler en équipe et maintenir le code
+                            </td>
+                            <td>⭐⭐</td>
+                        </tr>
+                        <tr>
+                            <td>Méthodes de conception</td>
+                            <td>Application des principes POO, architecture MVC et modélisation UML</td>
+                            <td>⭐⭐</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
         </div>

@@ -13,7 +13,7 @@ let cible = document.getElementById("cible");
 // ==========================
 // ANIMATION DISQUE (rotation infinie)
 // ==========================
-const spin = gsap.to("#disque_skill", {
+const spin = gsap.to("#disque_veille", {
     rotation: 360,
     duration: 3,
     repeat: -1,
@@ -32,7 +32,7 @@ pochette.addEventListener('click', function () {
 // ==========================
 // DRAG DU DISQUE
 // ==========================
-Draggable.create("#p-disque_skill", {
+Draggable.create("#p-disque_veille", {
     bounds: document.getElementById("super-table"),
     inertia: false,
 
@@ -61,13 +61,13 @@ Draggable.create("#p-disque_skill", {
             const deltaX = centerCibleX - centerCible2X;
             const deltaY = centerCibleY - centerCible2Y;
 
-            gsap.to("#p-disque_skill", {
+            gsap.to("#p-disque_veille", {
                 x: `+=${deltaX}`,
                 y: `+=${deltaY}`,
                 duration: 1,
                 ease: "power2.out",
                 onComplete: function () {
-                    Draggable.get("#p-disque_skill").update();
+                    Draggable.get("#p-disque_veille").update();
                 }
             });
         } else {
@@ -90,14 +90,14 @@ Draggable.create('#p-bras', {
     onDragEnd: function () {
 
         const ciblesOK = Draggable.hitTest("#cible", "#cible2", "50%");
-        const sync = Draggable.hitTest("#disque_skill", "#bras", "10%");
+        const sync = Draggable.hitTest("#disque_veille", "#bras", "10%");
 
         if (sync && ciblesOK) {
 
             spin.resume();
 
             SplitText.create(".text", {
-                type: "words",
+                type: "lines",
                 autoSplit: true,
                 onSplit(self) {
                     return gsap.from(self.words, {
