@@ -36,14 +36,14 @@ Draggable.create("#p-disque_veille", {
     bounds: document.getElementById("super-table"),
     inertia: false,
 
-    onClick: function () {},
+    onClick: function () { },
 
     onDragEnd: function () {
 
         const ciblesOK = Draggable.hitTest("#cible", "#cible2", "50%");
         const magnetok = Draggable.hitTest("#cible2", "#cible3", "50%");
 
-        if (ciblesOK) {}
+        if (ciblesOK) { }
 
         if (magnetok) {
 
@@ -85,7 +85,7 @@ Draggable.create('#p-bras', {
     inertia: false,
     zIndexBoost: true,
 
-    onClick: function () {},
+    onClick: function () { },
 
     onDragEnd: function () {
 
@@ -96,22 +96,9 @@ Draggable.create('#p-bras', {
 
             spin.resume();
 
-            SplitText.create(".text", {
-                type: "lines",
-                autoSplit: true,
-                onSplit(self) {
-                    return gsap.from(self.words, {
-                        duration: 1,
-                        y: -100,
-                        autoAlpha: 0,
-                        stagger: 0.1
-                    });
-                }
-            });
-
             gsap.to("#text", {
                 opacity: 1,
-                duration: 4
+                duration: 1.5
             });
 
         } else {

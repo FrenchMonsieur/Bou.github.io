@@ -64,12 +64,12 @@
                     <img src="img/bras.webp" alt="" class="bras" id="bras">
                 </div>
 
-            </div>
+                <div class="p-disque_veille" id="p-disque_veille">
+                    <img src="img/disque_veille.webp" alt="" class="disque_veille" id="disque_veille">
 
-            <div class="p-disque_veille" id="p-disque_veille">
-                <img src="img/disque_veille.webp" alt="" class="disque_veille" id="disque_veille">
+                    <section class="cible2" id="cible2"></section>
+                </div>
 
-                <section class="cible2" id="cible2"></section>
             </div>
 
             <div class="text" id="text">
@@ -167,9 +167,11 @@
                     </ul>
                     <p>En PHP, les mots de passe doivent être stockés avec <code>password_hash()</code>, qui utilise des
                         algorithmes adaptés comme bcrypt ou Argon2. Pour vérifier un mot de passe, il faut utiliser
-                        <code>password_verify()</code>.</p>
+                        <code>password_verify()</code>.
+                    </p>
                     <p>Il est aussi important de sécuriser les cookies avec des options comme <code>HttpOnly</code>,
-                        <code>Secure</code> et <code>SameSite</code>.</p>
+                        <code>Secure</code> et <code>SameSite</code>.
+                    </p>
 
                     <h3>3. Bonnes pratiques actuelles</h3>
 
@@ -181,7 +183,8 @@
                     <h3>b) Hasher correctement les mots de passe</h3>
                     <p>Un mot de passe ne doit jamais être stocké en clair. La bonne pratique est d'utiliser
                         <code>password_hash()</code> avec bcrypt ou Argon2, conçus pour ralentir les attaques par force
-                        brute.</p>
+                        brute.
+                    </p>
 
                     <h3>c) Valider et nettoyer les entrées utilisateur</h3>
                     <p>Toutes les données envoyées par l'utilisateur doivent être validées côté serveur, même si une
@@ -242,15 +245,24 @@
                         rester à jour.</p>
                 </div>
             </div>
-            <img src="img/glisser le disque.webp" class="slide" id="slide1">
-            <img src="img/vers la platine.webp" class="slide" id="slide2">
-            <img src="img/bouger le bras.webp" class="slide" id="slide3">
-            <img src="img/toucher la pochette.webp" class="slide" id="slide4">
-
         </div>
     </main>
 
-    <footer></footer>
+        <footer>
+    <div class="footer-content">
+        <p class="footer-name">Boundy Simaka</p>
+        <p class="footer-role">BTS SIO – Option SLAM</p>
+
+        <div class="footer-links">
+            <a href="mailto:boundysimaka@gmail.com">Email</a>
+            <a href="tel:0778905641">Téléphone</a>
+            <a href="https://www.linkedin.com/in/boundy-s-2bb0b6231/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/FrenchMonsieur" target="_blank" rel="noopener">GitHub</a>
+        </div>
+
+        <p class="footer-copy">© 2026 — Portfolio réalisé en HTML, CSS &amp; GSAP</p>
+    </div>
+</footer>
 </body>
 
 </html>

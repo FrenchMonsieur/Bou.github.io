@@ -64,26 +64,85 @@
                     <img src="img/bras.webp" alt="" class="bras" id="bras">
                 </div>
 
-            </div>
 
-            <div class="p-disque_projet" id="p-disque_projet">
-                <img src="img/disque_projet.webp" alt="" class="disque_projet" id="disque_projet">
 
-                <section class="cible2" id="cible2"></section>
+                <div class="p-disque_projet" id="p-disque_projet">
+                    <img src="img/disque_projet.webp" alt="" class="disque_projet" id="disque_projet">
+
+                    <section class="cible2" id="cible2"></section>
+                </div>
+
             </div>
 
             <div class="text" id="text">
-                <h1>Bonjour, bienvenue sur mon portfolio.</h1>
+                <h1>Projets</h1>
+
+                <h2>Portfolio interactif</h2>
+                <p>
+                    Conception et développement d'un portfolio personnel basé sur un concept
+                    interactif de platine vinyle : l'utilisateur fait glisser un disque sur la
+                    platine et déplace le bras pour faire apparaître le contenu de chaque page.
+                </p>
+                <p><strong>Objectifs :</strong> créer une expérience utilisateur originale et
+                    mémorable, tout en respectant les contraintes d'un format mobile-only.</p>
+                <p><strong>Technologies :</strong> HTML, CSS, JavaScript vanilla, GSAP
+                    (Draggable, InertiaPlugin, SplitText, ScrollTrigger).</p>
+                <p><strong>Résultat :</strong> site fonctionnel hébergé sur Netlify, avec une
+                    navigation entièrement gérée par interaction physique (glisser-déposer,
+                    rotation) plutôt que par des liens classiques.</p>
+
+                <h2>Site e-commerce sécurisé</h2>
+                <p>
+                    Projet réalisé dans le cadre de la formation BTS SIO : développement d'un
+                    site e-commerce en PHP/MySQL intégrant les bonnes pratiques de sécurité
+                    dès la conception, en lien direct avec ma veille technologique sur la
+                    sécurité des applications web.
+                </p>
+                <p><strong>Objectifs :</strong> permettre aux utilisateurs de créer un compte,
+                    parcourir un catalogue de produits, gérer un panier et passer commande
+                    en toute sécurité.</p>
+                <p><strong>Technologies :</strong> PHP, MySQL, PDO</p>
+                <p><strong>Fonctionnalités :</strong></p>
+                <ul>
+                    <li>Inscription et connexion des utilisateurs</li>
+                    <li>Catalogue de produits avec recherche</li>
+                    <li>Panier et gestion des commandes</li>
+                </ul>
+                <p><strong>Mesures de sécurité mises en place :</strong></p>
+                <ul>
+                    <li>Requêtes préparées avec <code>PDO</code> pour empêcher les injections SQL
+                        sur la recherche produits et la connexion</li>
+                    <li>Hashage des mots de passe avec <code>password_hash()</code> et vérification
+                        via <code>password_verify()</code></li>
+                    <li>Échappement des données utilisateur avant affichage pour éviter le XSS
+                        (avis produits, noms d'utilisateur)</li>
+                    <li>Jetons CSRF sur les formulaires sensibles (connexion, passage de commande)</li>
+                    <li>Validation côté serveur de toutes les entrées (quantités, formulaires
+                        d'inscription, paiement)</li>
+                </ul>
+                <p><strong>Résultat :</strong> un site e-commerce fonctionnel, mettant en pratique
+                    concrètement les principes de sécurité étudiés en cours et lors de ma veille
+                    technologique.</p>
             </div>
-            <img src="img/glisser le disque.webp" class="slide" id="slide1">
-            <img src="img/vers la platine.webp" class="slide" id="slide2">
-            <img src="img/bouger le bras.webp" class="slide" id="slide3">
-            <img src="img/toucher la pochette.webp" class="slide" id="slide4">
 
         </div>
     </main>
 
-    <footer></footer>
+    <footer>
+        <div class="footer-content">
+            <p class="footer-name">Boundy Simaka</p>
+            <p class="footer-role">BTS SIO – Option SLAM</p>
+
+            <div class="footer-links">
+                <a href="mailto:boundysimaka@gmail.com">Email</a>
+                <a href="tel:0778905641">Téléphone</a>
+                <a href="https://www.linkedin.com/in/boundy-s-2bb0b6231/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/FrenchMonsieur" target="_blank" rel="noopener">GitHub</a>
+            </div>
+
+            <p class="footer-copy">© 2026 — Portfolio réalisé en HTML, CSS &amp; GSAP</p>
+        </div>
+    </footer>
 </body>
 
 </html>

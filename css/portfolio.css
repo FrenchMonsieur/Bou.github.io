@@ -13,6 +13,7 @@ p {
     color: whitesmoke;
     opacity: 0;
     font-family: "Roboto Slab", serif;
+    margin-top: 32px;
 }
 
 .text p {
@@ -24,6 +25,24 @@ p {
 .text h2 {
     color: inherit;
     font-family: inherit;
+}
+
+.text h3 {
+    color: inherit;
+    font-family: inherit;
+    margin-top: 1rem;
+}
+
+.text code {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.95em;
+}
+
+.text ul {
+    padding-left: 1.5rem;
 }
 
 li {
@@ -132,22 +151,16 @@ header {
     background-image: url(../img/contact.webp);
 }
 
-/* APRÈS */
+.projet {
+    background-image: url(../img/projet.webp);
+}
+
+.veille {
+    background-image: url(../img/veille.webp);
+}
+
 main {
     height: auto;
-}
-
-.p-bois {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    z-index: auto;
-    top: 0;
-}
-
-.bois {
-    height: 100%;
-    width: 100%;
 }
 
 .super-table {
@@ -159,63 +172,77 @@ main {
     height: auto;
 }
 
-/* APRÈS */
+/* ==========================
+   ZONE PLATINE
+   Tout (plateau, bras, disque) est en position absolute
+   à l'intérieur de .table, ancré au même repère.
+   ========================== */
+
 .table {
-    display: flex;
-    height: 720px; /* anciennement 40% de 1800px — taille identique, mais fixe */
+    position: relative;
     width: 100%;
-    gap: 4%;
-    justify-content: center;
-    align-items: center;
+    max-width: 480px;
+    margin: 0 auto;
+    aspect-ratio: 1 / 1.6;
+    z-index: 1;
 }
 
 .p-plateau {
-    position: relative;
+    position: absolute;
     z-index: 2;
-    height: 20%;
-    margin-bottom: 32%;
-    margin-top: 8%;
+    top: 14%;
+    left: 50%;
+    width: 60%;
+    transform: translateX(-50%);
 }
 
 .plateau {
-    height: 160%;
-    aspect-ratio: 1/1;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
-.cible {
-    height: 67px;
-    width: 65px;
+.p-bras {
     position: absolute;
-    top: 53%;
-    left: 36%;
+    z-index: 4;
+    top: 11%;
+    right: 10%;
+    width: 14%;
 }
 
+.bras {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==========================
+   CIBLES (zones de drag invisibles)
+   Centrées mathématiquement sur leur parent,
+   donc stables peu importe la taille future des images.
+   ========================== */
+
+.cible,
 .cible2 {
-    height: 67px;
+    height: 65px;
     width: 65px;
     position: absolute;
-    top: 32%;
-    left: 36%;
+    top: calc(50% - 32px);
+    left: calc(50% - 32px);
 }
 
 .cible3 {
-    height: 41%;
-    width: 28%;
     position: absolute;
-    top: 57%;
-    left: 36%;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
 }
 
+/* ==========================
+   DISQUES (un seul affiché selon la page)
+   ========================== */
 
-.cible4 {
-    height: 67px;
-    width: 65px;
-    position: absolute;
-    top: 72%;
-    left: 80%;
-}
-
-/* APRÈS */
 .p-disqueN0,
 .p-disque_skill,
 .p-disque_cv,
@@ -223,22 +250,11 @@ main {
 .p-disque_contact,
 .p-disque_veille,
 .p-disque_projet {
-    height: 180px; /* anciennement 10% de 1800px — taille identique, fixe */
-    aspect-ratio: 1/1;
-    position: relative;
-    z-index: 3;
-    margin-top: -10%; /* celui-là reste en %, il dépend de la largeur, pas de la hauteur — pas concerné par le bug */
-}
-
-.slide {
     position: absolute;
-    bottom: 75%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70%;
-    opacity: 0;
-    pointer-events: none;
-    z-index: 2;
+    z-index: 3;
+    top: 52%;
+    left: 5%;
+    width: 50%;
 }
 
 .disqueN0,
@@ -248,22 +264,24 @@ main {
 .disque_veille,
 .disque_skill,
 .disque_projet {
-    height: 110%;
-    aspect-ratio: 1/1;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
+/* ==========================
+   SLIDES (bandeaux d'indication sur index/projet)
+   ========================== */
 
-
-.p-bras {
-    height: 20%;
-    margin-bottom: 32%;
-    margin-top: 8%;
-    position: relative;
-    z-index: 4;
-}
-
-.bras {
-    height: 120%;
+.slide {
+    position: absolute;
+    z-index: 5;
+    top: 78%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .message {
@@ -293,6 +311,61 @@ main {
 
 .synthese tr:nth-child(even) {
     background: rgba(255, 255, 255, 0.05);
+}
+
+footer {
+    background-color: black;
+    background-size: cover;
+    padding: 24px 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+}
+
+.footer-name {
+    color: whitesmoke;
+    font-family: "Roboto Slab", serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.footer-role {
+    color: rgba(245, 245, 245, 0.7);
+    font-family: "Roboto Slab", serif;
+    font-size: 0.9rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin: 12px 0 8px;
+}
+
+.footer-links a {
+    color: whitesmoke;
+    font-family: "Roboto Slab", serif;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 245, 245, 0.4);
+    padding-bottom: 2px;
+}
+
+.footer-links a:hover {
+    border-color: whitesmoke;
+}
+
+.footer-copy {
+    color: rgba(245, 245, 245, 0.5);
+    font-family: "Roboto Slab", serif;
+    font-size: 0.75rem;
+    margin-top: 6px;
 }
 
 @media (min-width: 1024px) {
