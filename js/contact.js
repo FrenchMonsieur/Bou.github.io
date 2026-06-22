@@ -1,7 +1,7 @@
 // ==========================
 // PLUGINS GSAP
 // ==========================
-gsap.registerPlugin(Draggable, InertiaPlugin, SplitText);
+gsap.registerPlugin(Draggable, InertiaPlugin, SplitText, ScrollTrigger);
 
 // ==========================
 // ELEMENTS DOM
@@ -9,6 +9,7 @@ gsap.registerPlugin(Draggable, InertiaPlugin, SplitText);
 const pochette = document.getElementById('pochette');
 const cover = document.getElementById('cover');
 let cible = document.getElementById("cible");
+let launched = false;
 
 // ==========================
 // ANIMATION DISQUE (rotation infinie)
@@ -94,6 +95,7 @@ Draggable.create('#p-bras', {
 
         if (sync && ciblesOK) {
 
+            launched = true;
             spin.resume();
 
             SplitText.create(".text", {
@@ -124,4 +126,47 @@ Draggable.create('#p-bras', {
             });
         }
     }
+});
+
+// ==========================
+// LANCEMENT AUTOMATIQUE AU SCROLL
+// ==========================
+function trigger() {
+    if (launched) return;
+    launched = true;
+
+    const cible2 = document.getElementById("cible2");
+    const rectCible = cible.getBoundingClientRect();
+    const rectCible2 = cible2.getBoundingClientRect();
+
+    const deltaX = (rectCible.left + rectCible.width / 2) - (rectCible2.left + rectCible2.width / 2);
+    const deltaY = (rectCible.top + rectCible.height / 2) - (rectCible2.top + rectCible2.height / 2);
+
+    gsap.to("#p-disque_contact", {
+        x: `+=${deltaX}`,
+        y: `+=${deltaY}`,
+        duration: 1,
+        ease: "power2.out",
+        onComplete: function () {
+            Draggable.get("#p-disque_contact").update();
+
+            gsap.to("#p-bras", {
+                rotation: 55,
+                duration: 1,
+                ease: "power2.out",
+                onComplete: function () {
+                    Draggable.get("#p-bras").update();
+                    spin.resume();
+                    gsap.to("#text", { opacity: 1, duration: 1.5 });
+                }
+            });
+        }
+    });
+}
+
+ScrollTrigger.create({
+    trigger: "#table",
+    start: "bottom 80%",
+    once: true,
+    onEnter: trigger
 });
