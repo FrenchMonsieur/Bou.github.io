@@ -191,7 +191,7 @@ main {
     position: absolute;
     z-index: 2;
     top: 14%;
-    left: 50%;
+    left: 36%;
     width: 60%;
     transform: translateX(-50%);
 }
@@ -206,7 +206,7 @@ main {
     position: absolute;
     z-index: 4;
     top: 11%;
-    right: 10%;
+    right: 23%;
     width: 14%;
 }
 
