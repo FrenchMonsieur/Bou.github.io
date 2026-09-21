@@ -1,0 +1,166 @@
+/* Portfolio V2 — pages intérieures uniquement.
+   Le CSS mobile existant reste prioritaire en dessous de 1024px. */
+.page-secondary .secondary-decor,
+.page-secondary .footer-content2 { display: none; }
+
+@media (min-width: 1024px) {
+    .page-secondary {
+        --ink: #1E1E22;
+        --cream: #F3EDE4;
+        --carmine: #960018;
+        --steel: #8E949C;
+        --petrol: #2F5D62;
+        background: var(--ink);
+        color: var(--cream);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow-x: clip;
+    }
+    /* Même header / menu vinyle que l'accueil. */
+    .page-secondary .topnav { display: none; }
+    .page-secondary .topnav2 {
+        position: relative; z-index: 100; display: flex; height: 100px;
+        align-items: center; justify-content: space-between;
+        padding: 0 3%; background: var(--ink);
+        border-bottom: 3px solid var(--carmine); box-shadow: none;
+    }
+    .page-secondary .top-g { margin: 0; }
+    .page-secondary .top-g h1 { margin: 0; color: var(--cream); font: 3rem/1.2 "Paint",sans-serif; }
+    .page-secondary .vinyl-btn {
+        display: inline-flex; align-items: center; gap: 14px;
+        padding: 0; border: 0; background: transparent; color: var(--cream);
+        font: 700 .95rem "Rubik",sans-serif; cursor: pointer;
+    }
+    .page-secondary .menu-label { letter-spacing: .1em; }
+    .page-secondary .vinyl {
+        display: grid; place-items: center; width: 64px; height: 64px;
+        border: 2px solid var(--steel); border-radius: 50%;
+        background: repeating-radial-gradient(circle,#101012 0 3px,#303035 4px,#101012 5px);
+        transition: transform 250ms ease;
+    }
+    .page-secondary .vinyl-btn:hover .vinyl { transform: rotate(25deg); }
+    .page-secondary .vinyl-center {
+        display: grid; place-items: center; width: 35px; height: 35px;
+        border: 2px solid #101012; border-radius: 50%; background: var(--carmine);
+    }
+    .page-secondary .burger-lines { display: flex; flex-direction: column; gap: 4px; }
+    .page-secondary .burger-lines span {
+        display: block; width: 17px; height: 2px; background: var(--cream);
+        transition: transform 250ms ease,opacity 250ms ease;
+    }
+    .page-secondary .vinyl-btn.is-open .burger-lines span:first-child { transform: translateY(6px) rotate(45deg); }
+    .page-secondary .vinyl-btn.is-open .burger-lines span:nth-child(2) { opacity: 0; }
+    .page-secondary .vinyl-btn.is-open .burger-lines span:last-child { transform: translateY(-6px) rotate(-45deg); }
+    .page-secondary .top-d {
+        position: absolute; top: calc(100% + 3px); right: 3%; z-index: 101;
+        display: flex; flex-direction: column; gap: 0;
+        width: min(400px,calc(100vw - 32px)); max-height: calc(100vh - 110px);
+        overflow-y: auto; margin: 0; padding: 20px;
+        background: var(--carmine); border: 3px solid #101012;
+        opacity: 0; visibility: hidden; pointer-events: none;
+        transform: translateY(-12px);
+        transition: opacity 250ms ease,transform 250ms ease,visibility 250ms ease;
+    }
+    .page-secondary .top-d.is-open { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
+    .page-secondary .top-d a {
+        display: block; padding: 13px 8px; color: var(--cream);
+        font: 1rem "Bungee",sans-serif; text-decoration: none;
+        border-bottom: 1px solid #C24A60;
+        transition: background-color 180ms ease,padding-left 180ms ease;
+    }
+    .page-secondary .top-d a:hover { padding-left: 17px; background: var(--ink); }
+    .page-secondary .vinyl-btn:focus-visible,
+    .page-secondary .top-d a:focus-visible { outline: 3px solid var(--cream); outline-offset: 3px; }
+
+    /* Le décor est indépendant du contenu ; les dessins de chaque page sont dans motifs.css. */
+    .page-secondary main {
+        position: relative; isolation: isolate; flex: 1; width: 100%;
+        min-height: 600px; padding: clamp(44px,6vw,95px) clamp(20px,6vw,105px) 110px;
+        border-bottom: 2px solid var(--carmine);
+    }
+    .page-secondary .secondary-decor {
+        display: block; position: absolute; inset: 0 0 auto;
+        height: 100%; overflow: hidden; pointer-events: none; z-index: 0;
+    }
+    .page-secondary .secondary-decor .motifs { position: absolute; inset: 0; display: block; }
+
+    .page-secondary .super-table {
+        display: block; position: relative; z-index: 1; width: min(100%,1100px);
+        height: auto; min-height: 0; margin: 0 auto; padding: 0;
+        background: none; overflow: visible;
+    }
+    .page-secondary .super-table .table { display: none; }
+    .page-secondary .super-table > .text {
+        display: block; box-sizing: border-box; opacity: 1; width: 100%;
+        height: auto; max-width: 100%; margin: 0; padding: clamp(24px,4vw,55px);
+        color: var(--cream); background: rgba(30,30,34,.94);
+        border: 2px solid var(--steel); border-left: 7px solid var(--carmine);
+        box-shadow: 16px 16px 0 rgba(150,0,24,.3);
+        overflow-wrap: anywhere;
+    }
+    .page-secondary .text h1 {
+        display: table; max-width: 100%; margin: 0 0 32px; padding: 8px 16px;
+        background: var(--carmine); color: var(--cream);
+        font: clamp(1.5rem,3vw,2.8rem)/1.25 "Bungee",sans-serif;
+        overflow-wrap: anywhere;
+    }
+    .page-secondary .text h2 {
+        margin: 40px 0 15px; padding-bottom: 9px;
+        border-bottom: 2px solid var(--petrol);
+        color: var(--cream); font: clamp(1.15rem,2vw,1.6rem)/1.4 "Bungee",sans-serif;
+    }
+    .page-secondary .text h3 {
+        margin: 28px 0 12px; color: var(--cream);
+        font: 700 clamp(1rem,1.4vw,1.25rem)/1.45 "Rubik",sans-serif;
+    }
+    .page-secondary .text p,
+    .page-secondary .text li { max-width: 78ch; margin: 0 0 17px; font: 400 1rem/1.8 "Rubik",sans-serif; }
+    .page-secondary .text ul { padding-left: 1.5rem; margin: 8px 0 23px; }
+    .page-secondary .text li { padding-left: 5px; margin-bottom: 8px; }
+    .page-secondary .text li::marker { color: var(--carmine); }
+    .page-secondary .text strong { color: var(--cream); font-weight: 750; }
+    .page-secondary .text a { color: var(--cream); text-underline-offset: 4px; }
+    .page-secondary .text code {
+        padding: 2px 6px; background: rgba(142,148,156,.18);
+        border-radius: 3px; color: var(--cream); font-size: .92em;
+    }
+    /* Tableau de synthèse : largeur maîtrisée et défilement horizontal si besoin. */
+    .page-secondary .text .synthese {
+        width: 100%; max-width: 100%; border-collapse: collapse;
+        font: .9rem/1.6 "Rubik",sans-serif;
+    }
+    .page-secondary .synthese th,
+    .page-secondary .synthese td { padding: 14px; border: 1px solid var(--steel); text-align: left; vertical-align: top; }
+    .page-secondary .synthese th { background: var(--carmine); color: var(--cream); font-family: "Bungee",sans-serif; }
+    .page-secondary .synthese tbody tr:nth-child(even) { background: rgba(142,148,156,.12); }
+    .page-secondary .footer-content { display: none; }
+    .page-secondary .footer-content2 {
+        display: block; text-align: center; background: var(--ink); color: var(--cream);
+    }
+    .page-secondary .sub-footer {
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 24px; padding: 26px 5%; box-shadow: 0 2px var(--carmine);
+    }
+    .page-secondary .footer-name2 { color: var(--cream); font: 700 1.1rem "Rubik",sans-serif; }
+    .page-secondary .footer-role2 { color: var(--cream); font: .9rem "Rubik",sans-serif; padding: 5% 0; }
+    .page-secondary .footer-red-back { display: inline-block; padding: 3px 8px; background: var(--carmine); color: var(--cream); font: .9rem "Rubik",sans-serif; }
+    .page-secondary .footer-links2 ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin: 0; padding: 0; list-style: none; }
+    .page-secondary .footer-links2 li { list-style: none; }
+    .page-secondary .footer-links2 a { color: var(--cream); font: .9rem "Rubik",sans-serif; text-decoration: none; }
+    .page-secondary .footer-links2 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .page-secondary .copy { display: flex; padding: 16px 5%; }
+    .page-secondary .footer-copy2 { color: var(--cream); font: .75rem "Rubik",sans-serif; }
+}
+
+/* Les pages riches conservent tout leur contenu, sans hauteur fixe. */
+@media (min-width: 1024px) and (max-width: 1200px) {
+    .page-secondary .super-table > .text { padding: 30px; }
+    .page-secondary .sub-footer { flex-wrap: wrap; }
+}
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+    .page-secondary .vinyl,
+    .page-secondary .burger-lines span,
+    .page-secondary .top-d,
+    .page-secondary .top-d a { transition: none; }
+}

@@ -1,0 +1,597 @@
+/* Styles desktop communs et ajustements de la V2. */
+.page-home .motifs {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+
+    /* Ne pas appliquer de background à TOUS les éléments via '*'. */
+    body {
+        background-color: #1E1E22;
+    }
+
+    @font-face {
+        font-family: "Bungee";
+        src: url("../fonts/Bungee-Regular.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "Rubik";
+        src: url("../fonts/Rubik-VariableFont_wght.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "Spray";
+        src: url("../fonts/RubikSprayPaint-Regular.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "Paint";
+        src: url("../fonts/RubikWetPaint-Regular.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    header {
+        height: auto;
+    }
+
+    /* Sur les pages secondaires, conserver la navigation mobile existante
+       tant qu'une navigation desktop dédiée n'a pas été construite. */
+    .topnav2 {
+        display: flex;
+        height: 100px;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #1E1E22;
+        box-shadow: 0px 0px 0px 3px #960018;
+    }
+
+    .top-g {
+        margin-left: 10px;
+    }
+
+    .top-g h1 {
+        font-family: "Paint", sans-serif;
+        color: #F3EDE4;
+        font-size: 3rem;
+        letter-spacing: 0.05em;
+        line-height: 1.2;
+        text-shadow: none;
+    }
+
+
+    .top-d {
+        display: flex;
+        gap: 10px;
+        margin-right: 10px;
+    }
+
+    .top-d a {
+        color: #2F5D62;
+    }
+
+    .text {
+        opacity: 1;
+        width: 55%;
+        color: #F3EDE4;
+        display: flex;
+        flex-direction: column;
+        padding: 1%;
+    }
+
+    .text h1 {
+        font-family: "Bungee", sans-serif;
+        background-color: #960018;
+    }
+
+    .text h2 {
+        font-family: "Bungee", sans-serif;
+        margin-bottom: 1%;
+        margin-top: 1%;
+    }
+
+    .red-back {
+        background-color: #960018;
+    }
+
+    .text h3 {
+        font-family: "Rubik", sans-serif;
+        margin-bottom: 1%;
+        margin-top: 1%;
+    }
+
+    .text p {
+        font-family: "Rubik", sans-serif;
+    }
+
+    .text-link {
+        display: flex;
+        margin-top: 3%;
+    }
+
+    .sub-text-link {
+        width: 15%;
+    }
+
+    .sub-text-link2 {
+        width: 15%;
+    }
+
+    .sub-text-link a {
+        font-family: "Rubik", sans-serif;
+        color: #F3EDE4;
+        background-color: #960018;
+        text-decoration: none;
+        border: 1px solid #F3EDE4;
+        padding: 9%;
+    }
+
+    .sub-text-link a:hover {
+        font-family: "Rubik", sans-serif;
+        color: #960018;
+        background-color: #F3EDE4;
+        text-decoration: none;
+        border: 1px solid #960018;
+        padding: 9%;
+    }
+
+    .sub-text-link2 a {
+        font-family: "Rubik", sans-serif;
+        color: #2F5D62;
+        background-color: #8E949C;
+        text-decoration: none;
+        border: 1px solid #2F5D62;
+        padding: 9%;
+    }
+
+    .sub-text-link2 a:hover {
+        font-family: "Rubik", sans-serif;
+        color: #8E949C;
+        background-color: #2F5D62;
+        text-decoration: none;
+        border: 1px solid #8E949C;
+        padding: 9%;
+    }
+
+    .Boombox {
+        width: 45%;
+    }
+
+    .Boombox-img {
+        width: 90%;
+        padding-right: 1%;
+        z-index: 2;
+        position: relative;
+    }
+
+    .back-text {
+        z-index: 1;
+        position: absolute;
+        font-family: "Paint", sans-serif;
+        color: #F3EDE4;
+        font-size: 8rem;
+        top: 1%;
+    }
+
+    .back-text2 {
+        z-index: 1;
+        position: absolute;
+        font-family: "Paint", sans-serif;
+        color: #F3EDE4;
+        font-size: 8rem;
+        top: 80%;
+        right: 2%;
+    }
+
+    /* Pages secondaires : afficher leur texte, masquer seulement la platine. */
+    body:not(.page-home) .super-table {
+        display: block;
+        background-image: none;
+    }
+
+    body:not(.page-home) .table {
+        display: none;
+    }
+
+    /* Accueil : la maquette desktop est déjà dans super-table2. */
+    .page-home .topnav {
+        display: none;
+    }
+
+    .page-home .super-table {
+        display: none;
+    }
+
+    .page-home .super-table2 {
+        display: flex;
+        align-items: center;
+        position: relative;
+        height: 500px;
+        margin-top: 2%;
+        margin-bottom: 3%;
+    }
+
+    .page-home .motifs {
+        display: block;
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .page-home .motif {
+        width: clamp(36px, 5vw, 68px);
+        height: clamp(36px, 5vw, 68px);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+
+    .page-home .motif-texture {
+        width: clamp(55px, 7vw, 100px);
+        height: clamp(55px, 7vw, 100px);
+    }
+
+    .page-home .motif-techno {
+        width: clamp(35px, 4.5vw, 64px);
+        height: clamp(35px, 4.5vw, 64px);
+    }
+
+    .page-home .super-table2 > .text,
+    .page-home .super-table2 > .Boombox {
+        z-index: 1;
+    }
+
+    /* Composition en éclats : répartition sur tout le hero, pas une rangée autour
+       de la boombox. Les motifs restent décoratifs et non cliquables. */
+    .page-home .super-table2 {
+        isolation: isolate;
+    }
+
+    .page-home .motifs {
+        z-index: 0;
+    }
+
+    .page-home .motif {
+        position: absolute;
+        z-index: auto;
+    }
+
+    .page-home .super-table2 > .text,
+    .page-home .super-table2 > .Boombox {
+        z-index: 2;
+    }
+
+    /* Le texte reste au-dessus des motifs. La boombox garde son
+       positionnement d'origine pour les titres MUSIC / ON. */
+    .page-home .super-table2 > .text {
+        position: relative;
+    }
+
+    .page-home .motif-42-trame-creme {
+        top:-7%; left:-2%; width:240px; height:205px; opacity:.30; transform:rotate(-10deg);
+        background-image: url("../img/motifs/42_trame_creme.webp");
+    }
+
+    .page-home .motif-09-explosion-rouge-creme {
+        top:-4%; left:18%; width:166px; height:170px; opacity:.86; transform:rotate(-16deg);
+        background-image: url("../img/motifs/09_explosion_rouge_creme.webp");
+    }
+
+    .page-home .motif-74-disque-sillons {
+        top:-18%; left:37%; width:230px; height:230px; opacity:.47; transform:rotate(12deg);
+        background-image: url("../img/motifs/74_disque_sillons.webp");
+    }
+
+    .page-home .motif-116-doubles-chevrons {
+        top:3%; left:51%; width:130px; height:88px; opacity:.72; transform:rotate(-22deg);
+        background-image: url("../img/motifs/116_doubles_chevrons.webp");
+    }
+
+    .page-home .motif-102-etoiles-fines {
+        top:3%; left:63%; width:88px; height:88px; opacity:.92; transform:rotate(-14deg);
+        background-image: url("../img/motifs/102_etoiles_fines.webp");
+    }
+
+    .page-home .motif-05-eclair-bleu-petrole {
+        top:0%; right:-1%; width:130px; height:160px; opacity:.95; transform:rotate(23deg);
+        background-image: url("../img/motifs/05_eclair_bleu_petrole.webp");
+    }
+
+    .page-home .motif-46-spray-rouge {
+        top:-12%; right:10%; width:320px; height:220px; opacity:.32; transform:rotate(-7deg);
+        background-image: url("../img/motifs/46_spray_rouge.webp");
+    }
+
+    .page-home .motif-44-trame-grise {
+        top:14%; right:-4%; width:240px; height:210px; opacity:.23; transform:rotate(18deg);
+        background-image: url("../img/motifs/44_trame_grise.webp");
+    }
+
+    .page-home .motif-11-grande-etoile-creme {
+        top:12%; left:42%; width:102px; height:112px; opacity:.91; transform:rotate(-18deg);
+        background-image: url("../img/motifs/11_grande_etoile_creme.webp");
+    }
+
+    .page-home .motif-21-rayons-bleu-petrole {
+        top:38%; left:-4%; width:175px; height:190px; opacity:.18; transform:rotate(-26deg);
+        background-image: url("../img/motifs/21_rayons_bleu_petrole.webp");
+    }
+
+    .page-home .motif-30-eclaboussure-bleu-petrole {
+        top:8%; left:5%; width:93px; height:96px; opacity:.42; transform:rotate(19deg);
+        background-image: url("../img/motifs/30_eclaboussure_bleu_petrole.webp");
+    }
+
+    .page-home .motif-03-croix-rouge {
+        bottom:6%; left:39%; width:76px; height:77px; opacity:.88; transform:rotate(29deg);
+        background-image: url("../img/motifs/03_croix_rouge.webp");
+    }
+
+    .page-home .motif-73-cible-concentrique {
+        bottom:-14%; left:12%; width:175px; height:175px; opacity:.42; transform:rotate(-18deg);
+        background-image: url("../img/motifs/73_cible_concentrique.webp");
+    }
+
+    .page-home .motif-27-explosion-rouge {
+        bottom:-17%; left:-4%; width:226px; height:220px; opacity:.55; transform:rotate(-17deg);
+        background-image: url("../img/motifs/27_explosion_rouge.webp");
+    }
+
+    .page-home .motif-53-coulures-multicolores {
+        bottom:-12%; left:27%; width:175px; height:156px; opacity:.45; transform:rotate(9deg);
+        background-image: url("../img/motifs/53_coulures_multicolores.webp");
+    }
+
+    .page-home .motif-65-bande-rouge {
+        bottom:-6%; left:25%; width:195px; height:90px; opacity:.57; transform:rotate(-14deg);
+        background-image: url("../img/motifs/65_bande_rouge.webp");
+    }
+
+    .page-home .motif-10-fleche-bleu-petrole {
+        bottom:0%; left:47%; width:242px; height:116px; opacity:.93; transform:rotate(-28deg);
+        background-image: url("../img/motifs/10_fleche_bleu_petrole.webp");
+    }
+
+    .page-home .motif-29-damier-noir-creme-bleu {
+        bottom:-3%; right:-1%; width:206px; height:79px; opacity:.83; transform:rotate(-17deg);
+        background-image: url("../img/motifs/29_damier_noir_creme_bleu.webp");
+    }
+
+    .page-home .motif-80-anneau-fragmente {
+        bottom:-15%; right:10%; width:205px; height:205px; opacity:.60; transform:rotate(22deg);
+        background-image: url("../img/motifs/80_anneau_fragmente.webp");
+    }
+
+    .page-home .motif-47-spray-bleu-petrole {
+        bottom:-10%; right:-3%; width:202px; height:200px; opacity:.36; transform:rotate(18deg);
+        background-image: url("../img/motifs/47_spray_bleu_petrole.webp");
+    }
+
+    .page-home main {
+        border-bottom: 2px solid #960018;
+    }
+
+    .page-home .footer-content {
+        display: none;
+    }
+
+    .page-home .footer-content2 {
+        display: block;
+        align-items: center;
+        text-align: center;
+        background-color: #1E1E22;
+    }
+
+    .page-home .sub-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px #960018;
+    }
+
+    .page-home .footer-name2 {
+        color: #F3EDE4;
+        font-family: "Rubik", sans-serif;
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+    .page-home .footer-role2 {
+        color: #F3EDE4;
+        font-family: "Rubik", sans-serif;
+        font-size: 0.9rem;
+        padding: 5%;
+    }
+
+    .page-home .footer-red-back {
+        color: #F3EDE4;
+        background-color: #960018;
+        font-family: "Rubik", sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .page-home .footer-links2 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+        margin: 12px 0 8px;
+    }
+
+    .page-home li {
+        list-style: none;
+    }
+
+    .page-home .footer-links2 a {
+        color: #F3EDE4;
+        font-family: "Rubik", sans-serif;
+        font-size: 0.9rem;
+        text-decoration: none;
+    }
+
+    .page-home .footer-links2 a:hover {
+        border-color: #F3EDE4;
+    }
+
+    .page-home .copy {
+        display: flex;
+        margin-top: 1%;
+    }
+
+    .page-home .footer-copy2 {
+        color: #F3EDE4;
+        font-family: "Rubik", sans-serif;
+        font-size: 0.75rem;
+        margin-top: 6px;
+    }
+
+    .page-home .topnav2 {
+        position: relative;
+        z-index: 100;
+        padding: 0 3%;
+        border-bottom: 3px solid #960018;
+        box-shadow: none;
+    }
+
+    .page-home .vinyl-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: #F3EDE4;
+        font: 700 0.95rem "Rubik", sans-serif;
+        cursor: pointer;
+    }
+
+    .page-home .menu-label {
+        letter-spacing: 0.1em;
+    }
+
+    .page-home .vinyl {
+        width: 64px;
+        height: 64px;
+        border: 2px solid #8E949C;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: repeating-radial-gradient(circle, #101012 0 3px, #303035 4px, #101012 5px);
+        transition: transform 250ms ease;
+    }
+
+    .page-home .vinyl-btn:hover .vinyl {
+        transform: rotate(25deg);
+    }
+
+    .page-home .vinyl-center {
+        width: 35px;
+        height: 35px;
+        border: 2px solid #101012;
+        border-radius: 50%;
+        background: #960018;
+        display: grid;
+        place-items: center;
+    }
+
+    .page-home .burger-lines {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .page-home .burger-lines span {
+        display: block;
+        width: 17px;
+        height: 2px;
+        background: #F3EDE4;
+        transition: transform 250ms ease, opacity 250ms ease;
+    }
+
+    .page-home .vinyl-btn.is-open .burger-lines span:first-child {
+        transform: translateY(6px) rotate(45deg);
+    }
+
+    .page-home .vinyl-btn.is-open .burger-lines span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .page-home .vinyl-btn.is-open .burger-lines span:last-child {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .page-home .top-d {
+        position: absolute;
+        top: calc(100% + 3px);
+        right: 3%;
+        z-index: 101;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        width: min(400px, calc(100vw - 32px));
+        max-height: calc(100vh - 110px);
+        overflow-y: auto;
+        margin: 0;
+        padding: 20px;
+        background: #960018;
+        border: 3px solid #101012;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-12px);
+        transition: opacity 250ms ease, transform 250ms ease, visibility 250ms ease;
+    }
+
+    .page-home .top-d.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    .page-home .menu-title {
+        margin-bottom: 12px;
+        color: #F3EDE4;
+        font: 700 0.8rem "Rubik", sans-serif;
+        letter-spacing: 0.13em;
+    }
+
+    .page-home .top-d a {
+        display: block;
+        padding: 13px 8px;
+        color: #F3EDE4;
+        font: 1rem "Bungee", sans-serif;
+        text-decoration: none;
+        border-bottom: 1px solid #C24A60;
+        transition: background-color 180ms ease, padding-left 180ms ease;
+    }
+
+    .page-home .top-d a:hover {
+        padding-left: 17px;
+        background: #1E1E22;
+    }
+
+    .page-home .vinyl-btn:focus-visible,
+    .page-home .top-d a:focus-visible {
+        outline: 3px solid #F3EDE4;
+        outline-offset: 3px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .page-home .vinyl,
+    .page-home .burger-lines span,
+    .page-home .top-d,
+    .page-home .top-d a {
+        transition: none;
+    }
+}

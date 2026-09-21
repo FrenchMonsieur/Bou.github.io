@@ -1,3 +1,5 @@
+/* Styles communs : reset, typographie, navigation et pied de page. */
+
 * {
     padding: 0;
     margin: 0;
@@ -13,7 +15,7 @@ p {
     color: whitesmoke;
     opacity: 0;
     font-family: "Roboto Slab", serif;
-    margin-top: 32px;
+    padding: 0% 5% 10% 5%;
 }
 
 .text p {
@@ -63,6 +65,10 @@ header {
     background-color: black;
     background-image: url(../img/mur.webp);
     background-size: cover;
+}
+
+.topnav2 {
+    display: none;
 }
 
 .pochette {
@@ -163,158 +169,12 @@ main {
     height: auto;
 }
 
-.super-table {
-    position: relative;
-    z-index: auto;
-    background-image: url(../img/bois.webp);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    height: auto;
-}
-
 /* ==========================
-   ZONE PLATINE
-   Tout (plateau, bras, disque) est en position absolute
-   à l'intérieur de .table, ancré au même repère.
+   Footer
    ========================== */
-
-.table {
-    position: relative;
-    width: 100%;
-    max-width: 480px;
-    margin: 0 auto;
-    aspect-ratio: 1 / 1.6;
-    z-index: 1;
-}
-
-.p-plateau {
-    position: absolute;
-    z-index: 2;
-    top: 14%;
-    left: 36%;
-    width: 60%;
-    transform: translateX(-50%);
-}
-
-.plateau {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.p-bras {
-    position: absolute;
-    z-index: 4;
-    top: 11%;
-    right: 23%;
-    width: 14%;
-}
-
-.bras {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* ==========================
-   CIBLES (zones de drag invisibles)
-   Centrées mathématiquement sur leur parent,
-   donc stables peu importe la taille future des images.
-   ========================== */
-
-.cible,
-.cible2 {
-    height: 65px;
-    width: 65px;
-    position: absolute;
-    top: calc(50% - 32px);
-    left: calc(50% - 32px);
-}
-
-.cible3 {
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    width: 80%;
-    height: 80%;
-}
-
-/* ==========================
-   DISQUES (un seul affiché selon la page)
-   ========================== */
-
-.p-disqueN0,
-.p-disque_skill,
-.p-disque_cv,
-.p-disque_me,
-.p-disque_contact,
-.p-disque_veille,
-.p-disque_projet {
-    position: absolute;
-    z-index: 3;
-    top: 52%;
-    left: 5%;
-    width: 50%;
-}
-
-.disqueN0,
-.disque_cv,
-.disque_me,
-.disque_contact,
-.disque_veille,
-.disque_skill,
-.disque_projet {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* ==========================
-   SLIDES (bandeaux d'indication sur index/projet)
-   ========================== */
-
-.slide {
-    position: absolute;
-    z-index: 5;
-    top: 78%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70%;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.message {
-    display: none;
-}
-
-.synthese {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1.5rem;
-    font-size: 0.9rem;
-}
-
-.synthese th,
-.synthese td {
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 0.6rem 0.8rem;
-    text-align: left;
-}
-
-.synthese th {
-    background: rgba(255, 255, 255, 0.1);
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.synthese tr:nth-child(even) {
-    background: rgba(255, 255, 255, 0.05);
-}
 
 footer {
-    background-color: black;
+    background-color: #1E1E22;
     background-size: cover;
     padding: 24px 20px;
 }
@@ -328,14 +188,14 @@ footer {
 }
 
 .footer-name {
-    color: whitesmoke;
+    color: #2F5D62;
     font-family: "Roboto Slab", serif;
     font-size: 1.1rem;
     font-weight: bold;
 }
 
 .footer-role {
-    color: rgba(245, 245, 245, 0.7);
+    color: #2F5D62;
     font-family: "Roboto Slab", serif;
     font-size: 0.9rem;
 }
@@ -349,54 +209,25 @@ footer {
 }
 
 .footer-links a {
-    color: whitesmoke;
+    color: #2F5D62;
     font-family: "Roboto Slab", serif;
     font-size: 0.9rem;
     text-decoration: none;
-    border-bottom: 1px solid rgba(245, 245, 245, 0.4);
+    border-bottom: 1px solid #2F5D62;
     padding-bottom: 2px;
 }
 
 .footer-links a:hover {
-    border-color: whitesmoke;
+    border-color: #2F5D62;
 }
 
 .footer-copy {
-    color: rgba(245, 245, 245, 0.5);
+    color: #2F5D62;
     font-family: "Roboto Slab", serif;
     font-size: 0.75rem;
     margin-top: 6px;
 }
 
-@media (min-width: 1024px) {
-    * {
-        background-color: gray;
-    }
-
-    .super-table {
-        display: none;
-    }
-
-    .topnav {
-        display: none;
-    }
-
-    .message {
-        color: whitesmoke;
-        font-family: "Roboto Slab", serif;
-        opacity: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .message p {
-        color: inherit;
-        font-family: inherit;
-        font-size: 1.5rem;
-    }
-    
-    footer {
-        display: none;
-    }
+.footer-content2 {
+    display: none;
 }

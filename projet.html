@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-    <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/platine.css">
+    <link rel="stylesheet" href="css/desktop.css">
+    <link rel="stylesheet" href="css/pages/secondary.css">
+    <link rel="stylesheet" href="css/pages/motifs.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=...&display=swap" rel="stylesheet">
@@ -14,10 +18,12 @@
     <script src="libs/minified/Draggable.min.js" defer></script>
     <script src="libs/minified/ScrollTrigger.min.js" defer></script>
     <script src="libs/minified/SplitText.min.js" defer></script>
+    <script src="js/platine-mobile.js" defer></script>
     <script src="js/projet.js" defer></script>
+    <script src="js/vinyl-menu.js" defer></script>
 </head>
 
-<body>
+<body class="page-secondary page-projet">
     <header>
         <div class="topnav">
 
@@ -43,12 +49,48 @@
             </div>
 
         </div>
+        <div class="topnav2">
+            <nav class="top-g">
+                <h1>Portfolio</h1>
+            </nav>
+            <button class="vinyl-btn" id="vinyl-btn" type="button" aria-label="Ouvrir le menu" aria-expanded="false"
+                aria-controls="vinyl-menu">
+
+                <span class="menu-label">MENU</span>
+
+                <span class="vinyl">
+                    <span class="vinyl-center">
+                        <span class="burger-lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </span>
+                </span>
+            </button>
+            <nav class="top-d" id="vinyl-menu" inert>
+                <a href="skill.html">skill</a>
+                <a href="me.html">À propos</a>
+                <a href="C.V.html">C.V </a>
+                <a href="projet.html">Projet</a>
+                <a href="veille.html">Veille</a>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <div class="message" id="message">
-            <h1>Go touch some grass</h1>
-            <p>(mobile version only)</p>
+        <div class="secondary-decor" aria-hidden="true">
+            <div class="motifs">
+                <span class="decor-motif decor-projet-blueprint"></span>
+                <span class="decor-motif decor-projet-cube"></span>
+                <span class="decor-motif decor-projet-ruler"></span>
+                <span class="decor-motif decor-projet-arrows"></span>
+                <span class="decor-motif decor-projet-scaffold"></span>
+                <span class="decor-motif decor-projet-tiles"></span>
+                <span class="decor-motif decor-projet-crosshair"></span>
+                <span class="decor-motif decor-projet-burst"></span>
+            </div>
+        </div>
         </div>
         <div class="super-table" id="super-table">
             <div class="table" id="table">
@@ -134,13 +176,52 @@
             <p class="footer-role">BTS SIO – Option SLAM</p>
 
             <div class="footer-links">
-                <a href="mailto:boundysimaka@gmail.com">Email</a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=boundysimaka@gmail.com" target="_blank"
+                    rel="noopener noreferrer">
+                    Email
+                </a>
                 <a href="tel:0778905641">Téléphone</a>
-                <a href="https://www.linkedin.com/in/boundy-s-2bb0b6231/" target="_blank" rel="noopener">LinkedIn</a>
-                <a href="https://github.com/FrenchMonsieur" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/boundy-s-2bb0b6231/" target="_blank"
+                    rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/FrenchMonsieur" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
 
             <p class="footer-copy">© 2026 — Portfolio réalisé en HTML, CSS &amp; GSAP</p>
+        </div>
+
+        <div class="footer-content2">
+            <div class="sub-footer">
+                <div class="footer-text">
+                    <p class="footer-name2">Boundy Simaka</p>
+                    <p class="footer-role2">Développeur web & logiciel</p>
+                    <p class="footer-red-back">PORTFOLIO V2</p>
+                </div>
+
+                <div class="footer-links2">
+                    <ul>
+                        <li>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=boundysimaka@gmail.com"
+                                target="_blank" rel="noopener noreferrer">
+                                Email
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:0778905641">Téléphone</a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/boundy-s-2bb0b6231/" target="_blank"
+                                rel="noopener noreferrer">LinkedIn</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/FrenchMonsieur" target="_blank"
+                                rel="noopener noreferrer">GitHub</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copy">
+                <p class="footer-copy2">© 2026 — Portfolio réalisé en HTML, CSS &amp; GSAP</p>
+            </div>
         </div>
     </footer>
 </body>

@@ -1,0 +1,30 @@
+/* Compétences : tableau de synthèse. */
+
+/* ==========================
+   tableau synthese
+   ========================== */
+
+.synthese {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.synthese th,
+.synthese td {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+}
+
+.synthese th {
+    background: rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.synthese tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.05);
+}

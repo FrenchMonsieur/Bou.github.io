@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-    <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/platine.css">
+    <link rel="stylesheet" href="css/pages/index.css">
+    <link rel="stylesheet" href="css/desktop.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=...&display=swap" rel="stylesheet">
@@ -14,13 +17,14 @@
     <script src="libs/minified/Draggable.min.js" defer></script>
     <script src="libs/minified/ScrollTrigger.min.js" defer></script>
     <script src="libs/minified/SplitText.min.js" defer></script>
+    <script src="js/platine-mobile.js" defer></script>
     <script src="js/portfolio.js" defer></script>
+    <script src="js/vinyl-menu.js" defer></script>
 </head>
 
-<body>
+<body class="page-home">
     <header>
         <div class="topnav">
-
             <div class="p-icon" id="p-icon">
                 <nav class="icon">
                     <a href="index.html">
@@ -41,15 +45,37 @@
                     <div class="veille" id="veille"><a class="a_cover" href="veille.html">veille</a></div>
                 </nav>
             </div>
+        </div>
+        <div class="topnav2">
+            <nav class="top-g">
+                <h1>Portfolio</h1>
+            </nav>
+            <button class="vinyl-btn" id="vinyl-btn" type="button" aria-label="Ouvrir le menu" aria-expanded="false"
+                aria-controls="vinyl-menu">
 
+                <span class="menu-label">MENU</span>
+
+                <span class="vinyl">
+                    <span class="vinyl-center">
+                        <span class="burger-lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </span>
+                </span>
+            </button>
+            <nav class="top-d" id="vinyl-menu" inert>
+                <a href="skill.html">skill</a>
+                <a href="me.html">À propos</a>
+                <a href="C.V.html">C.V </a>
+                <a href="projet.html">Projet</a>
+                <a href="veille.html">Veille</a>
+            </nav>
         </div>
     </header>
 
     <main>
-        <div class="message" id="message">
-            <h1>Go touch some grass</h1>
-            <p>(mobile version only)</p>
-        </div>
         <div class="super-table" id="super-table">
             <div class="table" id="table">
 
@@ -72,31 +98,115 @@
                 <img src="img/vers la platine.webp" class="slide" id="slide2">
                 <img src="img/bouger le bras.webp" class="slide" id="slide3">
                 <img src="img/toucher la pochette.webp" class="slide" id="slide4">
-
             </div>
 
             <div class="text" id="text">
-                <h1>Bonjour, bienvenue sur mon portfolio.</h1>
+                <h1>Bonjour, je m’appelle Boundy Simaka et bienvenue sur mon portfolio. Ça se passe en haut à droite
+                    pour voir la suite.</h1>
             </div>
+        </div>
 
+        <div class="super-table2">
+            <div class="motifs" aria-hidden="true">
+                <div class="motif motif-texture motif-42-trame-creme"></div>
+                <div class="motif motif-09-explosion-rouge-creme"></div>
+                <div class="motif motif-techno motif-74-disque-sillons"></div>
+                <div class="motif motif-techno motif-116-doubles-chevrons"></div>
+                <div class="motif motif-techno motif-102-etoiles-fines"></div>
+                <div class="motif motif-05-eclair-bleu-petrole"></div>
+                <div class="motif motif-texture motif-46-spray-rouge"></div>
+                <div class="motif motif-texture motif-44-trame-grise"></div>
+                <div class="motif motif-11-grande-etoile-creme"></div>
+                <div class="motif motif-21-rayons-bleu-petrole"></div>
+                <div class="motif motif-30-eclaboussure-bleu-petrole"></div>
+                <div class="motif motif-03-croix-rouge"></div>
+                <div class="motif motif-techno motif-73-cible-concentrique"></div>
+                <div class="motif motif-27-explosion-rouge"></div>
+                <div class="motif motif-texture motif-53-coulures-multicolores"></div>
+                <div class="motif motif-texture motif-65-bande-rouge"></div>
+                <div class="motif motif-10-fleche-bleu-petrole"></div>
+                <div class="motif motif-29-damier-noir-creme-bleu"></div>
+                <div class="motif motif-techno motif-80-anneau-fragmente"></div>
+                <div class="motif motif-texture motif-47-spray-bleu-petrole"></div>
+            </div>
+            <div class="text" id="text">
+                <h1>Portfolio-2026</h1>
+                <h2>Bonjour, je suis</h2>
+                <h2>Boundy</h2>
+                <h2 class="red-back">Simaka.</h2>
+                <h3>Développeur web & logiciel</h3>
+                <p>Je suis un étudiant en BTS SIO option SLAM</p>
+                <div class="text-link">
+                    <div class="sub-text-link">
+                        <a href="projet.html">Mes projet</a>
+                    </div>
+                    <div class="sub-text-link2">
+                        <a href="C.V.html">Mon CV</a>
+                    </div>
+                </div>
+            </div>
+            <div class="Boombox" id="Boombox">
+                <img src="img/boombox.webp" alt="" class="Boombox-img">
+                <p class="back-text">MUSIC</p>
+                <p class="back-text2">ON</p>
+            </div>
         </div>
     </main>
 
     <footer>
-    <div class="footer-content">
-        <p class="footer-name">Boundy Simaka</p>
-        <p class="footer-role">BTS SIO – Option SLAM</p>
+        <div class="footer-content">
+            <p class="footer-name">Boundy Simaka</p>
+            <p class="footer-role">BTS SIO – Option SLAM</p>
 
-        <div class="footer-links">
-            <a href="mailto:boundysimaka@gmail.com">Email</a>
-            <a href="tel:0778905641">Téléphone</a>
-            <a href="https://www.linkedin.com/in/boundy-s-2bb0b6231/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://github.com/FrenchMonsieur" target="_blank" rel="noopener">GitHub</a>
+            <div class="footer-links">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=boundysimaka@gmail.com" target="_blank"
+                    rel="noopener noreferrer">
+                    Email
+                </a>
+                <a href="tel:0778905641">Téléphone</a>
+                <a href="https://www.linkedin.com/in/boundy-s-2bb0b6231/" target="_blank"
+                    rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/FrenchMonsieur" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+
+            <p class="footer-copy">© 2026 — Portfolio réalisé en HTML, CSS &amp; GSAP</p>
         </div>
 
-        <p class="footer-copy">© 2026 — Portfolio réalisé en HTML, CSS &amp; GSAP</p>
-    </div>
-</footer>
+        <div class="footer-content2">
+            <div class="sub-footer">
+                <div class="footer-text">
+                    <p class="footer-name2">Boundy Simaka</p>
+                    <p class="footer-role2">Développeur web & logiciel</p>
+                    <p class="footer-red-back">PORTFOLIO V2</p>
+                </div>
+
+                <div class="footer-links2">
+                    <ul>
+                        <li>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=boundysimaka@gmail.com"
+                                target="_blank" rel="noopener noreferrer">
+                                Email
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:0778905641">Téléphone</a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/boundy-s-2bb0b6231/" target="_blank"
+                                rel="noopener noreferrer">LinkedIn</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/FrenchMonsieur" target="_blank"
+                                rel="noopener noreferrer">GitHub</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copy">
+                <p class="footer-copy2">© 2026 — Portfolio réalisé en HTML, CSS &amp; GSAP</p>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

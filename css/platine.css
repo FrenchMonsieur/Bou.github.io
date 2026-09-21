@@ -1,0 +1,111 @@
+/* Platine mobile commune à toutes les pages. */
+
+.super-table {
+    position: relative;
+    z-index: auto;
+    background-image: url(../img/bois.webp);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: auto;
+}
+
+.super-table2 {
+    display: none;
+}
+
+/* ==========================
+   ZONE PLATINE
+   Tout (plateau, bras, disque) est en position absolute
+   à l'intérieur de .table, ancré au même repère.
+   ========================== */
+
+.table {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    aspect-ratio: 1 / 1.6;
+    z-index: 1;
+}
+
+.p-plateau {
+    position: absolute;
+    z-index: 2;
+    top: 14%;
+    left: 36%;
+    width: 60%;
+    transform: translateX(-50%);
+}
+
+.plateau {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.p-bras {
+    position: absolute;
+    z-index: 4;
+    top: 11%;
+    right: 23%;
+    width: 14%;
+}
+
+.bras {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==========================
+   CIBLES (zones de drag invisibles)
+   Centrées mathématiquement sur leur parent,
+   donc stables peu importe la taille future des images.
+   ========================== */
+
+.cible,
+.cible2 {
+    height: 65px;
+    width: 65px;
+    position: absolute;
+    top: calc(50% - 32px);
+    left: calc(50% - 32px);
+}
+
+.cible3 {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+}
+
+/* ==========================
+   DISQUES (un seul affiché selon la page)
+   ========================== */
+
+.p-disqueN0,
+.p-disque_skill,
+.p-disque_cv,
+.p-disque_me,
+.p-disque_contact,
+.p-disque_veille,
+.p-disque_projet {
+    position: absolute;
+    z-index: 3;
+    top: 52%;
+    left: 5%;
+    width: 50%;
+}
+
+.disqueN0,
+.disque_cv,
+.disque_me,
+.disque_contact,
+.disque_veille,
+.disque_skill,
+.disque_projet {
+    width: 100%;
+    height: auto;
+    display: block;
+}
