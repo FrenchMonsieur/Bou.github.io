@@ -5,6 +5,12 @@
 
 @media (min-width: 1024px) {
 
+    /* Éliminer le défilement latéral sans couper les décors verticalement. */
+    html,
+    body.page-home {
+        overflow-x: clip;
+    }
+
     /* Ne pas appliquer de background à TOUS les éléments via '*'. */
     body {
         background-color: #1E1E22;
@@ -209,31 +215,57 @@
         display: none;
     }
 
+    /* Accueil : super-table2 couvre le main, sans élargir la page. */
     .page-home .super-table2 {
         display: flex;
         align-items: center;
         position: relative;
-        height: 500px;
-        margin-top: 2%;
-        margin-bottom: 3%;
+        width: 100%;
+        height: 100%;
+        min-width: 0;
+        flex: 1 1 0%;
+        margin: 0;
+        overflow: visible;
     }
 
+    /* Empêcher les colonnes 55 % + 45 % de déborder avec leur padding. */
+    .page-home .super-table2 > .text {
+        position: relative;
+        box-sizing: border-box;
+        width: 55%;
+        min-width: 0;
+        flex: 0 0 55%;
+        z-index: 3;
+    }
+
+    .page-home .super-table2 > .Boombox {
+        position: relative;
+        box-sizing: border-box;
+        width: 45%;
+        min-width: 0;
+        flex: 0 0 45%;
+        z-index: 3;
+    }
+
+    /* Débordement vertical autorisé pour chevaucher header et footer. */
     .page-home .motifs {
         display: block;
         position: absolute;
-        inset: 0;
-        overflow: hidden;
+        inset: -24px 0;
+        overflow: visible;
         pointer-events: none;
+        z-index: 2;
     }
 
     .page-home .motif {
-        width: clamp(36px, 5vw, 68px);
-        height: clamp(36px, 5vw, 68px);
+        position: absolute;
+        z-index: auto;
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
     }
 
+    /* Tailles par défaut conservées pour les autres motifs éventuels. */
     .page-home .motif-texture {
         width: clamp(55px, 7vw, 100px);
         height: clamp(55px, 7vw, 100px);
@@ -244,140 +276,197 @@
         height: clamp(35px, 4.5vw, 64px);
     }
 
-    .page-home .super-table2 > .text,
-    .page-home .super-table2 > .Boombox {
-        z-index: 1;
-    }
-
-    /* Composition en éclats : répartition sur tout le hero, pas une rangée autour
-       de la boombox. Les motifs restent décoratifs et non cliquables. */
-    .page-home .super-table2 {
-        isolation: isolate;
-    }
-
-    .page-home .motifs {
-        z-index: 0;
-    }
-
-    .page-home .motif {
-        position: absolute;
-        z-index: auto;
-    }
-
-    .page-home .super-table2 > .text,
-    .page-home .super-table2 > .Boombox {
-        z-index: 2;
-    }
-
-    /* Le texte reste au-dessus des motifs. La boombox garde son
-       positionnement d'origine pour les titres MUSIC / ON. */
-    .page-home .super-table2 > .text {
-        position: relative;
-    }
-
+    /* Répartition : haut, milieu et bas ; images d'origine rétablies. */
     .page-home .motif-42-trame-creme {
-        top:-7%; left:-2%; width:240px; height:205px; opacity:.30; transform:rotate(-10deg);
+        top: -48px; left: 2%;
+        width: 175px;
+        height: 165px;
+        opacity: .35;
+        transform: rotate(-10deg);
         background-image: url("../img/motifs/42_trame_creme.webp");
     }
 
     .page-home .motif-09-explosion-rouge-creme {
-        top:-4%; left:18%; width:166px; height:170px; opacity:.86; transform:rotate(-16deg);
+        top: 12%; left: 19%;
+        width: 150px;
+        height: 150px;
+        opacity: .90;
+        transform: rotate(-16deg);
         background-image: url("../img/motifs/09_explosion_rouge_creme.webp");
     }
 
     .page-home .motif-74-disque-sillons {
-        top:-18%; left:37%; width:230px; height:230px; opacity:.47; transform:rotate(12deg);
+        top: -46px; left: 39%;
+        width: 165px;
+        height: 165px;
+        opacity: .44;
+        transform: rotate(12deg);
         background-image: url("../img/motifs/74_disque_sillons.webp");
     }
 
     .page-home .motif-116-doubles-chevrons {
-        top:3%; left:51%; width:130px; height:88px; opacity:.72; transform:rotate(-22deg);
+        top: 25%; left: 51%;
+        width: 120px;
+        height: 85px;
+        opacity: .78;
+        transform: rotate(-22deg);
         background-image: url("../img/motifs/116_doubles_chevrons.webp");
     }
 
     .page-home .motif-102-etoiles-fines {
-        top:3%; left:63%; width:88px; height:88px; opacity:.92; transform:rotate(-14deg);
+        top: 53%; left: 47%;
+        width: 85px;
+        height: 85px;
+        opacity: .93;
+        transform: rotate(-14deg);
         background-image: url("../img/motifs/102_etoiles_fines.webp");
     }
 
     .page-home .motif-05-eclair-bleu-petrole {
-        top:0%; right:-1%; width:130px; height:160px; opacity:.95; transform:rotate(23deg);
+        top: 10%; right: 2%;
+        width: 130px;
+        height: 155px;
+        opacity: .94;
+        transform: rotate(20deg);
         background-image: url("../img/motifs/05_eclair_bleu_petrole.webp");
     }
 
     .page-home .motif-46-spray-rouge {
-        top:-12%; right:10%; width:320px; height:220px; opacity:.32; transform:rotate(-7deg);
+        top: 4%; right: 14%;
+        width: 250px;
+        height: 175px;
+        opacity: .34;
+        transform: rotate(-7deg);
         background-image: url("../img/motifs/46_spray_rouge.webp");
     }
 
     .page-home .motif-44-trame-grise {
-        top:14%; right:-4%; width:240px; height:210px; opacity:.23; transform:rotate(18deg);
+        top: 39%; right: 2%;
+        width: 190px;
+        height: 185px;
+        opacity: .30;
+        transform: rotate(14deg);
         background-image: url("../img/motifs/44_trame_grise.webp");
     }
 
     .page-home .motif-11-grande-etoile-creme {
-        top:12%; left:42%; width:102px; height:112px; opacity:.91; transform:rotate(-18deg);
+        top: 34%; left: 44%;
+        width: 95px;
+        height: 100px;
+        opacity: .95;
+        transform: rotate(-18deg);
         background-image: url("../img/motifs/11_grande_etoile_creme.webp");
     }
 
     .page-home .motif-21-rayons-bleu-petrole {
-        top:38%; left:-4%; width:175px; height:190px; opacity:.18; transform:rotate(-26deg);
+        top: 42%; left: 1%;
+        width: 155px;
+        height: 165px;
+        opacity: .27;
+        transform: rotate(-23deg);
         background-image: url("../img/motifs/21_rayons_bleu_petrole.webp");
     }
 
     .page-home .motif-30-eclaboussure-bleu-petrole {
-        top:8%; left:5%; width:93px; height:96px; opacity:.42; transform:rotate(19deg);
+        top: 24%; left: 6%;
+        width: 100px;
+        height: 98px;
+        opacity: .55;
+        transform: rotate(18deg);
         background-image: url("../img/motifs/30_eclaboussure_bleu_petrole.webp");
     }
 
     .page-home .motif-03-croix-rouge {
-        bottom:6%; left:39%; width:76px; height:77px; opacity:.88; transform:rotate(29deg);
+        top: 65%; left: 39%;
+        width: 80px;
+        height: 80px;
+        opacity: .90;
+        transform: rotate(28deg);
         background-image: url("../img/motifs/03_croix_rouge.webp");
     }
 
     .page-home .motif-73-cible-concentrique {
-        bottom:-14%; left:12%; width:175px; height:175px; opacity:.42; transform:rotate(-18deg);
+        bottom: -30px; left: 12%;
+        width: 170px;
+        height: 170px;
+        opacity: .53;
+        transform: rotate(-12deg);
         background-image: url("../img/motifs/73_cible_concentrique.webp");
     }
 
     .page-home .motif-27-explosion-rouge {
-        bottom:-17%; left:-4%; width:226px; height:220px; opacity:.55; transform:rotate(-17deg);
+        bottom: -25px; left: 2%;
+        width: 178px;
+        height: 170px;
+        opacity: .64;
+        transform: rotate(-15deg);
         background-image: url("../img/motifs/27_explosion_rouge.webp");
     }
 
     .page-home .motif-53-coulures-multicolores {
-        bottom:-12%; left:27%; width:175px; height:156px; opacity:.45; transform:rotate(9deg);
+        top: 77%; left: 27%;
+        width: 155px;
+        height: 140px;
+        opacity: .55;
+        transform: rotate(9deg);
         background-image: url("../img/motifs/53_coulures_multicolores.webp");
     }
 
     .page-home .motif-65-bande-rouge {
-        bottom:-6%; left:25%; width:195px; height:90px; opacity:.57; transform:rotate(-14deg);
+        top: 67%; left: 22%;
+        width: 175px;
+        height: 78px;
+        opacity: .60;
+        transform: rotate(-14deg);
         background-image: url("../img/motifs/65_bande_rouge.webp");
     }
 
     .page-home .motif-10-fleche-bleu-petrole {
-        bottom:0%; left:47%; width:242px; height:116px; opacity:.93; transform:rotate(-28deg);
+        top: 63%; left: 49%;
+        width: 215px;
+        height: 110px;
+        opacity: .94;
+        transform: rotate(-26deg);
         background-image: url("../img/motifs/10_fleche_bleu_petrole.webp");
     }
 
     .page-home .motif-29-damier-noir-creme-bleu {
-        bottom:-3%; right:-1%; width:206px; height:79px; opacity:.83; transform:rotate(-17deg);
+        bottom: -24px; right: 2%;
+        width: 195px;
+        height: 82px;
+        opacity: .85;
+        transform: rotate(-15deg);
         background-image: url("../img/motifs/29_damier_noir_creme_bleu.webp");
     }
 
     .page-home .motif-80-anneau-fragmente {
-        bottom:-15%; right:10%; width:205px; height:205px; opacity:.60; transform:rotate(22deg);
+        top: 76%; right: 11%;
+        width: 185px;
+        height: 185px;
+        opacity: .67;
+        transform: rotate(20deg);
         background-image: url("../img/motifs/80_anneau_fragmente.webp");
     }
 
     .page-home .motif-47-spray-bleu-petrole {
-        bottom:-10%; right:-3%; width:202px; height:200px; opacity:.36; transform:rotate(18deg);
+        top: 55%; right: 2%;
+        width: 185px;
+        height: 180px;
+        opacity: .43;
+        transform: rotate(16deg);
         background-image: url("../img/motifs/47_spray_bleu_petrole.webp");
     }
 
     .page-home main {
+        position: relative;
         border-bottom: 2px solid #960018;
+        height: 1000px;
+        display: flex;
+        align-items: stretch;
+        min-width: 0;
+        overflow: visible;
     }
+
 
     .page-home .footer-content {
         display: none;
@@ -387,7 +476,10 @@
         display: block;
         align-items: center;
         text-align: center;
-        background-color: #1E1E22;
+        background-color: transparent;
+        position: relative;
+        z-index: auto;
+        overflow: visible;
     }
 
     .page-home .sub-footer {
@@ -455,10 +547,20 @@
 
     .page-home .topnav2 {
         position: relative;
-        z-index: 100;
+        z-index: auto;
         padding: 0 3%;
         border-bottom: 3px solid #960018;
         box-shadow: none;
+        background-color: transparent;
+        overflow: visible;
+    }
+
+    /* Logo, bouton menu et liens restent cliquables au-dessus des motifs. */
+    .page-home .top-g,
+    .page-home .vinyl-btn,
+    .page-home .sub-footer {
+        position: relative;
+        z-index: 4;
     }
 
     .page-home .vinyl-btn {
