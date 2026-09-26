@@ -231,3 +231,37 @@ footer {
 .footer-content2 {
     display: none;
 }
+
+/* ==========================
+   Contenu CV / pages secondaires
+   ========================== */
+
+.cv-intro {
+    font-weight: 700;
+}
+
+.cv-section {
+    margin-top: 1.5rem;
+}
+
+.cv-item {
+    margin-top: 1rem;
+}
+
+.cv-meta {
+    opacity: 0.78;
+    font-size: 1rem !important;
+}
+
+.cv-content ul {
+    margin-top: 0.6rem;
+}
+
+.cv-content li {
+    line-height: 1.45;
+    margin-bottom: 0.35rem;
+}
+
+.projects-intro {
+    margin-bottom: 1.25rem;
+}

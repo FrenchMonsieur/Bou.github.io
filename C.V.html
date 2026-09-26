@@ -39,11 +39,11 @@
                 <img src="img/pochette.webp" alt="" class="album" id="album">
 
                 <nav class="cover" id="cover">
-                    <div class="skill" id="skill"><a class="a_cover" href="skill.html">skill</a></div>
+                    <div class="skill" id="skill"><a class="a_cover" href="skill.html">Compétences</a></div>
                     <div class="me" id="me"><a class="a_cover" href="me.html">À propos</a></div>
                     <div class="cv" id="cv"><a class="a_cover" href="C.V.html">C.V</a></div>
-                    <div class="contact" id="contact"><a class="a_cover" href="contact.html">contact</a></div>
-                    <div class="projet" id="projet"><a class="a_cover" href="projet.html">projet</a></div>
+                    <div class="contact" id="contact"><a class="a_cover" href="contact.html">Contact</a></div>
+                    <div class="projet" id="projet"><a class="a_cover" href="projet.html">Projets</a></div>
                     <div class="veille" id="veille"><a class="a_cover" href="veille.html">veille</a></div>
                 </nav>
             </div>
@@ -69,10 +69,10 @@
                 </span>
             </button>
             <nav class="top-d" id="vinyl-menu" inert>
-                <a href="skill.html">skill</a>
+                <a href="skill.html">Compétences</a>
                 <a href="me.html">À propos</a>
                 <a href="C.V.html">C.V </a>
-                <a href="projet.html">Projet</a>
+                <a href="projet.html">Projets</a>
                 <a href="veille.html">Veille</a>
             </nav>
         </div>
@@ -116,28 +116,68 @@
 
             </div>
 
-            <div class="text" id="text">
+            <div class="text cv-content" id="text">
                 <h1>Curriculum Vitae</h1>
 
-                <p>
-                    Étudiant en BTS SIO option SLAM à l’IPSSI (2025-2027), je me spécialise
-                    dans le développement d’applications web et logicielles.
+                <p class="cv-intro">
+                    Développeur fullstack et étudiant en BTS SIO option SLAM à l’IPSSI (2025-2027).
                 </p>
 
-                <p>
-                    Je recherche une alternance au rhytme d'une semaine en entreprise et une semaine a l'école.
-                </p>
+                <section class="cv-section cv-highlight">
+                    <h2>Recherche d’alternance</h2>
+                    <p>Contrat d’apprentissage de 12 mois.</p>
+                    <p><strong>Rythme :</strong> 1 semaine en entreprise / 1 semaine en formation.</p>
+                </section>
 
-                <ul>
-                    <li>Développement d’applications web</li>
-                    <li>Rédaction de documentation technique</li>
-                    <li>Maintenance d’applications</li>
-                </ul>
+                <section class="cv-section">
+                    <h2>Expériences</h2>
 
-                <p>
-                    Motivé et rigoureux, je souhaite intégrer une équipe afin de contribuer
-                    à des projets concrets.
-                </p>
+                    <article class="cv-item">
+                        <h3>DevOps — Tanoh.co</h3>
+                        <p class="cv-meta">Stage • mai 2026 à juin 2026</p>
+                        <ul>
+                            <li>Configuration d’environnements avec Dockerfile, Docker et Docker Compose.</li>
+                            <li>Déploiement d’applications conteneurisées avec Kubernetes.</li>
+                            <li>Gestion des pods, deployments, services et namespaces avec kubectl.</li>
+                            <li>Suivi des rollouts et exposition d’applications via des services Kubernetes.</li>
+                            <li>Administration Linux et résolution d’erreurs liées au déploiement.</li>
+                        </ul>
+                    </article>
+
+                    <article class="cv-item">
+                        <h3>Développeur Front-End — IPSSI</h3>
+                        <p class="cv-meta">Projet étudiant • octobre 2025 à décembre 2025</p>
+                        <ul>
+                            <li>Création d’une interface responsive mobile et desktop.</li>
+                            <li>Structuration sémantique des pages HTML.</li>
+                            <li>Utilisation de JavaScript pour l’interactivité.</li>
+                            <li>Organisation du code front-end et amélioration de l’ergonomie / UX.</li>
+                        </ul>
+                    </article>
+
+                    <article class="cv-item">
+                        <h3>Développeur back-end — IPSSI</h3>
+                        <p class="cv-meta">Projet étudiant • depuis février 2026</p>
+                        <ul>
+                            <li>Traitement de formulaires en PHP et validation des données côté serveur.</li>
+                            <li>Affichage dynamique de données issues d’une base de données.</li>
+                            <li>Sécurisation des données utilisateur.</li>
+                            <li>Connexion à MySQL avec PDO.</li>
+                        </ul>
+                    </article>
+                </section>
+
+                <section class="cv-section">
+                    <h2>Formations</h2>
+                    <article class="cv-item">
+                        <h3>BTS SIO — option SLAM</h3>
+                        <p class="cv-meta">IPSSI • octobre 2025 à octobre 2027</p>
+                    </article>
+                    <article class="cv-item">
+                        <h3>Baccalauréat général</h3>
+                        <p class="cv-meta">Lycée Guillaume Budé • 2021 à 2024</p>
+                    </article>
+                </section>
             </div>
 
         </div>
@@ -166,7 +206,7 @@
             <div class="sub-footer">
                 <div class="footer-text">
                     <p class="footer-name2">Boundy Simaka</p>
-                    <p class="footer-role2">Développeur web & logiciel</p>
+                    <p class="footer-role2">Développeur fullstack</p>
                     <p class="footer-red-back">PORTFOLIO V2</p>
                 </div>
 

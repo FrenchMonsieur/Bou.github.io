@@ -40,11 +40,11 @@
                 <img src="img/pochette.webp" alt="" class="album" id="album">
 
                 <nav class="cover" id="cover">
-                    <div class="skill" id="skill"><a class="a_cover" href="skill.html">skill</a></div>
+                    <div class="skill" id="skill"><a class="a_cover" href="skill.html">Compétences</a></div>
                     <div class="me" id="me"><a class="a_cover" href="me.html">À propos</a></div>
                     <div class="cv" id="cv"><a class="a_cover" href="C.V.html">C.V</a></div>
-                    <div class="contact" id="contact"><a class="a_cover" href="contact.html">contact</a></div>
-                    <div class="projet" id="projet"><a class="a_cover" href="projet.html">projet</a></div>
+                    <div class="contact" id="contact"><a class="a_cover" href="contact.html">Contact</a></div>
+                    <div class="projet" id="projet"><a class="a_cover" href="projet.html">Projets</a></div>
                     <div class="veille" id="veille"><a class="a_cover" href="veille.html">veille</a></div>
                 </nav>
             </div>
@@ -70,10 +70,10 @@
                 </span>
             </button>
             <nav class="top-d" id="vinyl-menu" inert>
-                <a href="skill.html">skill</a>
+                <a href="skill.html">Compétences</a>
                 <a href="me.html">À propos</a>
                 <a href="C.V.html">C.V </a>
-                <a href="projet.html">Projet</a>
+                <a href="projet.html">Projets</a>
                 <a href="veille.html">Veille</a>
             </nav>
         </div>
@@ -116,69 +116,53 @@
 
             </div>
 
-            <div class="text" id="text">
+            <div class="text skill-content" id="text">
                 <h1>Compétences</h1>
 
-                <h2>Langages</h2>
-                <p>PHP, Java, JavaScript, HTML, CSS, SQL</p>
+                <div class="skill-grid">
+                    <section class="skill-card">
+                        <h2>Développement</h2>
+                        <p>NodeJS, React, Java, HTML5 / CSS3, JavaScript, PHP 7.</p>
+                    </section>
 
-                <h2>Frameworks</h2>
-                <p>Laravel, Spring Boot, GSAP</p>
+                    <section class="skill-card">
+                        <h2>WordPress</h2>
+                        <p>Templating et plugins WordPress.</p>
+                    </section>
 
-                <h2>Bases de données</h2>
-                <p>MySQL, PostgreSQL</p>
+                    <section class="skill-card">
+                        <h2>Bases de données</h2>
+                        <p>PostgreSQL, MySQL.</p>
+                    </section>
 
-                <h2>Outils</h2>
-                <p>Git, VS Code, IntelliJ IDEA, PhpStorm</p>
+                    <section class="skill-card">
+                        <h2>Outils & versioning</h2>
+                        <p>PhpStorm, Visual Studio, Git, GitHub, Docker.</p>
+                    </section>
 
-                <h2>Méthodes</h2>
-                <p>POO, MVC, UML</p>
+                    <section class="skill-card">
+                        <h2>Infrastructure & virtualisation</h2>
+                        <p>VirtualBox, Cisco, VMWare.</p>
+                    </section>
+                </div>
 
-                <h2>Systèmes</h2>
-                <p>Windows, Linux</p>
+                <h2 class="practice-title">Mises en pratique</h2>
+                <div class="practice-grid">
+                    <article class="practice-card">
+                        <h3>Front-end</h3>
+                        <p>Interfaces responsive, HTML sémantique, JavaScript, organisation du code et travail sur l’UX.</p>
+                    </article>
 
-                <h2>Langues</h2>
-                <p>Français (natif), Anglais (B2)</p>
+                    <article class="practice-card">
+                        <h3>Back-end</h3>
+                        <p>Traitement de formulaires en PHP, validation côté serveur, affichage dynamique et connexion MySQL avec PDO.</p>
+                    </article>
 
-                <h2>Tableau de synthèse</h2>
-                <table class="synthese">
-                    <thead>
-                        <tr>
-                            <th>Compétence</th>
-                            <th>Description</th>
-                            <th>Niveau</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Développement web</td>
-                            <td>Conception et réalisation d'applications web avec PHP/Laravel, Java/Spring Boot,
-                                JavaScript</td>
-                            <td>⭐⭐⭐</td>
-                        </tr>
-                        <tr>
-                            <td>Gestion de bases de données</td>
-                            <td>Modélisation et exploitation de données avec MySQL et PostgreSQL</td>
-                            <td>⭐⭐⭐</td>
-                        </tr>
-                        <tr>
-                            <td>Conception d'interfaces utilisateur</td>
-                            <td>Création d'interfaces ergonomiques et animées (HTML, CSS, GSAP)</td>
-                            <td>⭐⭐⭐</td>
-                        </tr>
-                        <tr>
-                            <td>Versioning & outils de développement</td>
-                            <td>Utilisation de Git, VS Code, IntelliJ pour travailler en équipe et maintenir le code
-                            </td>
-                            <td>⭐⭐</td>
-                        </tr>
-                        <tr>
-                            <td>Méthodes de conception</td>
-                            <td>Application des principes POO, architecture MVC et modélisation UML</td>
-                            <td>⭐⭐</td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <article class="practice-card">
+                        <h3>DevOps</h3>
+                        <p>Docker, Docker Compose, Kubernetes, kubectl, administration Linux, déploiement et résolution d’erreurs.</p>
+                    </article>
+                </div>
             </div>
 
         </div>
@@ -207,7 +191,7 @@
             <div class="sub-footer">
                 <div class="footer-text">
                     <p class="footer-name2">Boundy Simaka</p>
-                    <p class="footer-role2">Développeur web & logiciel</p>
+                    <p class="footer-role2">Développeur fullstack</p>
                     <p class="footer-red-back">PORTFOLIO V2</p>
                 </div>
 

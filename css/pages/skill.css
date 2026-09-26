@@ -1,30 +1,54 @@
-/* Compétences : tableau de synthèse. */
+/* Compétences : présentation alignée avec le CV. */
 
-/* ==========================
-   tableau synthese
-   ========================== */
-
-.synthese {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1.5rem;
-    font-size: 0.9rem;
+.skill-grid,
+.practice-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
-.synthese th,
-.synthese td {
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 0.6rem 0.8rem;
-    text-align: left;
+.skill-card,
+.practice-card {
+    border: 1px solid rgba(243, 237, 228, 0.22);
+    background: rgba(30, 30, 34, 0.72);
+    padding: 1rem;
 }
 
-.synthese th {
-    background: rgba(255, 255, 255, 0.1);
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+.skill-card h2,
+.practice-card h3 {
+    margin-top: 0;
 }
 
-.synthese tr:nth-child(even) {
-    background: rgba(255, 255, 255, 0.05);
+.skill-card p,
+.practice-card p {
+    margin: 0;
+}
+
+.practice-title {
+    margin-top: 2rem !important;
+}
+
+@media (min-width: 700px) {
+    .skill-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .practice-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .skill-card,
+    .practice-card {
+        border: 2px solid #8E949C;
+        background: rgba(30, 30, 34, 0.9);
+        box-shadow: 6px 6px 0 #960018;
+    }
+
+    .skill-card h2,
+    .practice-card h3 {
+        color: #F3EDE4;
+    }
 }
