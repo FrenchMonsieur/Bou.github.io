@@ -1,51 +1,60 @@
-// Menu vinyle uniquement : ne touche ni aux animations GSAP ni à la platine.
-const vinylButton = document.querySelector("#vinyl-btn");
-const vinylMenu = document.querySelector("#vinyl-menu");
+/* =====================================================================
+   MENU VINYLE (desktop)
+   ---------------------------------------------------------------------
+   Le bouton vinyle ouvre et ferme le menu des pages.
+   Le menu se ferme aussi :
+     - avec la touche Échap,
+     - en cliquant n'importe où en dehors du menu.
+   ===================================================================== */
 
-if (vinylButton && vinylMenu) {
-    const setMenuOpen = (open) => {
-        vinylButton.classList.toggle("is-open", open);
-        vinylMenu.classList.toggle("is-open", open);
-        vinylButton.setAttribute("aria-expanded", String(open));
-        vinylButton.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
-        vinylMenu.inert = !open;
-    };
+const boutonMenu = document.getElementById("vinyl-btn");
+const menuVinyle = document.getElementById("vinyl-menu");
 
-    vinylButton.addEventListener("click", () => {
-        setMenuOpen(vinylButton.getAttribute("aria-expanded") !== "true");
-    });
-
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && vinylButton.getAttribute("aria-expanded") === "true") {
-            setMenuOpen(false);
-            vinylButton.focus();
-        }
-    });
-
-    document.addEventListener("click", (event) => {
-        if (!vinylButton.contains(event.target) && !vinylMenu.contains(event.target)) {
-            setMenuOpen(false);
-        }
-    });
+if (boutonMenu !== null && menuVinyle !== null) {
+    boutonMenu.addEventListener("click", ouvrirOuFermerMenu);
+    document.addEventListener("keydown", fermerMenuAvecEchap);
+    document.addEventListener("click", fermerMenuSiClicAilleurs);
 }
 
-// Le titre « Portfolio » du header renvoie à l'accueil sur toutes les pages.
-const portfolioTitle = document.querySelector(".top-g h1");
 
-if (portfolioTitle) {
-    portfolioTitle.style.cursor = "pointer";
-    portfolioTitle.setAttribute("role", "link");
-    portfolioTitle.setAttribute("tabindex", "0");
-    portfolioTitle.setAttribute("aria-label", "Retour à l’accueil");
+function menuEstOuvert() {
+    return boutonMenu.getAttribute("aria-expanded") === "true";
+}
 
-    const retourAccueil = () => {
-        window.location.href = "index.html";
-    };
+function changerEtatMenu(ouvrir) {
+    // Classes CSS pour l'animation du bouton et l'affichage du menu.
+    boutonMenu.classList.toggle("is-open", ouvrir);
+    menuVinyle.classList.toggle("is-open", ouvrir);
 
-    portfolioTitle.addEventListener("click", retourAccueil);
-    portfolioTitle.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-            retourAccueil();
-        }
-    });
+    // Informations pour les lecteurs d'écran.
+    boutonMenu.setAttribute("aria-expanded", String(ouvrir));
+
+    if (ouvrir) {
+        boutonMenu.setAttribute("aria-label", "Fermer le menu");
+    } else {
+        boutonMenu.setAttribute("aria-label", "Ouvrir le menu");
+    }
+
+    // Menu fermé = liens impossibles à atteindre au clavier.
+    menuVinyle.inert = !ouvrir;
+}
+
+function ouvrirOuFermerMenu() {
+    changerEtatMenu(!menuEstOuvert());
+}
+
+function fermerMenuAvecEchap(evenement) {
+    if (evenement.key === "Escape" && menuEstOuvert()) {
+        changerEtatMenu(false);
+        boutonMenu.focus();
+    }
+}
+
+function fermerMenuSiClicAilleurs(evenement) {
+    const clicSurLeBouton = boutonMenu.contains(evenement.target);
+    const clicDansLeMenu = menuVinyle.contains(evenement.target);
+
+    if (!clicSurLeBouton && !clicDansLeMenu) {
+        changerEtatMenu(false);
+    }
 }

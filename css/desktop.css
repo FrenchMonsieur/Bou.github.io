@@ -781,6 +781,21 @@
         z-index: 3;
     }
 
+    /* Les cartes du carrousel sont des liens <a> :
+       on retire la couleur bleue et le soulignement par défaut. */
+    .carousel-card {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+    }
+
+    /* Navigation au clavier : la carte sélectionnée reprend ses couleurs,
+       comme au survol (un outline serait coupé par le clip-path de .paper). */
+    .carousel-card:focus-visible img {
+        filter: grayscale(0) contrast(1);
+        border-color: #960018;
+    }
+
     .carousel-wrapper {
         position: relative;
         display: flex;

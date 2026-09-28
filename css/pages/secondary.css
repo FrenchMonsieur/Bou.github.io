@@ -290,32 +290,6 @@
         font-size: .92em;
     }
 
-    /* Tableau de synthèse : largeur maîtrisée et défilement horizontal si besoin. */
-    .page-secondary .text .synthese {
-        width: 100%;
-        max-width: 100%;
-        border-collapse: collapse;
-        font: .9rem/1.6 "Rubik", sans-serif;
-    }
-
-    .page-secondary .synthese th,
-    .page-secondary .synthese td {
-        padding: 14px;
-        border: 1px solid var(--steel);
-        text-align: left;
-        vertical-align: top;
-    }
-
-    .page-secondary .synthese th {
-        background: var(--carmine);
-        color: var(--cream);
-        font-family: "Bungee", sans-serif;
-    }
-
-    .page-secondary .synthese tbody tr:nth-child(even) {
-        background: rgba(142, 148, 156, .12);
-    }
-
     .page-secondary .footer-content {
         display: none;
     }
