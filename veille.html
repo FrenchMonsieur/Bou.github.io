@@ -277,7 +277,8 @@
                         message générique à l'utilisateur</li>
                     <li>utiliser des transactions (<code>beginTransaction()</code>, <code>commit()</code>,
                         <code>rollBack()</code>) pour qu'une opération en plusieurs étapes, comme une commande,
-                        soit entièrement annulée en cas d'erreur</li>
+                        soit entièrement annulée en cas d'erreur
+                    </li>
                 </ul>
 
                 <h3>4. Bonnes pratiques actuelles</h3>
@@ -398,7 +399,8 @@
                             rel="noopener noreferrer">PHP.net Changelog</a></strong> et
                     <strong><a href="https://www.php.net/supported-versions.php" target="_blank"
                             rel="noopener noreferrer">versions maintenues</a></strong> — pour suivre les correctifs
-                    de sécurité et savoir quelles versions sont encore supportées.</p>
+                    de sécurité et savoir quelles versions sont encore supportées.
+                </p>
                 <p><strong><a href="https://www.oracle.com/security-alerts/" target="_blank"
                             rel="noopener noreferrer">Bulletins de sécurité Oracle</a></strong> — correctifs de
                     MySQL, publiés chaque mois depuis mai 2026.</p>
@@ -406,8 +408,8 @@
                             rel="noopener noreferrer">PortSwigger Research</a>, HackTricks et OffSec</strong> —
                     expliquent les techniques d'attaque de manière pratique.</p>
                 <p><strong><a href="https://www.cert.ssi.gouv.fr/avis/" target="_blank"
-                            rel="noopener noreferrer">CERT-FR</a> et <a href="https://cyber.gouv.fr/"
-                            target="_blank" rel="noopener noreferrer">ANSSI</a></strong> — sources françaises
+                            rel="noopener noreferrer">CERT-FR</a> et <a href="https://cyber.gouv.fr/" target="_blank"
+                            rel="noopener noreferrer">ANSSI</a></strong> — sources françaises
                     fiables publiant alertes et recommandations. Les avis du CERT-FR résument chaque faille en
                     français et indiquent les versions à installer.</p>
                 <p><strong>Réseaux sociaux et flux RSS</strong> — pour centraliser les alertes sans consulter chaque
@@ -418,18 +420,26 @@
                     développement web en PHP/MySQL. J'ai compris que les bonnes pratiques doivent être appliquées
                     dès le début d'un projet : requêtes préparées, hashage des mots de passe, validation des
                     données, sécurisation des uploads, gestion des erreurs, configuration MySQL et HTTPS.</p>
-                <p>La mise à jour de septembre 2026 montre que le sujet évolue vite : nouveau Top 10 OWASP, fin de
-                    vie de PHP 8.1, correctifs MySQL désormais mensuels, et des failles d'injection SQL découvertes
-                    dans PHP lui-même. Écrire du code sécurisé ne suffit pas : il faut aussi maintenir à jour tout
-                    ce sur quoi il repose.</p>
-                <p>Enfin, la veille ne doit pas être ponctuelle. Je continue à suivre l'OWASP, le CERT-FR, NVD,
-                    le changelog de PHP et les bulletins Oracle afin de rester à jour.</p>
+                <ul>
+                    <li><a href="https://cyber.gouv.fr/">cyber.gouv.fr</a></li>
+                    <li><a href="https://portswigger.net/research/top-10-web-hacking-techniques-of-2025">Top 10 web
+                            hacking techniques of 2025</a></li>
+                    <li><a href="https://nvd.nist.gov/vuln/detail/cve-2025-21579">CVE-2025-21579 Detail</a></li>
+                    <li><a href="https://www.oracle.com/security-alerts/cspujun2026.html">Oracle Critical Security Patch
+                            Update Advisory - June 2026</a></li>
+                    <li><a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-1049">CERTFR-2026-AVI-1049</a></li>
+                    <li><a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0765/">CERTFR-2026-AVI-0765</a></li>
+                    <li><a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0843/">CERTFR-2026-AVI-0843</a></li>
+                    <li><a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0952/">CERTFR-2026-AVI-0952</a></li>
+                    <li><a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-1227/">CERTFR-2026-AVI-1227</a></li>
+                    <li><a href="php.net/supported-versions.php">PHP Supported Versions</a></li>
+                </ul>
             </div>
 
         </div>
     </main>
 
-        <footer>
+    <footer>
         <div class="footer-content">
             <p class="footer-name">Boundy Simaka</p>
             <p class="footer-role">BTS SIO – Option SLAM</p>
