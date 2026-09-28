@@ -116,176 +116,316 @@
             </div>
 
             <div class="text" id="text">
-                    <h1>Veille technologique</h1>
-                    <h2>La sécurité des applications web en PHP/MySQL</h2>
+                <h1>Veille technologique</h1>
+                <h2>La sécurité des applications web en PHP/MySQL</h2>
+                <p><strong>Dernière mise à jour :</strong> 28 septembre 2026</p>
 
-                    <h3>1. Introduction</h3>
-                    <p>La sécurité web est aujourd'hui un sujet essentiel dans le développement d'applications. De
-                        nombreux sites utilisent des formulaires, des espaces de connexion, des bases de données, des
-                        sessions utilisateur ou encore des systèmes d'upload de fichiers. Tous ces éléments peuvent
-                        devenir des points d'entrée pour des attaques si le développeur ne met pas en place les
-                        protections nécessaires.</p>
-                    <p>Une faille de sécurité peut avoir des conséquences importantes : vol de données, suppression ou
-                        modification d'informations, usurpation d'identité, indisponibilité du site, perte de confiance
-                        des utilisateurs ou encore impact financier pour une entreprise. C'est pour cela que la sécurité
-                        ne doit pas être ajoutée seulement à la fin d'un projet, mais pensée dès la conception.</p>
-                    <p>Cette veille technologique est liée à mon parcours de développeur fullstack, notamment à mes
-                        projets en PHP/MySQL. J'ai déjà travaillé sur le traitement de formulaires, la validation des
-                        données côté serveur, la connexion à une base de données MySQL avec PDO et la sécurisation des
-                        données utilisateur. Ces notions sont directement liées aux failles les plus fréquentes dans les
-                        applications web.</p>
-                    <p>L'objectif de cette veille est donc de comprendre les principales vulnérabilités web, de
-                        connaître les bonnes pratiques actuelles et d'identifier les sources fiables à suivre pour
-                        rester informé des nouvelles failles.</p>
+                <h3>1. Introduction</h3>
+                <p>La sécurité web est aujourd'hui un sujet essentiel dans le développement d'applications. De
+                    nombreux sites utilisent des formulaires, des espaces de connexion, des bases de données, des
+                    sessions utilisateur ou encore des systèmes d'upload de fichiers. Tous ces éléments peuvent
+                    devenir des points d'entrée pour des attaques si le développeur ne met pas en place les
+                    protections nécessaires.</p>
+                <p>Une faille de sécurité peut avoir des conséquences importantes : vol de données, suppression ou
+                    modification d'informations, usurpation d'identité, indisponibilité du site, perte de confiance
+                    des utilisateurs ou encore impact financier pour une entreprise. C'est pour cela que la sécurité
+                    ne doit pas être ajoutée seulement à la fin d'un projet, mais pensée dès la conception.</p>
+                <p>Cette veille technologique est liée à mon parcours de développeur fullstack, notamment à mes
+                    projets en PHP/MySQL. J'ai déjà travaillé sur le traitement de formulaires, la validation des
+                    données côté serveur, la connexion à une base de données MySQL avec PDO et la sécurisation des
+                    données utilisateur. Ces notions sont directement liées aux failles les plus fréquentes dans les
+                    applications web.</p>
+                <p>L'objectif de cette veille est donc de comprendre les principales vulnérabilités web, de
+                    connaître les bonnes pratiques actuelles et d'identifier les sources fiables à suivre pour
+                    rester informé des nouvelles failles.</p>
 
-                    <h3>2. Les vulnérabilités principales</h3>
+                <h3>2. Le nouveau Top 10 OWASP (édition 2025)</h3>
+                <p>L'OWASP a publié une nouvelle édition de son Top 10, qui remplace celle de 2021. Elle repose sur
+                    des données issues de plus de 2,8 millions d'applications et couvre 589 types de faiblesses
+                    (CWE), contre près de 400 dans l'édition précédente.</p>
+                <ol>
+                    <li>A01 — Contrôle d'accès défaillant</li>
+                    <li>A02 — Mauvaise configuration de sécurité</li>
+                    <li>A03 — Défaillances de la chaîne d'approvisionnement logicielle</li>
+                    <li>A04 — Défaillances cryptographiques</li>
+                    <li>A05 — Injection</li>
+                    <li>A06 — Conception non sécurisée</li>
+                    <li>A07 — Défaillances d'authentification</li>
+                    <li>A08 — Défaillances d'intégrité des logiciels ou des données</li>
+                    <li>A09 — Défaillances de journalisation et d'alerte</li>
+                    <li>A10 — Mauvaise gestion des conditions exceptionnelles</li>
+                </ol>
+                <p>Les principaux changements par rapport à 2021 :</p>
+                <ul>
+                    <li><strong>A03 s'élargit :</strong> l'ancienne catégorie « composants vulnérables et
+                        obsolètes » couvre désormais toute la chaîne d'approvisionnement (dépendances, outils de
+                        développement, fournisseurs compromis). Elle a été classée n°1 par 50 % des personnes
+                        interrogées lors de l'enquête de la communauté OWASP.</li>
+                    <li><strong>A10 est une nouvelle catégorie :</strong> elle concerne les erreurs et exceptions mal
+                        gérées (messages d'erreur trop détaillés, application qui reste dans un état incohérent
+                        après une erreur).</li>
+                    <li><strong>La SSRF</strong> n'est plus une catégorie à part : elle est intégrée au contrôle
+                        d'accès défaillant (A01).</li>
+                    <li><strong>L'injection passe de la 3e à la 5e place</strong>, mais reste omniprésente : selon
+                        l'OWASP, 100 % des applications testées présentaient une forme d'injection. On compte plus
+                        de 14 000 CVE d'injection SQL et plus de 30 000 CVE de XSS.</li>
+                    <li><strong>A07 et A09 sont renommées :</strong> « Identification et authentification »
+                        devient « Authentification », et la journalisation met désormais l'accent sur
+                        l'alerte, pas seulement la surveillance.</li>
+                </ul>
 
-                    <h3>a) Injection SQL</h3>
-                    <p>L'injection SQL est une attaque qui consiste à envoyer du code SQL malveillant à travers une
-                        entrée utilisateur, par exemple dans un formulaire de connexion, une barre de recherche ou un
-                        paramètre d'URL.</p>
-                    <p>Si une application construit directement une requête SQL avec les données saisies par
-                        l'utilisateur, un attaquant peut modifier la logique de la requête. Il peut par exemple
-                        contourner une connexion, lire des données confidentielles, modifier une base de données ou
-                        supprimer des informations.</p>
-                    <p>En PHP, l'utilisation de <code>PDO</code> avec des requêtes préparées permet de limiter fortement
-                        ce risque. Le principe est de séparer la structure de la requête SQL et les valeurs envoyées par
-                        l'utilisateur. Les données ne sont donc plus interprétées comme du code SQL, mais comme de
-                        simples valeurs.</p>
-                    <p>Exemple d'application concrète : dans un projet PHP/MySQL avec un formulaire de connexion, il ne
-                        faut pas insérer directement l'email et le mot de passe dans la requête SQL. Il faut utiliser
-                        une requête préparée avec des paramètres.</p>
+                <h3>3. Les vulnérabilités principales</h3>
 
-                    <h3>b) XSS — Cross-Site Scripting</h3>
-                    <p>Le XSS est une vulnérabilité qui permet à un attaquant d'injecter du code JavaScript dans une
-                        page web consultée par d'autres utilisateurs. Cette faille apparaît souvent lorsqu'une
-                        application affiche des données saisies par un utilisateur sans les échapper correctement.</p>
-                    <p>Par exemple, si un utilisateur peut publier un commentaire contenant du JavaScript et que ce
-                        commentaire est ensuite affiché tel quel sur le site, le navigateur des autres utilisateurs peut
-                        exécuter ce script.</p>
-                    <p>Les conséquences peuvent être graves : vol de cookies, récupération de données sensibles,
-                        redirection vers un faux site, modification de l'affichage ou actions réalisées à la place de
-                        l'utilisateur.</p>
-                    <p>Pour se protéger contre le XSS, il faut échapper les données avant de les afficher dans une page
-                        HTML, et éviter d'afficher directement du contenu utilisateur dans du JavaScript, des attributs
-                        HTML ou des URL sans traitement adapté.</p>
+                <h3>a) Injection SQL (A05:2025)</h3>
+                <p>L'injection SQL est une attaque qui consiste à envoyer du code SQL malveillant à travers une
+                    entrée utilisateur, par exemple dans un formulaire de connexion, une barre de recherche ou un
+                    paramètre d'URL.</p>
+                <p>Si une application construit directement une requête SQL avec les données saisies par
+                    l'utilisateur, un attaquant peut modifier la logique de la requête. Il peut par exemple
+                    contourner une connexion, lire des données confidentielles, modifier une base de données ou
+                    supprimer des informations.</p>
+                <p>En PHP, l'utilisation de <code>PDO</code> avec des requêtes préparées permet de limiter fortement
+                    ce risque. Le principe est de séparer la structure de la requête SQL et les valeurs envoyées par
+                    l'utilisateur. Les données ne sont donc plus interprétées comme du code SQL, mais comme de
+                    simples valeurs. C'est aussi la première recommandation de l'OWASP : garder les données
+                    séparées des commandes et des requêtes.</p>
+                <p>Exemple d'application concrète : dans un projet PHP/MySQL avec un formulaire de connexion, il ne
+                    faut pas insérer directement l'email et le mot de passe dans la requête SQL. Il faut utiliser
+                    une requête préparée avec des paramètres.</p>
 
-                    <h3>c) CSRF — Cross-Site Request Forgery</h3>
-                    <p>Le CSRF est une attaque qui pousse un utilisateur connecté à effectuer une action sans s'en
-                        rendre compte. L'attaquant ne vole pas forcément le mot de passe, mais il profite du fait que
-                        l'utilisateur est déjà connecté sur un site.</p>
-                    <p>Par exemple, si un utilisateur est connecté à son compte et qu'un attaquant lui fait cliquer sur
-                        un lien piégé, cela peut déclencher une action comme modifier une adresse email, supprimer un
-                        élément ou valider une opération.</p>
-                    <p>Pour se protéger, il faut utiliser des jetons CSRF dans les formulaires sensibles. Un jeton CSRF
-                        est une valeur unique générée côté serveur, stockée en session et vérifiée lors de l'envoi du
-                        formulaire.</p>
+                <h3>b) XSS — Cross-Site Scripting (A05:2025)</h3>
+                <p>Le XSS est une vulnérabilité qui permet à un attaquant d'injecter du code JavaScript dans une
+                    page web consultée par d'autres utilisateurs. Cette faille apparaît souvent lorsqu'une
+                    application affiche des données saisies par un utilisateur sans les échapper correctement.
+                    Depuis 2021, l'OWASP la classe dans la même catégorie que l'injection SQL.</p>
+                <p>Par exemple, si un utilisateur peut publier un commentaire contenant du JavaScript et que ce
+                    commentaire est ensuite affiché tel quel sur le site, le navigateur des autres utilisateurs peut
+                    exécuter ce script.</p>
+                <p>Les conséquences peuvent être graves : vol de cookies, récupération de données sensibles,
+                    redirection vers un faux site, modification de l'affichage ou actions réalisées à la place de
+                    l'utilisateur.</p>
+                <p>Pour se protéger contre le XSS, il faut échapper les données avant de les afficher dans une page
+                    HTML, et éviter d'afficher directement du contenu utilisateur dans du JavaScript, des attributs
+                    HTML ou des URL sans traitement adapté.</p>
 
-                    <h3>d) Faille d'upload de fichiers</h3>
-                    <p>L'upload de fichiers est une fonctionnalité très sensible. Une mauvaise gestion de l'upload peut
-                        permettre à un attaquant d'envoyer un fichier dangereux sur le serveur, par exemple un script
-                        PHP déguisé en image.</p>
-                    <p>Pour sécuriser un upload, il faut vérifier plusieurs éléments :</p>
-                    <ul>
-                        <li>l'extension du fichier</li>
-                        <li>le type MIME</li>
-                        <li>la taille maximale autorisée</li>
-                        <li>le nom du fichier</li>
-                        <li>le dossier de stockage</li>
-                        <li>les droits d'exécution dans le dossier d'upload</li>
-                    </ul>
-                    <p>Il est aussi préférable de renommer automatiquement les fichiers avec un nom unique, et le
-                        dossier d'upload ne doit pas permettre l'exécution de scripts.</p>
+                <h3>c) CSRF — Cross-Site Request Forgery</h3>
+                <p>Le CSRF est une attaque qui pousse un utilisateur connecté à effectuer une action sans s'en
+                    rendre compte. L'attaquant ne vole pas forcément le mot de passe, mais il profite du fait que
+                    l'utilisateur est déjà connecté sur un site.</p>
+                <p>Par exemple, si un utilisateur est connecté à son compte et qu'un attaquant lui fait cliquer sur
+                    un lien piégé, cela peut déclencher une action comme modifier une adresse email, supprimer un
+                    élément ou valider une opération.</p>
+                <p>Pour se protéger, il faut utiliser des jetons CSRF dans les formulaires sensibles. Un jeton CSRF
+                    est une valeur unique générée côté serveur, stockée en session et vérifiée lors de l'envoi du
+                    formulaire.</p>
 
-                    <h3>e) Mauvaise gestion des sessions et des mots de passe</h3>
-                    <p>Les erreurs fréquentes sont :</p>
-                    <ul>
-                        <li>stocker les mots de passe en clair</li>
-                        <li>utiliser un hash faible</li>
-                        <li>ne pas régénérer l'identifiant de session après connexion</li>
-                        <li>ne pas détruire correctement la session à la déconnexion</li>
-                        <li>ne pas sécuriser les cookies de session</li>
-                        <li>autoriser des mots de passe trop faibles</li>
-                    </ul>
-                    <p>En PHP, les mots de passe doivent être stockés avec <code>password_hash()</code>, qui utilise des
-                        algorithmes adaptés comme bcrypt ou Argon2. Pour vérifier un mot de passe, il faut utiliser
-                        <code>password_verify()</code>.
-                    </p>
-                    <p>Il est aussi important de sécuriser les cookies avec des options comme <code>HttpOnly</code>,
-                        <code>Secure</code> et <code>SameSite</code>.
-                    </p>
+                <h3>d) Faille d'upload de fichiers</h3>
+                <p>L'upload de fichiers est une fonctionnalité très sensible. Une mauvaise gestion de l'upload peut
+                    permettre à un attaquant d'envoyer un fichier dangereux sur le serveur, par exemple un script
+                    PHP déguisé en image.</p>
+                <p>Pour sécuriser un upload, il faut vérifier plusieurs éléments :</p>
+                <ul>
+                    <li>l'extension du fichier</li>
+                    <li>le type MIME</li>
+                    <li>la taille maximale autorisée</li>
+                    <li>le nom du fichier</li>
+                    <li>le dossier de stockage</li>
+                    <li>les droits d'exécution dans le dossier d'upload</li>
+                </ul>
+                <p>Il est aussi préférable de renommer automatiquement les fichiers avec un nom unique, et le
+                    dossier d'upload ne doit pas permettre l'exécution de scripts.</p>
 
-                    <h3>3. Bonnes pratiques actuelles</h3>
+                <h3>e) Mauvaise gestion des sessions et des mots de passe (A07:2025)</h3>
+                <p>Les erreurs fréquentes sont :</p>
+                <ul>
+                    <li>stocker les mots de passe en clair</li>
+                    <li>utiliser un hash faible</li>
+                    <li>ne pas régénérer l'identifiant de session après connexion</li>
+                    <li>ne pas détruire correctement la session à la déconnexion</li>
+                    <li>ne pas sécuriser les cookies de session</li>
+                    <li>autoriser des mots de passe trop faibles</li>
+                </ul>
+                <p>En PHP, les mots de passe doivent être stockés avec <code>password_hash()</code>, qui utilise des
+                    algorithmes adaptés comme bcrypt ou Argon2. Pour vérifier un mot de passe, il faut utiliser
+                    <code>password_verify()</code>.
+                </p>
+                <p>Il est aussi important de sécuriser les cookies avec des options comme <code>HttpOnly</code>,
+                    <code>Secure</code> et <code>SameSite</code>.
+                </p>
 
-                    <h3>a) Utiliser les requêtes préparées avec PDO</h3>
-                    <p>Les requêtes préparées permettent de séparer la requête SQL des données utilisateur. Toutes les
-                        requêtes qui utilisent des données venant d'un formulaire, d'une URL ou d'une session doivent
-                        être préparées.</p>
+                <h3>f) Composants obsolètes et chaîne d'approvisionnement (A03:2025)</h3>
+                <p>Une application PHP/MySQL ne se limite pas à son propre code : elle dépend de la version de PHP,
+                    du serveur MySQL, du pilote de connexion et des bibliothèques installées avec Composer. Une
+                    version qui n'est plus maintenue ne reçoit plus de correctifs de sécurité, même si une faille
+                    grave est découverte.</p>
+                <p>Par exemple, PHP 8.1 est en fin de vie depuis le 31 décembre 2025. Un site qui tourne encore
+                    dessus reste exposé aux failles corrigées depuis dans les versions récentes.</p>
+                <p>L'OWASP recommande de tenir un inventaire à jour des dépendances (SBOM), de suivre les alertes
+                    CVE et NVD, et de mettre à jour la plateforme et les bibliothèques rapidement, en commençant par
+                    les failles les plus risquées.</p>
 
-                    <h3>b) Hasher correctement les mots de passe</h3>
-                    <p>Un mot de passe ne doit jamais être stocké en clair. La bonne pratique est d'utiliser
-                        <code>password_hash()</code> avec bcrypt ou Argon2, conçus pour ralentir les attaques par force
-                        brute.
-                    </p>
+                <h3>g) Mauvaise gestion des erreurs (A10:2025)</h3>
+                <p>Cette nouvelle catégorie concerne les situations où l'application gère mal une erreur. Un des
+                    scénarios décrits par l'OWASP est directement lié à PHP/MySQL : un message d'erreur de la base
+                    de données affiché à l'écran révèle la structure des tables, ce qui aide un attaquant à
+                    préparer une injection SQL.</p>
+                <p>En PHP, cela implique de :</p>
+                <ul>
+                    <li>désactiver <code>display_errors</code> en production et enregistrer les erreurs dans un
+                        fichier de logs</li>
+                    <li>intercepter les exceptions PDO avec <code>try</code> / <code>catch</code> et afficher un
+                        message générique à l'utilisateur</li>
+                    <li>utiliser des transactions (<code>beginTransaction()</code>, <code>commit()</code>,
+                        <code>rollBack()</code>) pour qu'une opération en plusieurs étapes, comme une commande,
+                        soit entièrement annulée en cas d'erreur</li>
+                </ul>
 
-                    <h3>c) Valider et nettoyer les entrées utilisateur</h3>
-                    <p>Toutes les données envoyées par l'utilisateur doivent être validées côté serveur, même si une
-                        validation existe déjà côté navigateur. La sanitation consiste à nettoyer une donnée pour éviter
-                        qu'elle provoque un comportement dangereux, par exemple avant un affichage HTML.</p>
+                <h3>4. Bonnes pratiques actuelles</h3>
 
-                    <h3>d) Sécuriser la configuration MySQL</h3>
-                    <p>Il faut éviter d'utiliser le compte root de MySQL dans une application web et créer un
-                        utilisateur dédié avec uniquement les droits nécessaires. Il est aussi important de maintenir
-                        MySQL à jour et de faire des sauvegardes régulières.</p>
+                <h3>a) Utiliser les requêtes préparées avec PDO</h3>
+                <p>Les requêtes préparées permettent de séparer la requête SQL des données utilisateur. Toutes les
+                    requêtes qui utilisent des données venant d'un formulaire, d'une URL ou d'une session doivent
+                    être préparées.</p>
 
-                    <h3>e) Utiliser HTTPS et des headers de sécurité</h3>
-                    <p>HTTPS permet de chiffrer les échanges entre le navigateur et le serveur. En complément, certains
-                        headers HTTP améliorent la sécurité :</p>
-                    <ul>
-                        <li><code>Content-Security-Policy</code> : réduit les risques liés au XSS</li>
-                        <li><code>Strict-Transport-Security</code> : force l'utilisation de HTTPS</li>
-                        <li><code>X-Frame-Options</code> : limite le risque de clickjacking</li>
-                        <li><code>X-Content-Type-Options</code> : empêche certaines interprétations dangereuses</li>
-                        <li><code>Referrer-Policy</code> : contrôle les informations envoyées dans le referer</li>
-                    </ul>
+                <h3>b) Hasher correctement les mots de passe</h3>
+                <p>Un mot de passe ne doit jamais être stocké en clair. La bonne pratique est d'utiliser
+                    <code>password_hash()</code> avec bcrypt ou Argon2, conçus pour ralentir les attaques par force
+                    brute.
+                </p>
 
-                    <h3>4. Outils de veille et sources à surveiller</h3>
-                    <p><strong>OWASP</strong> — Le Top 10 OWASP liste les risques les plus importants pour les
-                        applications web.</p>
-                    <p><strong>NVD et CVE Details</strong> — permettent de suivre les vulnérabilités publiées
-                        officiellement (PHP, MySQL, Apache, Nginx, WordPress...).</p>
-                    <p><strong>PHP.net Changelog</strong> — pour suivre les corrections de sécurité apportées aux
-                        nouvelles versions.</p>
-                    <p><strong>Blogs de sécurité</strong> — OffSec, HackTricks, PortSwigger, qui expliquent les
-                        techniques d'attaque de manière pratique.</p>
-                    <p><strong>ANSSI et CERT-FR</strong> — sources françaises fiables publiant alertes et
-                        recommandations.</p>
-                    <p><strong>Réseaux sociaux et flux RSS</strong> — pour centraliser les alertes sans consulter chaque
-                        site manuellement.</p>
+                <h3>c) Valider et nettoyer les entrées utilisateur</h3>
+                <p>Toutes les données envoyées par l'utilisateur doivent être validées côté serveur, même si une
+                    validation existe déjà côté navigateur. La sanitation consiste à nettoyer une donnée pour éviter
+                    qu'elle provoque un comportement dangereux, par exemple avant un affichage HTML.</p>
 
-                    <h3>5. Étude de cas : vulnérabilité MySQL récente</h3>
-                    <p>Un exemple récent est la vulnérabilité <strong>CVE-2025-21579</strong>, qui concerne Oracle MySQL
-                        Server. Cette faille touche certaines versions de MySQL 8.0, 8.4 et 9.0/9.2, et peut permettre à
-                        un attaquant ayant déjà certains privilèges de provoquer un déni de service.</p>
-                    <p>Cette faille montre l'importance de plusieurs bonnes pratiques :</p>
-                    <ul>
-                        <li>maintenir MySQL à jour</li>
-                        <li>surveiller les bulletins de sécurité Oracle, NVD et CERT-FR</li>
-                        <li>limiter les droits des utilisateurs MySQL</li>
-                        <li>éviter d'exposer inutilement la base de données sur le réseau</li>
-                        <li>mettre en place des sauvegardes</li>
-                        <li>surveiller les logs et les erreurs serveur</li>
-                    </ul>
+                <h3>d) Sécuriser la configuration MySQL</h3>
+                <p>Il faut éviter d'utiliser le compte root de MySQL dans une application web et créer un
+                    utilisateur dédié avec uniquement les droits nécessaires. Il est aussi important de maintenir
+                    MySQL à jour et de faire des sauvegardes régulières.</p>
 
-                    <h3>6. Conclusion</h3>
-                    <p>Cette veille technologique m'a permis de mieux comprendre les risques principaux liés au
-                        développement web en PHP/MySQL. J'ai compris que les bonnes pratiques doivent être appliquées
-                        dès le début d'un projet : requêtes préparées, hashage des mots de passe, validation des
-                        données, sécurisation des uploads, configuration MySQL et HTTPS.</p>
-                    <p>Enfin, la veille ne doit pas être ponctuelle. Les failles évoluent régulièrement et il est
-                        important de continuer à suivre des sources comme OWASP, NVD, PHP.net, ANSSI et CERT-FR afin de
-                        rester à jour.</p>
+                <h3>e) Utiliser HTTPS et des headers de sécurité</h3>
+                <p>HTTPS permet de chiffrer les échanges entre le navigateur et le serveur. En complément, certains
+                    headers HTTP améliorent la sécurité :</p>
+                <ul>
+                    <li><code>Content-Security-Policy</code> : réduit les risques liés au XSS</li>
+                    <li><code>Strict-Transport-Security</code> : force l'utilisation de HTTPS</li>
+                    <li><code>X-Frame-Options</code> : limite le risque de clickjacking</li>
+                    <li><code>X-Content-Type-Options</code> : empêche certaines interprétations dangereuses</li>
+                    <li><code>Referrer-Policy</code> : contrôle les informations envoyées dans le referer</li>
+                </ul>
+
+                <h3>f) Utiliser une version de PHP maintenue</h3>
+                <p>Au 28 septembre 2026, les versions de PHP encore maintenues sont :</p>
+                <ul>
+                    <li><strong>PHP 8.5</strong> (sortie le 20 novembre 2025) : correctifs de sécurité jusqu'au
+                        31 décembre 2029</li>
+                    <li><strong>PHP 8.4</strong> : correctifs de sécurité jusqu'au 31 décembre 2028</li>
+                    <li><strong>PHP 8.3</strong> : correctifs de sécurité jusqu'au 31 décembre 2027</li>
+                    <li><strong>PHP 8.2</strong> : uniquement les correctifs de sécurité, jusqu'au 31 décembre 2026</li>
+                </ul>
+                <p>PHP 8.1 et toutes les versions plus anciennes ne sont plus maintenues. Pour un nouveau projet,
+                    il vaut mieux choisir PHP 8.4 ou 8.5, et installer chaque version corrective dès sa sortie.</p>
+
+                <h3>g) Suivre le nouveau rythme des correctifs MySQL</h3>
+                <p>Depuis mai 2026, Oracle ne publie plus ses correctifs de sécurité seulement tous les trois mois :
+                    des bulletins sortent désormais chaque mois, le troisième mardi. Il faut donc vérifier les
+                    mises à jour de MySQL tous les mois, et non plus une fois par trimestre.</p>
+
+                <h3>5. Actualité récente</h3>
+                <p>Événements marquants repérés pendant ma veille, du plus récent au plus ancien :</p>
+                <ul>
+                    <li><strong>24 septembre 2026 — PHP :</strong> le CERT-FR signale 10 vulnérabilités dans PHP
+                        (avis CERTFR-2026-AVI-1227). Il faut passer à PHP 8.2.34, 8.3.35, 8.4.26 ou 8.5.11. L'une
+                        d'elles (CVE-2025-1218) concerne mysqlnd, le pilote que PHP utilise pour se connecter à
+                        MySQL.</li>
+                    <li><strong>19 août 2026 — MySQL :</strong> le CERT-FR relaie le bulletin mensuel d'Oracle
+                        d'août, qui corrige 34 vulnérabilités dans des produits MySQL, dont certaines permettent
+                        une exécution de code arbitraire à distance (avis CERTFR-2026-AVI-1049).</li>
+                    <li><strong>31 juillet 2026 — PHP :</strong> correction d'une injection SQL dans l'extension
+                        PGSQL (CVE-2026-17543), détaillée dans l'étude de cas ci-dessous (avis
+                        CERTFR-2026-AVI-0952).</li>
+                    <li><strong>17 juin 2026 — MySQL :</strong> nouvelles vulnérabilités dans MySQL Server, dont
+                        certaines permettent une exécution de code arbitraire à distance (avis
+                        CERTFR-2026-AVI-0765, bulletin Oracle du 16 juin 2026).</li>
+                    <li><strong>7 mai 2026 — PHP :</strong> PHP 8.5.6 corrige notamment une faille XSS dans la page
+                        de statut de PHP-FPM (CVE-2026-6735) et une injection SQL dans le pilote PDO_Firebird
+                        (CVE-2025-14179).</li>
+                    <li><strong>Mai 2026 — Oracle :</strong> passage à des correctifs de sécurité mensuels.</li>
+                    <li><strong>5 février 2026 — PortSwigger :</strong> publication du classement des 10
+                        meilleures techniques de hacking web de 2025. On y trouve notamment une méthode pour
+                        extraire des données à travers les filtres de recherche des ORM, et une nouvelle technique
+                        de SSRF basée sur des boucles de redirection HTTP.</li>
+                    <li><strong>31 décembre 2025 — PHP :</strong> fin de vie de PHP 8.1.</li>
+                    <li><strong>20 novembre 2025 — PHP :</strong> sortie de PHP 8.5.</li>
+                    <li><strong>15 avril 2025 — MySQL :</strong> publication de CVE-2025-21579, un déni de service
+                        sur MySQL Server 8.0, 8.4 et 9.x, exploitable par un utilisateur disposant déjà de
+                        privilèges élevés (score CVSS 4,9, gravité moyenne). C'était l'étude de cas de la première
+                        version de cette veille.</li>
+                </ul>
+
+                <h3>6. Étude de cas : CVE-2026-17543, une injection SQL dans PHP</h3>
+                <p>Le 30 juillet 2026, PHP a publié des correctifs pour une faille intitulée « SQL injection via
+                    E'...' backslash breakout » dans l'extension PGSQL, celle qui permet de se connecter à
+                    PostgreSQL. Le CERT-FR l'a relayée le lendemain (avis CERTFR-2026-AVI-0952) en classant le
+                    risque comme « injection SQL ».</p>
+                <p>En PostgreSQL, une chaîne écrite sous la forme <code>E'...'</code> interprète l'antislash
+                    (<code>\</code>) comme un caractère d'échappement. D'après l'intitulé du correctif, un antislash
+                    mal traité permettait de « sortir » de la chaîne et donc d'ajouter du code SQL à la requête.</p>
+                <p>Versions concernées : PHP 8.2 avant 8.2.33, 8.3 avant 8.3.33, 8.4 avant 8.4.24 et 8.5 avant
+                    8.5.9.</p>
+                <p>Ce cas est intéressant parce que la faille ne vient pas du code du développeur, mais du langage
+                    lui-même. Quelques mois plus tôt, une faille du même type avait été corrigée dans le pilote
+                    PDO_Firebird (CVE-2025-14179, injection SQL via des octets nuls dans les chaînes entre
+                    guillemets). Même une fonction d'échappement fournie par PHP peut donc contenir un bug.</p>
+                <p>Cette faille montre l'importance de plusieurs bonnes pratiques :</p>
+                <ul>
+                    <li>privilégier les requêtes préparées plutôt que l'échappement manuel des chaînes</li>
+                    <li>maintenir PHP à jour, y compris pour les versions correctives</li>
+                    <li>surveiller les avis du CERT-FR et le changelog de PHP</li>
+                    <li>limiter les droits de l'utilisateur de la base de données, pour réduire les dégâts si une
+                        injection réussit malgré tout</li>
+                </ul>
+
+                <h3>7. Outils de veille et sources à surveiller</h3>
+                <p><strong><a href="https://top10.owasp.org/2025/" target="_blank" rel="noopener noreferrer">OWASP
+                            Top 10</a></strong> — liste les risques les plus importants pour les applications web.
+                    Édition 2025 consultée le 28/09/2026.</p>
+                <p><strong><a href="https://nvd.nist.gov/" target="_blank" rel="noopener noreferrer">NVD</a> et
+                        <a href="https://www.cvedetails.com/" target="_blank" rel="noopener noreferrer">CVE
+                            Details</a></strong> — permettent de suivre les vulnérabilités publiées officiellement
+                    (PHP, MySQL, Apache, Nginx, WordPress...) et leur score de gravité CVSS.</p>
+                <p><strong><a href="https://www.php.net/ChangeLog-8.php" target="_blank"
+                            rel="noopener noreferrer">PHP.net Changelog</a></strong> et
+                    <strong><a href="https://www.php.net/supported-versions.php" target="_blank"
+                            rel="noopener noreferrer">versions maintenues</a></strong> — pour suivre les correctifs
+                    de sécurité et savoir quelles versions sont encore supportées.</p>
+                <p><strong><a href="https://www.oracle.com/security-alerts/" target="_blank"
+                            rel="noopener noreferrer">Bulletins de sécurité Oracle</a></strong> — correctifs de
+                    MySQL, publiés chaque mois depuis mai 2026.</p>
+                <p><strong><a href="https://portswigger.net/research" target="_blank"
+                            rel="noopener noreferrer">PortSwigger Research</a>, HackTricks et OffSec</strong> —
+                    expliquent les techniques d'attaque de manière pratique.</p>
+                <p><strong><a href="https://www.cert.ssi.gouv.fr/avis/" target="_blank"
+                            rel="noopener noreferrer">CERT-FR</a> et <a href="https://cyber.gouv.fr/"
+                            target="_blank" rel="noopener noreferrer">ANSSI</a></strong> — sources françaises
+                    fiables publiant alertes et recommandations. Les avis du CERT-FR résument chaque faille en
+                    français et indiquent les versions à installer.</p>
+                <p><strong>Réseaux sociaux et flux RSS</strong> — pour centraliser les alertes sans consulter chaque
+                    site manuellement. Le site du CERT-FR propose ses propres flux RSS.</p>
+
+                <h3>8. Conclusion</h3>
+                <p>Cette veille technologique m'a permis de mieux comprendre les risques principaux liés au
+                    développement web en PHP/MySQL. J'ai compris que les bonnes pratiques doivent être appliquées
+                    dès le début d'un projet : requêtes préparées, hashage des mots de passe, validation des
+                    données, sécurisation des uploads, gestion des erreurs, configuration MySQL et HTTPS.</p>
+                <p>La mise à jour de septembre 2026 montre que le sujet évolue vite : nouveau Top 10 OWASP, fin de
+                    vie de PHP 8.1, correctifs MySQL désormais mensuels, et des failles d'injection SQL découvertes
+                    dans PHP lui-même. Écrire du code sécurisé ne suffit pas : il faut aussi maintenir à jour tout
+                    ce sur quoi il repose.</p>
+                <p>Enfin, la veille ne doit pas être ponctuelle. Je continue à suivre l'OWASP, le CERT-FR, NVD,
+                    le changelog de PHP et les bulletins Oracle afin de rester à jour.</p>
             </div>
+
         </div>
     </main>
 
