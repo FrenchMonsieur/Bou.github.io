@@ -92,7 +92,7 @@
                 <span class="decor-motif decor-projet-burst"></span>
             </div>
         </div>
-        </div>
+
         <div class="super-table" id="super-table">
             <div class="table" id="table">
 
@@ -122,19 +122,71 @@
                 <p class="projects-intro">Ces projets mettent en pratique mes compétences en développement front-end,
                     back-end et en sécurisation d’applications web.</p>
 
-                <h2>Portfolio interactif</h2>
+                <h2>F2G – Catalogue de jeux free-to-play</h2>
                 <p>
-                    Conception et développement d'un portfolio personnel basé sur un concept
-                    interactif de platine vinyle : l'utilisateur fait glisser un disque sur la
-                    platine et déplace le bras pour faire apparaître le contenu de chaque page.
+                    Développement d'un catalogue de jeux vidéo gratuits avec le framework
+                    Symfony. Le site interroge l'API publique FreeToGame pour afficher plus de
+                    400 jeux, que l'utilisateur peut filtrer, trier, parcourir page par page
+                    et consulter en détail.
                 </p>
-                <p><strong>Objectifs :</strong> créer une expérience utilisateur originale et
-                    mémorable, tout en respectant les contraintes d'un format mobile-only.</p>
-                <p><strong>Technologies :</strong> HTML, CSS, JavaScript vanilla, GSAP
-                    (Draggable, InertiaPlugin, SplitText, ScrollTrigger).</p>
-                <p><strong>Résultat :</strong> site fonctionnel hébergé sur Netlify, avec une
-                    navigation entièrement gérée par interaction physique (glisser-déposer,
-                    rotation) plutôt que par des liens classiques.</p>
+                <p><strong>Objectifs :</strong> découvrir un framework PHP professionnel et son
+                    architecture MVC, consommer une API externe côté serveur, et mettre en
+                    ligne une application Symfony en production.</p>
+                <p><strong>Technologies :</strong> PHP 8.4, Symfony 8, Twig, HttpClient,
+                    composant Cache, AssetMapper, Git, hébergement alwaysdata.</p>
+                <p><strong>Fonctionnalités :</strong></p>
+                <ul>
+                    <li>Catalogue des jeux récupérés depuis l'API FreeToGame, appelée par le
+                        serveur via un service dédié (injection de dépendances)</li>
+                    <li>Filtres par plateforme et par catégorie (45 genres), et tri par
+                        popularité, date de sortie, ordre alphabétique ou pertinence</li>
+                    <li>Pagination à 24 jeux par page, qui conserve les filtres actifs</li>
+                    <li>Fiche détaillée de chaque jeu : description complète, captures d'écran
+                        et configuration minimale</li>
+                    <li>Mise en cache des réponses de l'API pour accélérer le site et limiter
+                        les appels externes</li>
+                </ul>
+                <p><strong>Sécurité et robustesse :</strong></p>
+                <ul>
+                    <li>Validation de tous les paramètres d'URL par liste blanche avant de les
+                        transmettre à l'API</li>
+                    <li>Échappement automatique des données affichées par Twig contre le XSS</li>
+                    <li>Gestion des erreurs de l'API : un jeu inexistant renvoie une page 404
+                        propre</li>
+                    <li>Configuration de production séparée (mode prod, clé secrète hors du
+                        dépôt Git)</li>
+                </ul>
+                <p><strong>Résultat :</strong> une application Symfony complète, déployée en
+                    production. Données fournies par
+                    <a href="https://www.freetogame.com" target="_blank" rel="noopener noreferrer">FreeToGame</a>.</p>
+                <p><a href="https://f2g.alwaysdata.net/" target="_blank" rel="noopener noreferrer">Voir le projet
+                        F2G</a></p>
+
+                <h2>Bac à disques</h2>
+                <p>
+                    Conception et développement d'un bac à disques virtuel : une collection de
+                    40 albums présentés sous forme de pochettes, que l'utilisateur peut parcourir
+                    et trier par style de musique, comme on fouillerait dans les bacs d'un
+                    disquaire.
+                </p>
+                <p><strong>Objectifs :</strong> manipuler le DOM en JavaScript pour filtrer
+                    dynamiquement une collection, et animer les changements de disposition avec
+                    le plugin Flip de GSAP pour rendre la navigation fluide et agréable.</p>
+                <p><strong>Technologies :</strong> HTML, CSS, JavaScript vanilla, GSAP (Flip).</p>
+                <p><strong>Fonctionnalités :</strong></p>
+                <ul>
+                    <li>Affichage de la collection sous forme de grille de pochettes (titre et artiste)</li>
+                    <li>Animation d'entrée au chargement : les disques arrivent en tournant, chaque
+                        genre depuis une direction différente</li>
+                    <li>Filtrage par genre via une liste déroulante : hip-hop, rock, RnB, métal ou tous</li>
+                    <li>Réorganisation animée de la grille avec <code>Flip.getState()</code> et
+                        <code>Flip.from()</code> : les disques restants glissent vers leur nouvelle
+                        place pendant que les autres sortent et entrent en cascade</li>
+                </ul>
+                <p><strong>Résultat :</strong> une application front-end légère et interactive,
+                    hébergée sur Netlify.</p>
+                <p><a href="https://bac-disque.netlify.app/" target="_blank" rel="noopener noreferrer">Voir le projet
+                        Bac à disques</a></p>
 
                 <h2>Site e-commerce sécurisé</h2>
                 <p>
@@ -168,7 +220,45 @@
                 <p><strong>Résultat :</strong> un site e-commerce fonctionnel, mettant en pratique
                     concrètement les principes de sécurité étudiés en cours et lors de ma veille
                     technologique.</p>
-                <p><a href="https://e-boutique-ssw.infinityfree.io/index.php" target="_blank" >e-boutique</a></p>
+                <p><a href="https://e-boutique-ssw.infinityfree.io/index.php" target="_blank"
+                        rel="noopener noreferrer">Voir le projet e-boutique</a></p>
+
+                <h2>Triumvirate – Modpack Minecraft (en cours)</h2>
+                <p>
+                    Création à deux d'un modpack Minecraft (Forge 1.20.1) sur le thème de la
+                    magie et de la chasse. Au-delà du choix des mods, l'essentiel du travail
+                    consiste à les faire fonctionner ensemble : modifier les recettes, retirer
+                    le contenu qui déséquilibre le jeu et ajouter nos propres objets et
+                    mécaniques grâce à des scripts.
+                </p>
+                <p><strong>Objectifs :</strong> programmer en JavaScript dans un environnement
+                    inhabituel (le moteur d'un jeu), apprendre à s'appuyer sur la documentation
+                    et le code d'outils existants, et travailler à plusieurs sur un même projet
+                    avec Git.</p>
+                <p><strong>Technologies :</strong> KubeJS (JavaScript), CraftTweaker (ZenScript),
+                    Minecraft Forge 1.20.1, JSON (resource packs), Git et GitHub.</p>
+                <p><strong>Fonctionnalités :</strong></p>
+                <ul>
+                    <li>Création d'objets personnalisés, comme des « aspects » qui transforment le
+                        joueur en animal, avec un temps de recharge commun à tous les aspects</li>
+                    <li>Nouvelles cérémonies pour le mod Totemic, par exemple un rituel qui
+                        transforme les aigles proches en perroquets, avec vérification des
+                        conditions avant son lancement</li>
+                    <li>Défis de chasse en plusieurs vagues d'ennemis (Gateways to Eternity), avec
+                        des récompenses à la clé</li>
+                    <li>Recettes réécrites pour relier les mods entre eux, et suppression des
+                        rituels de Roots Classic qui ne collaient pas au modpack</li>
+                    <li>Resource pack maison pour les textures et modèles des nouveaux objets</li>
+                </ul>
+                <p><strong>Organisation :</strong></p>
+                <ul>
+                    <li>Projet versionné sur GitHub et partagé à deux, avec un <code>.gitignore</code>
+                        adapté pour exclure les mondes, les logs et les caches générés par le jeu</li>
+                </ul>
+                <p><strong>Résultat :</strong> un projet toujours en développement. La base technique
+                    est en place et le contenu s'enrichit au fil des sessions.</p>
+                <p><a href="https://github.com/FrenchMonsieur/Triumvirate" target="_blank"
+                        rel="noopener noreferrer">Voir le dépôt GitHub de Triumvirate</a></p>
             </div>
 
         </div>
