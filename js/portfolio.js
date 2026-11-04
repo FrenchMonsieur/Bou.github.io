@@ -1,37 +1,214 @@
-/* =====================================================================
-   ACCUEIL
-     1. Platine mobile (écrans de moins de 1024 px)
-     2. Carrousel des rubriques (écrans de 1024 px et plus)
-   ===================================================================== */
+// ==========================
+// PLATINE : uniquement en mobile (moins de 1024 px)
+// ==========================
+if (window.matchMedia("(max-width: 1023px)").matches) {
+
+    // ==========================
+    // PLUGINS GSAP
+    // ==========================
+    gsap.registerPlugin(Draggable, InertiaPlugin, SplitText, ScrollTrigger);
+
+    // ==========================
+    // ELEMENTS DOM
+    // ==========================
+    const pochette = document.getElementById('pochette');
+    const cover = document.getElementById('cover');
+    let cible = document.getElementById("cible");
+    let launched = false;
+
+    // ==========================
+    // ELEMENTS SLIDE
+    // ==========================
+    const slide1 = document.getElementById("slide1");
+    const slide2 = document.getElementById("slide2");
+    const slide3 = document.getElementById("slide3");
+    const slide4 = document.getElementById("slide4");
+
+    // ==========================
+    // AFFICHAGE SLIDE AU CHARGEMENT
+    // ==========================
+    gsap.to(slide1, { opacity: 1, duration: 1 });
+
+    // ==========================
+    // ANIMATION DISQUE (rotation infinie)
+    // ==========================
+    const spin = gsap.to("#disqueN0", {
+        rotation: 360,
+        duration: 3,
+        repeat: -1,
+        ease: "none"
+    });
+
+    spin.pause();
+
+    // ==========================
+    // INTERACTION POCHETTE (ouvrir / fermer)
+    // ==========================
+    pochette.addEventListener('click', function () {
+        cover.classList.toggle('coverAlt');
+        gsap.to(slide4, { opacity: 0, duration: 0.5 });
+    });
+
+    // ==========================
+    // DRAG DU DISQUE
+    // ==========================
+    Draggable.create("#p-disqueN0", {
+        bounds: document.getElementById("super-table"),
+        inertia: false,
+
+        onClick: function () {},
+
+        onDragEnd: function () {
+
+            const ciblesOK = Draggable.hitTest("#cible", "#cible2", "50%");
+            const magnetok = Draggable.hitTest("#cible2", "#cible3", "50%");
+
+            gsap.to(slide1, { opacity: 0, duration: 0.5 });
+            gsap.to(slide2, { opacity: 1, duration: 0.5, delay: 0.5 });
+
+            if (ciblesOK) {}
+
+            if (magnetok) {
+
+                let cible2 = document.getElementById("cible2");
+
+                let rectCible = cible.getBoundingClientRect();
+                let rectCible2 = cible2.getBoundingClientRect();
+
+                const centerCibleX = rectCible.left + rectCible.width / 2;
+                const centerCibleY = rectCible.top + rectCible.height / 2;
+
+                const centerCible2X = rectCible2.left + rectCible2.width / 2;
+                const centerCible2Y = rectCible2.top + rectCible2.height / 2;
+
+                const deltaX = centerCibleX - centerCible2X;
+                const deltaY = centerCibleY - centerCible2Y;
+
+                gsap.to("#p-disqueN0", {
+                    x: `+=${deltaX}`,
+                    y: `+=${deltaY}`,
+                    duration: 1,
+                    ease: "power2.out",
+                    onComplete: function () {
+                        Draggable.get("#p-disqueN0").update();
+
+                        gsap.to(slide2, { opacity: 0, duration: 0.5 });
+                        gsap.to(slide3, { opacity: 1, duration: 0.5, delay: 0.5 });
+                    }
+                });
+
+            } else {
+                spin.pause();
+            }
+        }
+    });
+
+    // ==========================
+    // DRAG DU BRAS (rotation)
+    // ==========================
+    Draggable.create('#p-bras', {
+        type: "rotation",
+        bounds: { minRotation: 0, maxRotation: 55 },
+        inertia: false,
+        zIndexBoost: true,
+
+        onClick: function () {},
+
+        onDragEnd: function () {
+
+            const ciblesOK = Draggable.hitTest("#cible", "#cible2", "50%");
+            const sync = Draggable.hitTest("#disqueN0", "#bras", "10%");
+
+            // slide : bouge le bras disparaît dès que le bras est bougé
+            gsap.to(slide3, { opacity: 0, duration: 0.5 });
+
+            if (sync && ciblesOK) {
+
+                launched = true;
+                spin.resume();
+                gsap.to(slide4, { opacity: 1, duration: 0.5, delay: 1 });
+
+                SplitText.create(".text", {
+                    type: "words",
+                    autoSplit: true,
+                    onSplit(self) {
+                        return gsap.from(self.words, {
+                            duration: 1,
+                            y: -100,
+                            autoAlpha: 0,
+                            stagger: 0.1
+                        });
+                    }
+                });
+
+                gsap.to("#text", {
+                    opacity: 1,
+                    duration: 4
+                });
+
+            } else {
+
+                spin.pause();
+
+                gsap.to("#text", {
+                    opacity: 0,
+                    duration: 4
+                });
+            }
+        }
+    });
+
+    // ==========================
+    // LANCEMENT AUTOMATIQUE AU SCROLL
+    // ==========================
+    function trigger() {
+        if (launched) return;
+        launched = true;
+
+        gsap.to([slide1, slide2, slide3, slide4], { opacity: 0, duration: 0.5 });
+
+        const cible2 = document.getElementById("cible2");
+        const rectCible = cible.getBoundingClientRect();
+        const rectCible2 = cible2.getBoundingClientRect();
+
+        const deltaX = (rectCible.left + rectCible.width / 2) - (rectCible2.left + rectCible2.width / 2);
+        const deltaY = (rectCible.top + rectCible.height / 2) - (rectCible2.top + rectCible2.height / 2);
+
+        gsap.to("#p-disqueN0", {
+            x: `+=${deltaX}`,
+            y: `+=${deltaY}`,
+            duration: 1,
+            ease: "power2.out",
+            onComplete: function () {
+                Draggable.get("#p-disqueN0").update();
+
+                gsap.to("#p-bras", {
+                    rotation: 55,
+                    duration: 1,
+                    ease: "power2.out",
+                    onComplete: function () {
+                        Draggable.get("#p-bras").update();
+                        spin.resume();
+                        gsap.to("#text", { opacity: 1, duration: 1.5 });
+                    }
+                });
+            }
+        });
+    }
+
+    ScrollTrigger.create({
+        trigger: "#table",
+        start: "bottom 80%",
+        once: true,
+        onEnter: trigger
+    });}
 
 
-// ---------------------------------------------------------------------
-// 1. Platine mobile, avec les consignes de manipulation
-// ---------------------------------------------------------------------
-
-initPlatineMobile({
-    wrapperId: "p-disqueN0",
-    imageId: "disqueN0",
-    slides: true
-});
-
-
-// ---------------------------------------------------------------------
-// 2. Carrousel desktop
-// ---------------------------------------------------------------------
-// Trois cartes sont visibles en même temps :
-//   - la carte active au centre (la seule cliquable),
-//   - la précédente à gauche,
-//   - la suivante à droite.
-// Les autres cartes sont cachées. Les flèches font tourner le carrousel.
-
+// ==========================
+// CARROUSEL : uniquement sur PC (1024 px et plus)
+// ==========================
 gsap.matchMedia().add("(min-width: 1024px)", initCarrousel);
-
 function initCarrousel() {
-
-    // -----------------------------------------------------------------
-    // Éléments HTML
-    // -----------------------------------------------------------------
 
     const carrousel = document.querySelector(".carousel-wrapper");
     if (carrousel === null) {
@@ -46,67 +223,41 @@ function initCarrousel() {
         return;
     }
 
+    const gauche = -1;
+    const centre = 0;
+    const droite = 1;
+    const cachee = null;
 
-    // -----------------------------------------------------------------
-    // Réglages
-    // -----------------------------------------------------------------
+    const decalageLateral = 115;
+    const opaciteLaterale = 0.35;
+    const tailleLaterale = 0.92;
 
-    // Positions possibles d'une carte.
-    const GAUCHE = -1;
-    const CENTRE = 0;
-    const DROITE = 1;
-    const CACHEE = null;
-
-    // Décalage des cartes latérales, en % de la largeur d'une carte.
-    // 115 % laisse environ 5 % d'espace entre deux cartes.
-    const DECALAGE_LATERAL = 115;
-    const OPACITE_LATERALE = 0.35;
-    const TAILLE_LATERALE = 0.92;
-
-    // Si l'utilisateur a demandé moins d'animations dans son système,
-    // les changements de carte sont instantanés.
     const mouvementReduit = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const DUREE = mouvementReduit ? 0 : 0.55;
-
-
-    // -----------------------------------------------------------------
-    // État
-    // -----------------------------------------------------------------
+    const duree = mouvementReduit ? 0 : 0.55;
 
     let indexActif = 0;
     let animationEnCours = false;
 
-    // Transforme n'importe quel nombre en index valide :
-    // après la dernière carte on revient à la première, et inversement.
     const boucler = gsap.utils.wrap(0, cartes.length);
 
-
-    // -----------------------------------------------------------------
-    // Calcul des positions
-    // -----------------------------------------------------------------
-
-    // Où doit se trouver la carte n° indexCarte si la carte n° indexCentre
-    // est au centre ?
     function positionDeLaCarte(indexCarte, indexCentre) {
         if (indexCarte === indexCentre) {
-            return CENTRE;
+            return centre;
         }
 
         if (indexCarte === boucler(indexCentre - 1)) {
-            return GAUCHE;
+            return gauche;
         }
 
         if (indexCarte === boucler(indexCentre + 1)) {
-            return DROITE;
+            return droite;
         }
 
-        return CACHEE;
+        return cachee;
     }
 
-    // Apparence (position, opacité, taille, profondeur) d'une carte
-    // selon sa position.
     function apparencePour(position) {
-        if (position === CENTRE) {
+        if (position === centre) {
             return {
                 xPercent: 0,
                 autoAlpha: 1,
@@ -115,52 +266,36 @@ function initCarrousel() {
             };
         }
 
-        if (position === GAUCHE || position === DROITE) {
+        if (position === gauche || position === droite) {
             return {
-                xPercent: position * DECALAGE_LATERAL,
-                autoAlpha: OPACITE_LATERALE,
-                scale: TAILLE_LATERALE,
+                xPercent: position * decalageLateral,
+                autoAlpha: opaciteLaterale,
+                scale: tailleLaterale,
                 zIndex: 2
             };
         }
 
-        // Carte cachée : on ne change pas xPercent, elle disparaît sur place.
         return {
             autoAlpha: 0,
-            scale: TAILLE_LATERALE,
+            scale: tailleLaterale,
             zIndex: 1
         };
     }
 
-    // Seule la carte du centre peut être cliquée ou atteinte au clavier.
-    // « inert » désactive aussi la carte pour les lecteurs d'écran.
     function activerSeulementSiCentre(carte, position) {
-        carte.inert = position !== CENTRE;
+        carte.inert = position !== centre;
     }
-
-
-    // -----------------------------------------------------------------
-    // Placement de départ
-    // -----------------------------------------------------------------
 
     cartes.forEach(function (carte, indexCarte) {
         const position = positionDeLaCarte(indexCarte, indexActif);
-
         gsap.set(carte, apparencePour(position));
         activerSeulementSiCentre(carte, position);
     });
 
-
-    // -----------------------------------------------------------------
-    // Changement de carte
-    // -----------------------------------------------------------------
-
     function afficherLaCarte(indexDemande) {
-        // On attend la fin de l'animation précédente.
         if (animationEnCours) {
             return;
         }
-
         const nouvelIndex = boucler(indexDemande);
         if (nouvelIndex === indexActif) {
             return;
@@ -169,7 +304,7 @@ function initCarrousel() {
         animationEnCours = true;
 
         const animation = gsap.timeline({
-            defaults: { duration: DUREE, ease: "power3.inOut" },
+            defaults: { duration: duree, ease: "power3.inOut" },
             onComplete: function () {
                 indexActif = nouvelIndex;
                 animationEnCours = false;
@@ -183,18 +318,12 @@ function initCarrousel() {
 
             activerSeulementSiCentre(carte, nouvellePosition);
 
-            const etaitCachee = anciennePosition === CACHEE;
-            const seraCachee = nouvellePosition === CACHEE;
+            const etaitCachee = anciennePosition === cachee;
+            const seraCachee = nouvellePosition === cachee;
 
-            // Cas 1 : la carte passe directement de gauche à droite (ou
-            // l'inverse). Ça n'arrive qu'avec 3 cartes. On la déplace invisible
-            // puis on la fait réapparaître, pour qu'elle ne traverse pas
-            // la carte du centre.
             const changeDeCote = !etaitCachee && !seraCachee &&
                 Math.abs(nouvellePosition - anciennePosition) === 2;
 
-            // Cas 2 : la carte était cachée et devient visible. On la place
-            // directement à sa nouvelle position, invisible, puis elle apparaît.
             const apparait = etaitCachee && !seraCachee;
 
             if (changeDeCote) {
@@ -204,7 +333,7 @@ function initCarrousel() {
                 animation.set(carte, { ...apparence, autoAlpha: 0 }, 0);
                 animation.to(carte, apparence, mouvementReduit ? 0 : 0.1);
             } else {
-                // Cas normal : la carte glisse vers sa nouvelle position.
+
                 animation.to(carte, apparence, 0);
             }
         });
@@ -220,11 +349,6 @@ function initCarrousel() {
 
     boutonSuivant.addEventListener("click", carteSuivante);
     boutonPrecedent.addEventListener("click", cartePrecedente);
-
-
-    // -----------------------------------------------------------------
-    // Nettoyage quand on repasse en mobile
-    // -----------------------------------------------------------------
 
     return function nettoyer() {
         boutonSuivant.removeEventListener("click", carteSuivante);
