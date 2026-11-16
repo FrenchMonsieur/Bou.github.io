@@ -272,3 +272,116 @@ footer {
 .projects-intro {
     margin-bottom: 1.25rem;
 }
+
+/* ==========================
+   Lisibilité mobile (< 1024px)
+   Le texte est posé sur un « livret de pochette » sombre
+   au lieu d'être écrit directement sur le bois.
+   ========================== */
+
+@media (max-width: 1023px) {
+
+    /* Espace sous le panneau, à l'intérieur du bois (une marge sur .text
+       « sortirait » du bloc et laisserait une bande blanche). */
+    .super-table {
+        padding-bottom: 32px;
+    }
+
+    .text {
+        margin: 0 12px;
+        padding: 20px 16px;
+        color: #F3EDE4;
+        background: rgba(30, 30, 34, 0.92);
+        border: 2px solid #8E949C;
+        border-left: 6px solid #960018;
+        box-shadow: 8px 8px 0 rgba(150, 0, 24, 0.35);
+        overflow-wrap: break-word;
+    }
+
+    .text h1 {
+        font-size: 1.5rem;
+        line-height: 1.25;
+        margin-bottom: 1rem;
+    }
+
+    /* Titre de page : étiquette rouge carmin, comme sur la version desktop. */
+    .page-secondary .text h1 {
+        display: inline-block;
+        padding: 4px 10px;
+        background: #960018;
+    }
+
+    /* Message d'accueil : une phrase, pas un titre de page. */
+    .page-home .text h1 {
+        font-size: 1.3rem;
+        line-height: 1.45;
+        margin-bottom: 0;
+    }
+
+    .text h2 {
+        font-size: 1.25rem;
+        line-height: 1.3;
+        margin: 1.5rem 0 0.6rem;
+    }
+
+    .text h3 {
+        font-size: 1.1rem;
+        line-height: 1.35;
+        margin: 1.25rem 0 0.5rem;
+    }
+
+    .text p,
+    .text li {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .text p {
+        margin-bottom: 1em;
+    }
+
+    .text p:last-child {
+        margin-bottom: 0;
+    }
+
+    .text ul {
+        padding-left: 1.25rem;
+        margin-bottom: 1em;
+    }
+
+    .text li {
+        margin-bottom: 0.4em;
+    }
+
+    .text li::marker {
+        color: #960018;
+    }
+
+    .text a {
+        color: #F3EDE4;
+        text-decoration-color: #e04a5f;
+        text-underline-offset: 3px;
+    }
+
+    /* Les cartes (projets, compétences) sont déjà dans le panneau :
+       on réduit leur marge intérieure pour garder des lignes assez longues. */
+    .text .project-card,
+    .page-veille .text .flux-numero {
+        padding: 14px 12px;
+    }
+
+    /* Pied de page : le bleu pétrole était trop sombre sur le fond noir. */
+    .footer-name {
+        color: #F3EDE4;
+    }
+
+    .footer-role,
+    .footer-copy {
+        color: #8E949C;
+    }
+
+    .footer-links a {
+        color: #F3EDE4;
+        border-bottom-color: #960018;
+    }
+}

@@ -1,0 +1,88 @@
+/* Projets : un projet = une card. */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 1.25rem;
+    border: 1px solid rgba(243, 237, 228, 0.22);
+    border-top: 5px solid #960018;
+    background: rgba(30, 30, 34, 0.72);
+}
+
+.project-card h2 {
+    margin-top: 0;
+}
+
+/* Les liens sont poussés en bas de la card. */
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+.project-card .project-link {
+    display: inline-block;
+    padding: 8px 14px;
+    background: #960018;
+    color: #F3EDE4;
+    font-weight: 700;
+    text-decoration: none;
+    border: 2px solid #960018;
+    transition: background-color 180ms ease, color 180ms ease;
+}
+
+.project-card .project-link:hover,
+.project-card .project-link:focus-visible {
+    background: transparent;
+    color: #F3EDE4;
+}
+
+.project-card .project-link:focus-visible {
+    outline: 3px solid #F3EDE4;
+    outline-offset: 3px;
+}
+
+@media (min-width: 1024px) {
+    .project-grid {
+        gap: 2rem;
+    }
+
+    .page-projet .project-card {
+        padding: clamp(20px, 2.5vw, 32px);
+        border: 2px solid #8E949C;
+        border-top: 6px solid #960018;
+        background: rgba(30, 30, 34, 0.9);
+        box-shadow: 8px 8px 0 rgba(150, 0, 24, .45);
+        transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+
+    .page-projet .project-card:hover {
+        transform: translate(-3px, -3px);
+        box-shadow: 11px 11px 0 rgba(150, 0, 24, .6);
+    }
+
+    .page-projet .text .project-card h2 {
+        margin: 0 0 15px;
+    }
+
+    /* Le dernier projet (nombre impair) prend toute la largeur. */
+    .project-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+    .page-projet .project-card {
+        transition: none;
+    }
+}

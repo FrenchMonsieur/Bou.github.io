@@ -455,3 +455,119 @@
     font-size: 1rem;
     line-height: 1.5;
 }
+
+.page-veille .flux-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+/* ==========================
+   VEILLE : switch façon touches de boombox (Face A / Face B)
+   ========================== */
+.page-veille .switch-veille {
+    --key-w: min(120px, 36vw);
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 24px;
+}
+
+.page-veille .switch-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px 18px;
+    background: #960018;
+    border-radius: 10px;
+}
+
+.page-veille .switch-leds {
+    display: grid;
+    grid-template-columns: repeat(2, var(--key-w));
+    gap: 6px;
+    justify-items: center;
+}
+
+.page-veille .switch-led {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #4a0010;
+    transition: background .15s, box-shadow .15s;
+}
+
+.page-veille .switch-led.on {
+    background: #F3EDE4;
+    box-shadow: 0 0 6px rgba(243, 237, 228, .8);
+}
+
+.page-veille .switch-keys {
+    display: flex;
+    gap: 6px;
+    height: 72px;
+    align-items: flex-start;
+    padding: 6px 6px 0;
+    background: #1E1E22;
+    border-radius: 6px 6px 0 0;
+}
+
+.page-veille .switch-key {
+    width: var(--key-w);
+    height: 58px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: #8E949C;
+    color: #1E1E22;
+    border: none;
+    border-bottom: 12px solid #5a5f66;
+    border-radius: 4px 4px 2px 2px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform .35s cubic-bezier(.4, 1.8, .5, 1),
+        border-bottom-width .35s cubic-bezier(.4, 1.8, .5, 1),
+        background .15s;
+}
+
+.page-veille .switch-key svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.page-veille .switch-key.on {
+    transform: translateY(10px);
+    border-bottom-width: 2px;
+    background: #F3EDE4;
+    cursor: default;
+    transition: transform .08s ease-in, border-bottom-width .08s ease-in, background .08s;
+}
+
+.page-veille .switch-key:focus-visible {
+    outline: 2px solid #F3EDE4;
+    outline-offset: 2px;
+}
+
+.page-veille .text .switch-cap {
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: .5px;
+    color: #F3EDE4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-veille .switch-key,
+    .page-veille .switch-key.on {
+        transition: none;
+    }
+}

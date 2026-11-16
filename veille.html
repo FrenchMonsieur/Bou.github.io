@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/platine.css">
     <link rel="stylesheet" href="css/desktop.css">
     <link rel="stylesheet" href="css/pages/secondary.css">
-    <link rel="stylesheet" href="css/pages/motifs.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
@@ -79,18 +78,6 @@
     </header>
 
     <main>
-        <div class="secondary-decor" aria-hidden="true">
-            <div class="motifs">
-                <span class="decor-motif decor-veille-radar"></span>
-                <span class="decor-motif decor-veille-shield"></span>
-                <span class="decor-motif decor-veille-scan"></span>
-                <span class="decor-motif decor-veille-lock"></span>
-                <span class="decor-motif decor-veille-signal"></span>
-                <span class="decor-motif decor-veille-warning"></span>
-                <span class="decor-motif decor-veille-fingerprint"></span>
-                <span class="decor-motif decor-veille-eye"></span>
-            </div>
-        </div>
         <div class="super-table" id="super-table">
             <div class="table" id="table">
 
@@ -115,7 +102,40 @@
 
             <div class="text" id="text">
                 <h1>Veille technologique</h1>
-                <p>
+                <div class="switch-veille">
+                    <div class="switch-body">
+                        <div class="switch-leds" aria-hidden="true">
+                            <span class="switch-led on"></span>
+                            <span class="switch-led"></span>
+                        </div>
+                        <div class="switch-keys" role="group" aria-label="Choisir la veille affichée">
+                            <button type="button" class="switch-key on" data-source="gamedev" aria-pressed="true">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M2 8a2 2 0 0 1 2 -2h16a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-16a2 2 0 0 1 -2 -2z" />
+                                    <path d="M6 12h4m-2 -2v4" />
+                                    <path d="M15 11v.01" />
+                                    <path d="M18 13v.01" />
+                                </svg>
+                                Jeu vidéo
+                            </button>
+                            <button type="button" class="switch-key" data-source="docker" aria-pressed="false">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M22 12.54c-1.804 -.345 -2.701 -1.08 -3.523 -2.94c-.487 .696 -1.102 1.568 -.92 2.4c.028 .238 -.32 1.002 -.557 1h-14c0 5.208 3.164 7 6.196 7c4.124 .022 7.828 -1.376 9.854 -5c1.146 -.101 2.296 -1.505 2.95 -2.46z" />
+                                    <path d="M5 10h3v3h-3z" />
+                                    <path d="M8 10h3v3h-3z" />
+                                    <path d="M11 10h3v3h-3z" />
+                                    <path d="M8 7h3v3h-3z" />
+                                    <path d="M11 7h3v3h-3z" />
+                                    <path d="M11 4h3v3h-3z" />
+                                </svg>
+                                Docker
+                            </button>
+                        </div>
+                        <p class="switch-cap" aria-hidden="true">Face A · Face B</p>
+                    </div>
+                </div>
+
+                <p class="flux-intro" id="flux-intro">
                     Ma veille sur le développement de jeux web, alimentée automatiquement par le flux RSS de
                     <a href="https://gamedevjsweekly.com/" target="_blank" rel="noopener noreferrer">Gamedev.js
                         Weekly</a>.
