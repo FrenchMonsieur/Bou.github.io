@@ -175,9 +175,9 @@ const API_URL = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURICompo
 const NB_NUMEROS = 3;          // nombre de newsletters affichées
 const NB_ARTICLES = 5;         // articles affichés par newsletter
 const CACHE_KEY = "veille-gamedev";
-const CACHE_DUREE = 3 * 60 * 60 * 1000; // 3 heures
+const CACHE_DUREE =  168 * 60 * 60 * 1000; // 7j
 
-// --- Cache local (évite de rappeler l'API à chaque visite) ---
+// on conserve le flux en cache pour éviter d'appeler l'API à chaque chargement de la page 
 function lireCache() {
     try {
         const cache = JSON.parse(localStorage.getItem(CACHE_KEY));
@@ -192,7 +192,6 @@ function ecrireCache(items) {
     } catch (e) { }
 }
 
-// --- Récupération du flux ---
 async function recupererFlux() {
     const cache = lireCache();
     if (cache) return cache;
@@ -207,7 +206,7 @@ async function recupererFlux() {
     return data.items;
 }
 
-// --- N'accepte que les liens http/https (sécurité) ---
+// on accepte que les liens http/https pour des raisons de sécurité
 function lienSur(href) {
     try {
         const url = new URL(href);
