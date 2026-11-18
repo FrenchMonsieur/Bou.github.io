@@ -370,6 +370,26 @@ footer {
         padding: 14px 12px;
     }
 
+    /* Pages secondaires : le texte remonte juste sous la platine.
+       Avant, il commençait sous la place de repos du disque, ce qui laissait
+       un grand vide une fois le disque posé sur la platine.
+       Tout dans la platine est en % de sa largeur (max 480px) :
+       0.73 x largeur = la zone vide sous le plateau. */
+    .page-secondary .text {
+        margin-top: calc(min(100vw, 480px) * -0.73);
+    }
+
+    /* La platine recouvre maintenant le haut du texte : elle laisse passer
+       les touches (liens, boutons du texte), sauf sur le plateau,
+       le bras et le disque, qui restent manipulables. */
+    .page-secondary .table {
+        pointer-events: none;
+    }
+
+    .page-secondary .table > * {
+        pointer-events: auto;
+    }
+
     /* Pied de page : le bleu pétrole était trop sombre sur le fond noir. */
     .footer-name {
         color: #F3EDE4;
