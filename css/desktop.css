@@ -815,6 +815,7 @@
 
     .carousel-arrow-img {
         width: 100%;
+        filter: brightness(2);
     }
 
     .prev {
