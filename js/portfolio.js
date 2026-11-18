@@ -143,7 +143,7 @@ if (window.matchMedia("(max-width: 1023px)").matches) {
 
                 gsap.to("#text", {
                     opacity: 1,
-                    duration: 4
+                    duration: 1.5
                 });
 
             } else {
@@ -152,7 +152,7 @@ if (window.matchMedia("(max-width: 1023px)").matches) {
 
                 gsap.to("#text", {
                     opacity: 0,
-                    duration: 4
+                    duration: 1.5
                 });
             }
         }
